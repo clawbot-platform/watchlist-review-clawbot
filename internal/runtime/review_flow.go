@@ -10,6 +10,7 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/features"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/scoring"
 )
 
@@ -29,6 +30,7 @@ type ReviewInput struct {
 type ReviewContext struct {
 	Alert              *alerts.CanonicalAlert      `json:"alert"`
 	Features           *features.ExtractedFeatures `json:"features"`
+	RetrievalContext   *retrieval.PromptContext    `json:"retrieval_context,omitempty"`
 	IdentityEvidence   IdentityEvidence            `json:"identity_evidence"`
 	DeterministicScore *scoring.Result             `json:"deterministic_score,omitempty"`
 	AnalystNote        *notes.AnalystNote          `json:"analyst_note,omitempty"`
@@ -40,13 +42,19 @@ type Flow struct {
 	Identity  *identity.Client
 	Notes     *notes.Service
 	Artifacts *artifacts.Service
+	Retrieval *retrieval.Service
 }
 
-func NewFlow(identityClient *identity.Client, noteService *notes.Service, artifactService *artifacts.Service) *Flow {
+func NewFlow(identityClient *identity.Client, noteService *notes.Service, artifactService *artifacts.Service, retrievalServices ...*retrieval.Service) *Flow {
+	var retrievalService *retrieval.Service
+	if len(retrievalServices) > 0 {
+		retrievalService = retrievalServices[0]
+	}
 	return &Flow{
 		Identity:  identityClient,
 		Notes:     noteService,
 		Artifacts: artifactService,
+		Retrieval: retrievalService,
 	}
 }
 
@@ -69,11 +77,13 @@ func (f *Flow) BuildReviewContext(ctx context.Context, input ReviewInput) (*Revi
 	}
 
 	deterministic := scoring.Evaluate(input.Alert, extracted)
-	analystNote := f.generateAnalystNote(ctx, input.Alert, extracted, deterministic, evidence)
+	retrievalContext := f.buildRetrievalContext(ctx, input, deterministic)
+	analystNote := f.generateAnalystNote(ctx, input.Alert, extracted, deterministic, evidence, retrievalContext)
 
 	reviewContext := &ReviewContext{
 		Alert:              input.Alert,
 		Features:           extracted,
+		RetrievalContext:   retrievalContext,
 		IdentityEvidence:   evidence,
 		DeterministicScore: deterministic,
 		AnalystNote:        analystNote,
@@ -83,12 +93,20 @@ func (f *Flow) BuildReviewContext(ctx context.Context, input ReviewInput) (*Revi
 	return reviewContext, nil
 }
 
+func (f *Flow) buildRetrievalContext(ctx context.Context, input ReviewInput, score *scoring.Result) *retrieval.PromptContext {
+	if f == nil || f.Retrieval == nil || input.Alert == nil || score == nil {
+		return &retrieval.PromptContext{Warnings: []string{"retrieval_not_configured"}}
+	}
+	return f.Retrieval.BuildPromptContext(ctx, input.TenantID, input.Alert, score)
+}
+
 func (f *Flow) generateAnalystNote(
 	ctx context.Context,
 	alert *alerts.CanonicalAlert,
 	fx *features.ExtractedFeatures,
 	score *scoring.Result,
 	evidence IdentityEvidence,
+	retrievalContext *retrieval.PromptContext,
 ) *notes.AnalystNote {
 	if f == nil || f.Notes == nil {
 		return &notes.AnalystNote{
@@ -96,7 +114,7 @@ func (f *Flow) generateAnalystNote(
 			Warnings: []string{"granite_analyst_note_not_configured"},
 		}
 	}
-	return f.Notes.Generate(ctx, alert, fx, score, evidence.Compare, evidence.Screening)
+	return f.Notes.Generate(ctx, alert, fx, score, evidence.Compare, evidence.Screening, retrievalContext)
 }
 
 func (f *Flow) persistArtifacts(ctx context.Context, input ReviewInput, reviewContext *ReviewContext) ([]artifacts.ArtifactRef, []string) {

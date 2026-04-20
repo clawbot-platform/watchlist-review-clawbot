@@ -7,17 +7,19 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/alerts"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/features"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/scoring"
 )
 
-const promptVersion = "granite-analyst-note-v1"
+const promptVersion = "granite-analyst-note-v2-rag"
 
 type PromptInput struct {
-	Alert     *alerts.CanonicalAlert
-	Features  *features.ExtractedFeatures
-	Score     *scoring.Result
-	Compare   *identity.CompareResponse
-	Screening *identity.ScreenOFACResponse
+	Alert            *alerts.CanonicalAlert
+	Features         *features.ExtractedFeatures
+	Score            *scoring.Result
+	Compare          *identity.CompareResponse
+	Screening        *identity.ScreenOFACResponse
+	RetrievalContext *retrieval.PromptContext
 }
 
 func BuildPrompt(input PromptInput) (string, error) {
@@ -63,6 +65,7 @@ func BuildPrompt(input PromptInput) (string, error) {
 			"next_step":              input.Score.NextStep,
 		},
 		"identity_evidence": buildIdentityEvidenceSummary(input),
+		"retrieval_context": buildRetrievalPayload(input.RetrievalContext),
 	}
 
 	encoded, err := json.MarshalIndent(payload, "", "  ")
@@ -78,7 +81,8 @@ Rules:
 - Write for a compliance analyst.
 - Be concise and factual.
 - Do not invent facts not present in the payload.
-- If identity evidence is contradictory or weak, state that clearly.
+- Use retrieval_context only as supporting background. Do not let it override deterministic evidence.
+- If retrieval snippets conflict with deterministic evidence, prefer deterministic evidence and note the conflict cautiously.
 - Return only JSON matching the requested schema.
 
 Create:
@@ -119,6 +123,31 @@ func buildIdentityEvidenceSummary(input PromptInput) map[string]any {
 		if len(input.Screening.Candidates) > 0 {
 			out["top_candidate"] = input.Screening.Candidates[0]
 		}
+	}
+	return out
+}
+
+func buildRetrievalPayload(ctx *retrieval.PromptContext) map[string]any {
+	if ctx == nil {
+		return map[string]any{"warnings": []string{"retrieval_not_requested"}}
+	}
+	out := map[string]any{
+		"query_text": ctx.QueryText,
+		"warnings":   ctx.Warnings,
+	}
+	if len(ctx.Snippets) > 0 {
+		var snippets []map[string]any
+		for _, snip := range ctx.Snippets {
+			snippets = append(snippets, map[string]any{
+				"snippet_id": snip.SnippetID,
+				"source":     snip.Source,
+				"title":      snip.Title,
+				"text":       snip.Text,
+				"score":      snip.Score,
+				"tags":       snip.Tags,
+			})
+		}
+		out["snippets"] = snippets
 	}
 	return out
 }

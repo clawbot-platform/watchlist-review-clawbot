@@ -12,6 +12,7 @@ import (
 	artifactevents "github.com/clawbot-platform/watchlist-review-clawbot/internal/events/artifacts"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 )
 
 func main() {
@@ -22,8 +23,9 @@ func main() {
 	identityClient := identity.New(identityBaseURL, 10*time.Second, tenant)
 	noteService := buildNoteService()
 	artifactService := buildArtifactService()
+	retrievalService := buildRetrievalService()
 
-	server, err := api.NewServer(identityClient, noteService, artifactService)
+	server, err := api.NewServer(identityClient, noteService, artifactService, retrievalService)
 	if err != nil {
 		log.Fatalf("build server: %v", err)
 	}
@@ -106,6 +108,19 @@ func buildArtifactService() *artifacts.Service {
 	}
 
 	return artifacts.NewService(store, extras...)
+}
+
+func buildRetrievalService() *retrieval.Service {
+	if !parseBool(envOr("ENABLE_REVIEW_RETRIEVAL", "false")) {
+		return nil
+	}
+	baseURL := envOr("REVIEW_RETRIEVAL_BASE_URL", "")
+	timeout, err := time.ParseDuration(envOr("REVIEW_RETRIEVAL_TIMEOUT", "5s"))
+	if err != nil {
+		log.Printf("retrieval: invalid timeout: %v", err)
+		timeout = 5 * time.Second
+	}
+	return retrieval.NewService(retrieval.NewClient(baseURL, timeout))
 }
 
 func envOr(key, fallback string) string {

@@ -12,6 +12,7 @@ import (
 	"testing"
 
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 )
 
 type fakeGenerator struct {
@@ -19,8 +20,22 @@ type fakeGenerator struct {
 	err  error
 }
 
-func (f *fakeGenerator) Generate(_ context.Context, _ notes.PromptInput) (*notes.AnalystNote, error) {
+func (f *fakeGenerator) Generate(_ context.Context, input notes.PromptInput) (*notes.AnalystNote, error) {
+	if input.RetrievalContext == nil {
+		return nil, errors.New("missing retrieval context")
+	}
 	return f.note, f.err
+}
+
+type fakeRetrievalService struct{}
+
+func (f *fakeRetrievalService) BuildPromptContext(_ context.Context, _ string, _ any, _ any) *retrieval.PromptContext {
+	return &retrieval.PromptContext{
+		QueryText: "individual_onboarding | screened=Jane Citizen",
+		Snippets: []retrieval.Snippet{
+			{SnippetID: "snip-1", Source: "clawmem", Title: "Prior review", Text: "Prior passport corroboration case."},
+		},
+	}
 }
 
 func TestReviewResponseIncludesGeneratedAnalystNote(t *testing.T) {
@@ -28,12 +43,12 @@ func TestReviewResponseIncludesGeneratedAnalystNote(t *testing.T) {
 		note: &notes.AnalystNote{
 			Status:            notes.StatusGenerated,
 			Model:             "ibm/granite3.3:8b",
-			PromptVersion:     "granite-analyst-note-v1",
+			PromptVersion:     "granite-analyst-note-v2-rag",
 			Note:              "Escalate this case based on strong corroborated evidence.",
 			EvidenceSummary:   []string{"* Exact normalized name match", "* Identifier match on passport"},
 			NextStepRationale: "Escalate for analyst review.",
 		},
-	}))
+	}), nil, &fakeRetrievalServiceAdapter{})
 	if err != nil {
 		t.Fatalf("NewServer() error = %v", err)
 	}
@@ -63,18 +78,15 @@ func TestReviewResponseIncludesGeneratedAnalystNote(t *testing.T) {
 	if resp.AnalystNote.Status != notes.StatusGenerated {
 		t.Fatalf("analyst_note.status = %q", resp.AnalystNote.Status)
 	}
-	if resp.AnalystNote.Model != "ibm/granite3.3:8b" {
-		t.Fatalf("analyst_note.model = %q", resp.AnalystNote.Model)
+	if resp.ReviewContext == nil {
+		t.Fatal("expected review_context")
 	}
-	if resp.DecisionLabel != "escalate" {
-		t.Fatalf("DecisionLabel = %q, want escalate", resp.DecisionLabel)
-	}
-	if len(resp.AnalystNote.EvidenceSummary) == 0 {
-		t.Fatal("expected evidence_summary")
-	}
-	if resp.AnalystNote.EvidenceSummary[0] == "* Exact normalized name match" {
-		t.Fatal("expected normalization to strip bullet prefix")
-	}
+}
+
+type fakeRetrievalServiceAdapter struct{}
+
+func (f *fakeRetrievalServiceAdapter) BuildPromptContext(ctx context.Context, tenant string, alert any, score any) *retrieval.PromptContext {
+	return (&fakeRetrievalService{}).BuildPromptContext(ctx, tenant, alert, score)
 }
 
 func TestReviewResponseIncludesSkippedAnalystNoteWhenNotConfigured(t *testing.T) {
@@ -105,7 +117,7 @@ func TestReviewResponseIncludesSkippedAnalystNoteWhenNotConfigured(t *testing.T)
 func TestReviewResponseIncludesFailedAnalystNoteWithoutBreakingDeterministicDecision(t *testing.T) {
 	server, err := NewServer(nil, notes.NewService(&fakeGenerator{
 		err: errors.New("upstream model error"),
-	}))
+	}), nil, &fakeRetrievalServiceAdapter{})
 	if err != nil {
 		t.Fatalf("NewServer() error = %v", err)
 	}

@@ -6,6 +6,7 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/alerts"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/features"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/scoring"
 )
 
@@ -28,6 +29,7 @@ func (s *Service) Generate(
 	score *scoring.Result,
 	compare *identity.CompareResponse,
 	screening *identity.ScreenOFACResponse,
+	retrievalContext *retrieval.PromptContext,
 ) *AnalystNote {
 	if s == nil || s.generator == nil {
 		return &AnalystNote{
@@ -37,11 +39,12 @@ func (s *Service) Generate(
 	}
 
 	note, err := s.generator.Generate(ctx, PromptInput{
-		Alert:     alert,
-		Features:  fx,
-		Score:     score,
-		Compare:   compare,
-		Screening: screening,
+		Alert:            alert,
+		Features:         fx,
+		Score:            score,
+		Compare:          compare,
+		Screening:        screening,
+		RetrievalContext: retrievalContext,
 	})
 	if err != nil {
 		return &AnalystNote{

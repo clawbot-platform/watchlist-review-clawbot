@@ -12,6 +12,7 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/parsers"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/parsers/screeningjson"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/runtime"
 )
 
@@ -30,18 +31,21 @@ func NewServer(identityClient *identity.Client, extras ...any) (*Server, error) 
 
 	var noteService *notes.Service
 	var artifactService *artifacts.Service
+	var retrievalService *retrieval.Service
 	for _, extra := range extras {
 		switch value := extra.(type) {
 		case *notes.Service:
 			noteService = value
 		case *artifacts.Service:
 			artifactService = value
+		case *retrieval.Service:
+			retrievalService = value
 		}
 	}
 
 	return &Server{
 		registry: registry,
-		flow:     runtime.NewFlow(identityClient, noteService, artifactService),
+		flow:     runtime.NewFlow(identityClient, noteService, artifactService, retrievalService),
 	}, nil
 }
 
