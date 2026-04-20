@@ -33,7 +33,7 @@ func main() {
 		os.Getenv("WATCHLIST_REVIEW_DEFAULT_TENANT"),
 	)
 
-	flow := runtime.NewFlow(identityClient)
+	flow := runtime.NewFlow(identityClient, nil, nil)
 	result, err := flow.BuildReviewContext(context.Background(), runtime.ReviewInput{
 		TenantID:      os.Getenv("WATCHLIST_REVIEW_DEFAULT_TENANT"),
 		CaseID:        alert.Metadata.CaseID,

@@ -7,6 +7,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/artifacts"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/parsers"
@@ -19,20 +20,28 @@ type Server struct {
 	flow     *runtime.Flow
 }
 
-func NewServer(identityClient *identity.Client, noteService ...*notes.Service) (*Server, error) {
+func NewServer(identityClient *identity.Client, extras ...any) (*Server, error) {
 	registry, err := parsers.NewRegistry(
 		screeningjson.New(),
 	)
 	if err != nil {
 		return nil, err
 	}
-	var ns *notes.Service
-	if len(noteService) > 0 {
-		ns = noteService[0]
+
+	var noteService *notes.Service
+	var artifactService *artifacts.Service
+	for _, extra := range extras {
+		switch value := extra.(type) {
+		case *notes.Service:
+			noteService = value
+		case *artifacts.Service:
+			artifactService = value
+		}
 	}
+
 	return &Server{
 		registry: registry,
-		flow:     runtime.NewFlow(identityClient, ns),
+		flow:     runtime.NewFlow(identityClient, noteService, artifactService),
 	}, nil
 }
 
@@ -84,12 +93,14 @@ func (s *Server) review(w http.ResponseWriter, r *http.Request) {
 	}
 
 	resp := ReviewResponse{
-		Status:        "review_context_built",
-		CaseID:        chooseCaseID(req.CaseID, alert.Metadata.CaseID),
-		AlertID:       alert.Metadata.AlertID,
-		Warnings:      append([]string(nil), ctx.IdentityEvidence.Warnings...),
-		ReviewContext: ctx,
-		AnalystNote:   ctx.AnalystNote,
+		Status:           "review_context_built",
+		CaseID:           chooseCaseID(req.CaseID, alert.Metadata.CaseID),
+		AlertID:          alert.Metadata.AlertID,
+		Warnings:         append([]string(nil), ctx.IdentityEvidence.Warnings...),
+		ReviewContext:    ctx,
+		AnalystNote:      ctx.AnalystNote,
+		ArtifactRefs:     append([]artifacts.ArtifactRef(nil), ctx.ArtifactRefs...),
+		ArtifactWarnings: append([]string(nil), ctx.ArtifactWarnings...),
 	}
 	if ctx.IdentityEvidence.Compare != nil {
 		resp.IdentityTraceRefs.DecisionTraceID = ctx.IdentityEvidence.Compare.DecisionTraceID

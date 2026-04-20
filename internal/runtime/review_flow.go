@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/alerts"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/artifacts"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/features"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
@@ -31,19 +32,22 @@ type ReviewContext struct {
 	IdentityEvidence   IdentityEvidence            `json:"identity_evidence"`
 	DeterministicScore *scoring.Result             `json:"deterministic_score,omitempty"`
 	AnalystNote        *notes.AnalystNote          `json:"analyst_note,omitempty"`
+	ArtifactRefs       []artifacts.ArtifactRef     `json:"artifact_refs,omitempty"`
+	ArtifactWarnings   []string                    `json:"artifact_warnings,omitempty"`
 }
 
 type Flow struct {
-	Identity *identity.Client
-	Notes    *notes.Service
+	Identity  *identity.Client
+	Notes     *notes.Service
+	Artifacts *artifacts.Service
 }
 
-func NewFlow(identityClient *identity.Client, noteService ...*notes.Service) *Flow {
-	var ns *notes.Service
-	if len(noteService) > 0 {
-		ns = noteService[0]
+func NewFlow(identityClient *identity.Client, noteService *notes.Service, artifactService *artifacts.Service) *Flow {
+	return &Flow{
+		Identity:  identityClient,
+		Notes:     noteService,
+		Artifacts: artifactService,
 	}
-	return &Flow{Identity: identityClient, Notes: ns}
 }
 
 func (f *Flow) BuildReviewContext(ctx context.Context, input ReviewInput) (*ReviewContext, error) {
@@ -67,13 +71,16 @@ func (f *Flow) BuildReviewContext(ctx context.Context, input ReviewInput) (*Revi
 	deterministic := scoring.Evaluate(input.Alert, extracted)
 	analystNote := f.generateAnalystNote(ctx, input.Alert, extracted, deterministic, evidence)
 
-	return &ReviewContext{
+	reviewContext := &ReviewContext{
 		Alert:              input.Alert,
 		Features:           extracted,
 		IdentityEvidence:   evidence,
 		DeterministicScore: deterministic,
 		AnalystNote:        analystNote,
-	}, nil
+	}
+	reviewContext.ArtifactRefs, reviewContext.ArtifactWarnings = f.persistArtifacts(ctx, input, reviewContext)
+
+	return reviewContext, nil
 }
 
 func (f *Flow) generateAnalystNote(
@@ -90,6 +97,21 @@ func (f *Flow) generateAnalystNote(
 		}
 	}
 	return f.Notes.Generate(ctx, alert, fx, score, evidence.Compare, evidence.Screening)
+}
+
+func (f *Flow) persistArtifacts(ctx context.Context, input ReviewInput, reviewContext *ReviewContext) ([]artifacts.ArtifactRef, []string) {
+	if f == nil || f.Artifacts == nil || input.Alert == nil || reviewContext == nil {
+		return nil, nil
+	}
+	return f.Artifacts.Persist(ctx, artifacts.PersistInput{
+		TenantID:      input.TenantID,
+		CaseID:        firstNonEmpty(input.CaseID, input.Alert.Metadata.CaseID),
+		AlertID:       input.Alert.Metadata.AlertID,
+		CorrelationID: input.CorrelationID,
+		DecisionLabel: reviewContext.DeterministicScore.DecisionLabel,
+		ReviewContext: reviewContext,
+		AnalystNote:   artifacts.PersistableNote(reviewContext.AnalystNote),
+	})
 }
 
 func (f *Flow) EnrichWithIdentity(ctx context.Context, input ReviewInput) (IdentityEvidence, error) {
@@ -129,4 +151,13 @@ func (f *Flow) EnrichWithIdentity(ctx context.Context, input ReviewInput) (Ident
 
 	evidence.Compare = &compareResp
 	return evidence, nil
+}
+
+func firstNonEmpty(values ...string) string {
+	for _, value := range values {
+		if strings.TrimSpace(value) != "" {
+			return strings.TrimSpace(value)
+		}
+	}
+	return ""
 }
