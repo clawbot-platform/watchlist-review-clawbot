@@ -1,0 +1,35 @@
+{
+  "alert_id": "screening-json-ach-fp-sparse-001",
+  "source_system": "screening_json",
+  "created_at": "2026-04-14T12:00:00Z",
+  "case_id": "case-ach-fp-sparse-001",
+  "alert_type": "ach_payment_screening",
+  "jurisdiction": "US",
+  "priority": "medium",
+  "screened_party": {
+    "entity_type": "individual",
+    "full_name": "Ahmed Hassan",
+    "countries": ["US"],
+    "source_system": "payments",
+    "source_record_id": "ach-fp-left-record"
+  },
+  "matched_party": {
+    "list_source": "watchlist_candidates",
+    "program": "SDN",
+    "list_uid": "ach-fp-right-record",
+    "entity_type": "individual",
+    "full_name": "Ahmed Hassan"
+  },
+  "transaction": {
+    "transaction_id": "txn-ach-fp-001",
+    "rail_type": "ach",
+    "currency": "USD",
+    "originator_role": "originator",
+    "country_corridor": "US-US"
+  },
+  "screening_features": {
+    "vendor_score": 72,
+    "name_score": 96,
+    "match_flags": ["name"]
+  }
+}

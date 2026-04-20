@@ -1,0 +1,36 @@
+{
+  "alert_id": "screening-json-wrong-context-001",
+  "source_system": "screening_json",
+  "created_at": "2026-04-14T12:00:00Z",
+  "case_id": "case-wrong-context-001",
+  "alert_type": "ach_payment_screening",
+  "jurisdiction": "US",
+  "priority": "high",
+  "screened_party": {
+    "entity_type": "individual",
+    "full_name": "Mercury",
+    "countries": ["US"],
+    "source_system": "payments",
+    "source_record_id": "wrong-context-left-record"
+  },
+  "matched_party": {
+    "list_source": "watchlist_candidates",
+    "program": "SDN",
+    "list_uid": "wrong-context-right-record",
+    "entity_type": "vessel",
+    "full_name": "Mercury",
+    "countries": ["RU"]
+  },
+  "transaction": {
+    "transaction_id": "txn-wrong-context-001",
+    "rail_type": "ach",
+    "currency": "USD",
+    "originator_role": "originator",
+    "country_corridor": "US-RU"
+  },
+  "screening_features": {
+    "vendor_score": 77,
+    "name_score": 91,
+    "match_flags": ["name"]
+  }
+}

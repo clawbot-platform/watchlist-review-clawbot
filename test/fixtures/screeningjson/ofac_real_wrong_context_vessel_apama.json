@@ -1,0 +1,44 @@
+{
+  "alert_id": "ofac-real-wrong-context-vessel-001",
+  "source_system": "screening_json",
+  "created_at": "2026-04-20T12:00:00Z",
+  "case_id": "case-ofac-real-wrong-context-001",
+  "alert_type": "ach_payment_screening",
+  "jurisdiction": "US",
+  "priority": "high",
+  "screened_party": {
+  "entity_type": "organization",
+  "full_name": "APAMA",
+  "countries": ["US"],
+  "source_system": "payments",
+  "source_record_id": "ofac-real-vessel-left"
+},
+  "matched_party": {
+    "list_source": "watchlist_candidates",
+    "program": "IRAN",
+    "list_uid": "ofac-real-vessel-right",
+    "entity_type": "vessel",
+    "full_name": "APAMA",
+    "aliases": ["ASTARA", "JUPITER", "ABELIA"],
+    "identifiers": [
+      {
+        "type": "imo",
+        "value": "9187631"
+      }
+    ],
+    "countries": ["IR"]
+  },
+  "transaction": {
+    "transaction_id": "txn-ofac-real-vessel-001",
+    "rail_type": "ach",
+    "currency": "USD",
+    "originator_role": "originator",
+    "country_corridor": "US-US",
+    "payment_reference": "Apama logistics payment"
+  },
+  "screening_features": {
+    "vendor_score": 74,
+    "name_score": 90,
+    "match_flags": ["name"]
+  }
+}

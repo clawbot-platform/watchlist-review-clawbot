@@ -1,0 +1,4 @@
+id: granite-guardian-3.3-8b
+role: guardrail
+temperature: 0.0
+max_tokens: 512

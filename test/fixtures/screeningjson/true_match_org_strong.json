@@ -1,0 +1,63 @@
+{
+  "alert_id": "screening-json-org-true-match-001",
+  "source_system": "screening_json",
+  "created_at": "2026-04-14T12:00:00Z",
+  "case_id": "case-org-true-match-001",
+  "alert_type": "organization_onboarding",
+  "jurisdiction": "US",
+  "priority": "high",
+  "screened_party": {
+    "entity_type": "organization",
+    "full_name": "Caspian Marine Trading LLC",
+    "aliases": ["Caspian Marine Trading"],
+    "incorporation_date": "2016-05-10",
+    "countries": ["AE"],
+    "addresses": [
+      {
+        "address_text": "Suite 500, Marina Plaza",
+        "city": "Dubai",
+        "country": "AE"
+      }
+    ],
+    "identifiers": [
+      {
+        "type": "registration_id",
+        "value": "REG-AE-445566"
+      },
+      {
+        "type": "tax_id",
+        "value": "TAX-AE-990011"
+      }
+    ],
+    "source_system": "vendor_onboarding",
+    "source_record_id": "org-true-left-record"
+  },
+  "matched_party": {
+    "list_source": "watchlist_candidates",
+    "program": "SDN",
+    "list_uid": "org-true-right-record",
+    "entity_type": "organization",
+    "full_name": "Caspian Marine Trading LLC",
+    "aliases": ["Caspian Marine Trading"],
+    "incorporation_date": "2016-05-10",
+    "countries": ["AE"],
+    "addresses": [
+      {
+        "address_text": "Marina Plaza",
+        "city": "Dubai",
+        "country": "AE"
+      }
+    ],
+    "identifiers": [
+      {
+        "type": "registration_id",
+        "value": "REG-AE-445566"
+      }
+    ]
+  },
+  "screening_features": {
+    "vendor_score": 92,
+    "name_score": 98,
+    "match_flags": ["name", "registration_id", "country", "incorporation_date"]
+  }
+}

@@ -1,0 +1,4 @@
+id: granite-4-3b
+role: helper
+temperature: 0.1
+max_tokens: 512

@@ -1,0 +1,4 @@
+id: granite-3.3-8b
+role: primary_reasoning
+temperature: 0.1
+max_tokens: 1200

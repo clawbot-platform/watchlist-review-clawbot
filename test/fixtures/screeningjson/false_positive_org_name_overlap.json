@@ -1,0 +1,36 @@
+{
+  "alert_id": "screening-json-fp-org-overlap-001",
+  "source_system": "screening_json",
+  "created_at": "2026-04-14T12:00:00Z",
+  "case_id": "case-fp-org-overlap-001",
+  "alert_type": "organization_onboarding",
+  "jurisdiction": "US",
+  "priority": "medium",
+  "screened_party": {
+    "entity_type": "organization",
+    "full_name": "Global Marine Services LLC",
+    "countries": ["US"],
+    "addresses": [
+      {
+        "address_text": "55 Harbor Blvd",
+        "city": "Miami",
+        "country": "US"
+      }
+    ],
+    "source_system": "vendor_onboarding",
+    "source_record_id": "fp-org-left-record"
+  },
+  "matched_party": {
+    "list_source": "watchlist_candidates",
+    "program": "SDN",
+    "list_uid": "fp-org-right-record",
+    "entity_type": "organization",
+    "full_name": "Global Marine Shipping Co",
+    "countries": ["SY"]
+  },
+  "screening_features": {
+    "vendor_score": 64,
+    "name_score": 82,
+    "match_flags": ["name"]
+  }
+}
