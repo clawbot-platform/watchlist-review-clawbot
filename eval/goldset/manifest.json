@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "name": "individual_onboarding_generated_note",
+      "request_path": "eval/requests/individual_onboarding.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false
+    },
+    {
+      "name": "individual_onboarding_requires_retrieval",
+      "request_path": "eval/requests/individual_onboarding_with_retrieval.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true
+    }
+  ]
+}

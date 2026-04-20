@@ -1,0 +1,24 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776719517088316000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420211138.252212000",
+  "created_at": "2026-04-20T21:11:57.088316Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Jane Citizen's onboarding screening resulted in an 'escalate' decision due to strong supporting evidence including exact normalized name match, date of birth match, passport identifier match, country (US), and entity type (individual). The data sufficiency score is high at 92, with a match strength score of 93 and no contradictions reported.",
+    "evidence_summary": [
+      "exact normalized name match",
+      "exact date match",
+      "exact identifier match on passport",
+      "country support (US)",
+      "entity type support (individual)"
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review due to a strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

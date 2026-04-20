@@ -1,0 +1,312 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776719013543110000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420210256.730446000",
+  "created_at": "2026-04-20T21:03:33.54311Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "escalate",
+    "review_context": {
+      "alert": {
+        "kind": "individual_onboarding",
+        "metadata": {
+          "alert_id": "screening-json-source-refs-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "individual_onboarding",
+          "jurisdiction": "US",
+          "case_id": "case-screening-001",
+          "priority": "high"
+        },
+        "screened_party": {
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Jane Citizen",
+            "aliases": [
+              "J Citizen"
+            ]
+          },
+          "date_of_birth": "1988-07-14",
+          "countries": [
+            "US"
+          ],
+          "addresses": [
+            {
+              "address_text": "1 Main St",
+              "city": "Jersey City",
+              "country": "US"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "P1234567",
+              "issuing_country": "US"
+            }
+          ],
+          "source_record_id": "left-record",
+          "source_system": "kyc_applications"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "right-record",
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Jane Citizen",
+            "aliases": [
+              "Jane Q Citizen"
+            ]
+          },
+          "date_of_birth": "1988-07-14",
+          "countries": [
+            "US"
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "P1234567",
+              "issuing_country": "US"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 88,
+          "name_score": 95,
+          "match_flags": [
+            "name",
+            "dob",
+            "identifier"
+          ]
+        }
+      },
+      "features": {
+        "alert_id": "screening-json-source-refs-001",
+        "kind": "individual_onboarding",
+        "screened_name": {
+          "original": "Jane Citizen",
+          "canonical": "JANE CITIZEN",
+          "canonical_aliases": [
+            "J CITIZEN"
+          ],
+          "tokens": [
+            "JANE",
+            "CITIZEN"
+          ],
+          "token_sorted": "CITIZEN JANE",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Jane Citizen",
+          "canonical": "JANE CITIZEN",
+          "canonical_aliases": [
+            "JANE Q CITIZEN"
+          ],
+          "tokens": [
+            "JANE",
+            "CITIZEN"
+          ],
+          "token_sorted": "CITIZEN JANE",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "screened_exact": "1988-07-14",
+          "screened_year": "1988",
+          "matched_exact": "1988-07-14",
+          "matched_year": "1988",
+          "exact_match": true,
+          "year_match": true,
+          "has_conflict": false
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "passport": [
+              "P1234567"
+            ]
+          },
+          "matched_by_type": {
+            "passport": [
+              "P1234567"
+            ]
+          },
+          "exact_matches": [
+            {
+              "type": "passport",
+              "value": "P1234567"
+            }
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "US"
+          ],
+          "matched_countries": [
+            "US"
+          ],
+          "country_overlap": [
+            "US"
+          ],
+          "address_countries": [
+            "US"
+          ],
+          "has_country_support": true
+        },
+        "context": {
+          "screened_entity_type": "individual",
+          "matched_entity_type": "individual",
+          "kind": "individual_onboarding",
+          "is_ach": false,
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "vendor_score": 88,
+        "name_score": 95,
+        "match_flags": [
+          "name",
+          "dob",
+          "identifier"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "individual_onboarding | screened=Jane Citizen | matched=Jane Citizen | program=SDN | decision=escalate | address support | country support | entity type support | exact date match | exact identifier match on passport | exact normalized name match",
+        "snippets": [
+          {
+            "snippet_id": "snip-passport-1",
+            "source": "clawmem",
+            "title": "Prior passport corroboration review",
+            "text": "Prior SDN review on Jane Citizen highlighted passport corroboration and exact normalized name match as key escalation evidence.",
+            "score": 12,
+            "tags": [
+              "individual_onboarding",
+              "sdn",
+              "passport",
+              "name_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-policy-1",
+            "source": "policy",
+            "title": "Escalation guidance for strong corroborated matches",
+            "text": "Escalate when exact identifier and date-of-birth corroboration support a strong onboarding watchlist match.",
+            "score": 8.5,
+            "tags": [
+              "individual_onboarding",
+              "escalate",
+              "passport",
+              "dob"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "compare": {
+          "disposition": "resolved",
+          "confidence_band": "high",
+          "explanation": {
+            "explanation_id": "exp_b503d58c83e5b4df",
+            "summary": "Records are likely the same entity based on: normalized name exact match; date of birth exact match; country match; identifier match on passport.",
+            "why": [
+              "normalized name exact match",
+              "date of birth exact match",
+              "country match",
+              "identifier match on passport"
+            ],
+            "how": [
+              "Compared normalized name, aliases, identifiers, date of birth, and country attributes from stored source records."
+            ],
+            "source_refs": [
+              {
+                "source_system": "kyc_applications",
+                "source_record_id": "left-record"
+              },
+              {
+                "source_system": "watchlist_candidates",
+                "source_record_id": "right-record"
+              }
+            ]
+          },
+          "decision_trace_id": "dt_cd3296b3b709ed8f"
+        },
+        "screening": {
+          "screening_id": "scr_0cbf4fe924f70e71",
+          "decision": "manual_review",
+          "decision_trace_id": "dt_19c8df5ad98af07d",
+          "candidates": [
+            {
+              "dataset_run_id": "ofac-seed-run-001",
+              "list_kind": "sdn",
+              "list_uid": "uid-seed-001",
+              "name": "Jane Citizen",
+              "matched_on": "name+country+identifier",
+              "score": 95,
+              "needs_review": true
+            }
+          ]
+        }
+      },
+      "deterministic_score": {
+        "match_strength_score": 93,
+        "data_sufficiency_score": 92,
+        "name_match_score": 35,
+        "date_match_score": 20,
+        "identifier_match_score": 20,
+        "geography_match_score": 8,
+        "address_match_score": 5,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 20,
+        "geography_quality_score": 10,
+        "supporting_context_score": 7,
+        "decision_label": "escalate",
+        "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+        "evidence_for": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact date match",
+          "exact identifier match on passport",
+          "exact normalized name match"
+        ],
+        "next_step": "Escalate for analyst review."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v3-rag-quality",
+        "note": "Given the high data sufficiency score of 92 and match strength score of 93, alongside strong corroborating evidence such as an exact normalized name match, date match, country support, and exact identifier match on passport, this case should be escalated for further manual review.",
+        "evidence_summary": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact date match",
+          "exact identifier match on passport",
+          "exact normalized name match"
+        ],
+        "next_step_rationale": "The deterministic decision to escalate for analyst review is based on strong corroborated matches with sufficient data, including exact identifier and date-of-birth corroboration supporting a watchlist match."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}
