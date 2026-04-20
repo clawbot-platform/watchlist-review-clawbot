@@ -1,0 +1,24 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776715756365917000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420200856.336897000",
+  "created_at": "2026-04-20T20:09:16.365917Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v2-rag",
+    "note": "This individual onboarding alert has been determined to require escalation due to a strong corroborated match evidenced by multiple factors including address, country, entity type alignment, exact date and identifier matches on passport, as well as normalized name exactness. The retrieval context further supports this determination with snippets highlighting the importance of such evidence for escalation.",
+    "evidence_summary": [
+      "Strong corroborated match confirmed with sufficient data and no contradictions.",
+      "Key evidence includes address, country, entity type support, exact date match, exact identifier match on passport, and exact normalized name match."
+    ],
+    "missing_information_summary": [
+      "No missing information noted as all required fields for a comprehensive analysis are present and fully supported."
+    ],
+    "next_step_rationale": "Proceed with escalating the case for manual analyst review due to the high confidence in identity match."
+  },
+  "tenant_id": "test-tenant"
+}

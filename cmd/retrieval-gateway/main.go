@@ -34,8 +34,10 @@ func main() {
 }
 
 func buildSearcher() (retrievalgateway.Searcher, error) {
-	backend := strings.TrimSpace(strings.ToLower(envOr("RETRIEVAL_GATEWAY_BACKEND", "clawmem_http")))
+	backend := strings.TrimSpace(strings.ToLower(envOr("RETRIEVAL_GATEWAY_BACKEND", "local_json")))
 	switch backend {
+	case "local_json":
+		return retrievalgateway.NewLocalJSONSearcher(envOr("RETRIEVAL_LOCAL_JSON_PATH", "eval/retrieval/snippets.json"))
 	case "clawmem_http":
 		return retrievalgateway.NewClawmemHTTPSearcher(envOr("CLAWMEM_BASE_URL", "")), nil
 	case "pgvector":

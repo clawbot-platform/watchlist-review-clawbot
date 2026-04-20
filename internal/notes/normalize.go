@@ -80,8 +80,10 @@ func normalizeItems(in []string, limit int) []string {
 }
 
 func cleanBullet(s string) string {
-	s = strings.TrimSpace(s)
+	s = cleanSentence(s)
+
 	for {
+		s = strings.TrimSpace(s)
 		switch {
 		case strings.HasPrefix(s, "* "):
 			s = strings.TrimSpace(strings.TrimPrefix(s, "* "))
@@ -89,8 +91,34 @@ func cleanBullet(s string) string {
 			s = strings.TrimSpace(strings.TrimPrefix(s, "- "))
 		case strings.HasPrefix(s, "• "):
 			s = strings.TrimSpace(strings.TrimPrefix(s, "• "))
+		case strings.HasPrefix(s, "*"):
+			s = strings.TrimSpace(strings.TrimPrefix(s, "*"))
+		case strings.HasPrefix(s, "-"):
+			s = strings.TrimSpace(strings.TrimPrefix(s, "-"))
+		case strings.HasPrefix(s, "•"):
+			s = strings.TrimSpace(strings.TrimPrefix(s, "•"))
 		default:
+			s = trimMarkdownWrap(s)
+			s = strings.Trim(s, " *_•-")
 			return cleanSentence(s)
+		}
+	}
+}
+
+func trimMarkdownWrap(s string) string {
+	for {
+		s = strings.TrimSpace(s)
+		switch {
+		case len(s) >= 4 && strings.HasPrefix(s, "**") && strings.HasSuffix(s, "**"):
+			s = strings.TrimSpace(s[2 : len(s)-2])
+		case len(s) >= 4 && strings.HasPrefix(s, "__") && strings.HasSuffix(s, "__"):
+			s = strings.TrimSpace(s[2 : len(s)-2])
+		case len(s) >= 2 && strings.HasPrefix(s, "*") && strings.HasSuffix(s, "*"):
+			s = strings.TrimSpace(s[1 : len(s)-1])
+		case len(s) >= 2 && strings.HasPrefix(s, "_") && strings.HasSuffix(s, "_"):
+			s = strings.TrimSpace(s[1 : len(s)-1])
+		default:
+			return s
 		}
 	}
 }

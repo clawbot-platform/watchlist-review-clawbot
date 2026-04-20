@@ -1,0 +1,26 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776715900897143000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420201119.495631000",
+  "created_at": "2026-04-20T20:11:40.897143Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v2-rag",
+    "note": "This individual, Jane Citizen, exhibits a strong match with a U.S. Sanctions list (SDN) due to exact matches in name, date of birth, country, and passport identifier. The deterministic decision is to escalate the case for manual review.",
+    "evidence_summary": [
+      "Strong corroboration with exact identifier match on passport.",
+      "Exact normalized name, date of birth, and country match.",
+      "Decision label is 'escalate' due to high data sufficiency (92) and match strength score (93).",
+      "Top candidate from SDN list has a high score (95) needing manual review."
+    ],
+    "missing_information_summary": [
+      "No missing or weak information noted in the deterministic decision."
+    ],
+    "next_step_rationale": "The case must be escalated for analyst review based on the high confidence level and the need to confirm SDN list entry."
+  },
+  "tenant_id": "test-tenant"
+}

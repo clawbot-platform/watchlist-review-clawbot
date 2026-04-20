@@ -1,0 +1,25 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776716761025157000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420202536.870929000",
+  "created_at": "2026-04-20T20:26:01.025157Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Based on the provided payload, Jane Citizen has been identified as matching an SDN list entity with high confidence through multiple data points: exact normalized name match, date of birth match, country match, identifier match on passport, and exact date match. The deterministic decision aligns with escalation criteria due to strong corroborated evidence without contradictions.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review due to a strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

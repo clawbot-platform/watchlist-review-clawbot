@@ -69,3 +69,25 @@ func TestNormalizeAndValidate_WarnsOnPotentialInconsistency(t *testing.T) {
 		t.Fatalf("expected inconsistency warning, got %+v", note.Warnings)
 	}
 }
+func TestNormalizeAndValidate_StripsMarkdownWrappedBullets(t *testing.T) {
+	score := &scoring.Result{DecisionLabel: scoring.DecisionEscalate}
+	note := NormalizeAndValidate(&AnalystNote{
+		Status: StatusGenerated,
+		Note:   "Escalate this case.",
+		EvidenceSummary: []string{
+			"*Strong corroborated match with sufficient data and no contradictions.*",
+			"*Exact identifier match on passport.*",
+		},
+		MissingInformationSummary: []string{
+			"*No explicit missing information noted in payload.*",
+		},
+		NextStepRationale: "Escalate for analyst review.",
+	}, score)
+
+	if got := note.EvidenceSummary[0]; got != "Strong corroborated match with sufficient data and no contradictions." {
+		t.Fatalf("unexpected evidence summary: %q", got)
+	}
+	if got := note.EvidenceSummary[1]; got != "Exact identifier match on passport." {
+		t.Fatalf("unexpected evidence summary: %q", got)
+	}
+}

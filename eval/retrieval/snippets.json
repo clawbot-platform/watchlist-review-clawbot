@@ -1,0 +1,26 @@
+[
+  {
+    "snippet_id": "snip-passport-1",
+    "source": "clawmem",
+    "title": "Prior passport corroboration review",
+    "text": "Prior SDN review on Jane Citizen highlighted passport corroboration and exact normalized name match as key escalation evidence.",
+    "tags": [
+      "individual_onboarding",
+      "sdn",
+      "passport",
+      "name_match"
+    ]
+  },
+  {
+    "snippet_id": "snip-policy-1",
+    "source": "policy",
+    "title": "Escalation guidance for strong corroborated matches",
+    "text": "Escalate when exact identifier and date-of-birth corroboration support a strong onboarding watchlist match.",
+    "tags": [
+      "individual_onboarding",
+      "escalate",
+      "passport",
+      "dob"
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776716777472944000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420202601.029367000",
+  "created_at": "2026-04-20T20:26:17.472944Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual, Jane Citizen, has been identified as matching an SDN list entry based on exact normalized name, date of birth, country, and passport identifier matches. The evidence supports a high confidence in the identity match, leading to an escalation for further analyst review.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

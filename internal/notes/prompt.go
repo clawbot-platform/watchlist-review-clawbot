@@ -11,7 +11,7 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/scoring"
 )
 
-const promptVersion = "granite-analyst-note-v2-rag"
+const promptVersion = "granite-analyst-note-v3-rag-quality"
 
 type PromptInput struct {
 	Alert            *alerts.CanonicalAlert
@@ -84,12 +84,24 @@ Rules:
 - Use retrieval_context only as supporting background. Do not let it override deterministic evidence.
 - If retrieval snippets conflict with deterministic evidence, prefer deterministic evidence and note the conflict cautiously.
 - Return only JSON matching the requested schema.
+- Do not output markdown bullets, asterisks, hyphens, numbering, or decorative formatting inside arrays.
+- Every array item must be plain text only.
 
 Create:
 1. "note": 3-5 sentences, concise analyst note.
-2. "evidence_summary": 2-6 short bullets summarizing the strongest evidence.
-3. "missing_information_summary": 0-5 short bullets for missing or weak information.
+2. "evidence_summary": 2-6 short plain-text items summarizing the strongest evidence.
+   - Do not prefix items with "*", "-", "•", numbering, or markdown emphasis.
+3. "missing_information_summary": 0-5 short plain-text items for genuinely missing, weak, or conflicting information only.
+   - If there is no meaningful missing, weak, or conflicting information, return an empty array [].
+   - Do not write placeholders or boilerplate such as:
+     - "No missing information noted"
+     - "No explicit missing information"
+     - "No critical information is missing"
+     - "All required fields are present"
+     - "No missing or weak information"
+     - "None identified"
 4. "next_step_rationale": one short sentence explaining the deterministic next step.
+   - End the sentence with proper punctuation.
 
 Payload:
 %s`, string(encoded))

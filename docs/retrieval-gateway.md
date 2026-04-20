@@ -1,27 +1,40 @@
 # Retrieval Gateway
 
-This gateway exposes `POST /v1/search` so the worker can use a real retrieval backend without changing the worker-facing retrieval contract.
+This update fixes the local developer path so `/v1/search` returns snippets instead of 404 by adding a `local_json` backend for the gateway.
 
 Supported backends:
+- `local_json`
 - `clawmem_http`
 - `pgvector`
 - `qdrant`
 
-## Common env
+## Fast local path
 
 ```bash
 export RETRIEVAL_GATEWAY_ADDR=':8088'
-export RETRIEVAL_GATEWAY_BACKEND='clawmem_http'
+export RETRIEVAL_GATEWAY_BACKEND='local_json'
+export RETRIEVAL_LOCAL_JSON_PATH='eval/retrieval/snippets.json'
+go run ./cmd/retrieval-gateway
 ```
 
-## Clawmem HTTP backend
+Then point the worker at the gateway:
+
+```bash
+export ENABLE_REVIEW_RETRIEVAL='true'
+export REVIEW_RETRIEVAL_BASE_URL='http://127.0.0.1:8088'
+export REVIEW_RETRIEVAL_TIMEOUT='5s'
+```
+
+## Real backend paths
+
+### Clawmem HTTP
 
 ```bash
 export RETRIEVAL_GATEWAY_BACKEND='clawmem_http'
 export CLAWMEM_BASE_URL='http://thinkpad-p50:8087'
 ```
 
-## pgvector backend
+### pgvector
 
 ```bash
 export RETRIEVAL_GATEWAY_BACKEND='pgvector'
@@ -31,21 +44,7 @@ export RETRIEVAL_EMBED_BASE_URL='http://ai-precision:11434'
 export RETRIEVAL_EMBED_MODEL='embeddinggemma'
 ```
 
-Expected table contract:
-
-```sql
-CREATE TABLE rag_documents (
-  id text PRIMARY KEY,
-  tenant_id text NOT NULL,
-  source text,
-  title text,
-  body text NOT NULL,
-  tags jsonb NOT NULL DEFAULT '[]'::jsonb,
-  embedding vector(768) NOT NULL
-);
-```
-
-## Qdrant backend
+### Qdrant
 
 ```bash
 export RETRIEVAL_GATEWAY_BACKEND='qdrant'
