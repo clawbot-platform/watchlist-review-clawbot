@@ -10,9 +10,10 @@ import (
 type Kind string
 
 const (
-	KindReviewOutput Kind = "review_output"
-	KindAnalystNote  Kind = "analyst_note"
-	KindCaseManifest Kind = "case_manifest"
+	KindReviewOutput   Kind = "review_output"
+	KindAnalystNote    Kind = "analyst_note"
+	KindAnalystFeedback Kind = "analyst_feedback"
+	KindCaseManifest   Kind = "case_manifest"
 )
 
 type ArtifactRef struct {
@@ -78,13 +79,13 @@ type ManifestItem struct {
 }
 
 type ArtifactCreatedEvent struct {
-	EventID       string      `json:"event_id"`
-	EventType     string      `json:"event_type"`
-	OccurredAt    time.Time   `json:"occurred_at"`
-	TenantID      string      `json:"tenant_id"`
-	CaseID        string      `json:"case_id"`
-	AlertID       string      `json:"alert_id,omitempty"`
-	CorrelationID string      `json:"correlation_id,omitempty"`
-	DecisionLabel string      `json:"decision_label,omitempty"`
-	Artifact      ArtifactRef `json:"artifact"`
+	EventID        string      `json:"event_id"`
+	EventType      string      `json:"event_type"`
+	OccurredAt     time.Time   `json:"occurred_at"`
+	TenantID       string      `json:"tenant_id"`
+	CaseID         string      `json:"case_id"`
+	AlertID        string      `json:"alert_id,omitempty"`
+	CorrelationID  string      `json:"correlation_id,omitempty"`
+	DecisionLabel  string      `json:"decision_label,omitempty"`
+	Artifact       ArtifactRef `json:"artifact"`
 }

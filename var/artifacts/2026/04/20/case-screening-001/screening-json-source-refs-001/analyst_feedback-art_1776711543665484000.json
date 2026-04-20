@@ -1,0 +1,36 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776711543665484000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "feedback-001",
+  "created_at": "2026-04-20T18:59:03.665484Z",
+  "kind": "analyst_feedback",
+  "payload": {
+    "feedback_id": "fb_1776711543665456000",
+    "tenant_id": "test-tenant",
+    "case_id": "case-screening-001",
+    "alert_id": "screening-json-source-refs-001",
+    "correlation_id": "feedback-001",
+    "created_at": "2026-04-20T18:59:03.665456Z",
+    "analyst_id": "analyst-1",
+    "system_decision": "escalate",
+    "decision_agreement": "disagree",
+    "corrected_label": "investigate_next_step",
+    "note_rating": 2,
+    "outcome_rating": 3,
+    "comment": "Needs better explanation of why the passport evidence matters.",
+    "tags": [
+      "prompt_issue",
+      "retrieval_gap"
+    ],
+    "derived_signals": [
+      "decision_policy_tuning_candidate",
+      "note_quality_tuning_candidate",
+      "outcome_quality_tuning_candidate",
+      "prompt_tuning_candidate",
+      "retrieval_tuning_candidate"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

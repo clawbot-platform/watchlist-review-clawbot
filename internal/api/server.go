@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/artifacts"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/feedback"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/parsers"
@@ -17,8 +18,9 @@ import (
 )
 
 type Server struct {
-	registry *parsers.Registry
-	flow     *runtime.Flow
+	registry        *parsers.Registry
+	flow            *runtime.Flow
+	feedbackService *feedback.Service
 }
 
 func NewServer(identityClient *identity.Client, extras ...any) (*Server, error) {
@@ -32,6 +34,7 @@ func NewServer(identityClient *identity.Client, extras ...any) (*Server, error) 
 	var noteService *notes.Service
 	var artifactService *artifacts.Service
 	var retrievalService *retrieval.Service
+	var feedbackService *feedback.Service
 	for _, extra := range extras {
 		switch value := extra.(type) {
 		case *notes.Service:
@@ -40,18 +43,22 @@ func NewServer(identityClient *identity.Client, extras ...any) (*Server, error) 
 			artifactService = value
 		case *retrieval.Service:
 			retrievalService = value
+		case *feedback.Service:
+			feedbackService = value
 		}
 	}
 
 	return &Server{
-		registry: registry,
-		flow:     runtime.NewFlow(identityClient, noteService, artifactService, retrievalService),
+		registry:        registry,
+		flow:            runtime.NewFlow(identityClient, noteService, artifactService, retrievalService),
+		feedbackService: feedbackService,
 	}, nil
 }
 
 func (s *Server) RegisterRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("/healthz", s.healthz)
 	mux.HandleFunc("/v1/reviews", s.review)
+	mux.HandleFunc("/v1/feedback", s.feedback)
 }
 
 func (s *Server) healthz(w http.ResponseWriter, _ *http.Request) {
@@ -132,6 +139,49 @@ func (s *Server) review(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("X-Correlation-ID", correlationID)
 	writeJSON(w, http.StatusOK, resp)
+}
+
+func (s *Server) feedback(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		writeJSON(w, http.StatusMethodNotAllowed, map[string]any{"error": "method not allowed"})
+		return
+	}
+	if s == nil || s.feedbackService == nil {
+		writeJSON(w, http.StatusServiceUnavailable, map[string]any{"error": "feedback capture is not configured"})
+		return
+	}
+
+	var req FeedbackRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]any{"error": "invalid json"})
+		return
+	}
+
+	result, err := s.feedbackService.Create(r.Context(), feedback.CreateInput{
+		TenantID:          req.TenantID,
+		CaseID:            req.CaseID,
+		AlertID:           req.AlertID,
+		CorrelationID:     correlationIDFromRequest(r),
+		AnalystID:         req.AnalystID,
+		SystemDecision:    req.SystemDecision,
+		DecisionAgreement: req.DecisionAgreement,
+		CorrectedLabel:    req.CorrectedLabel,
+		NoteRating:        req.NoteRating,
+		OutcomeRating:     req.OutcomeRating,
+		Comment:           req.Comment,
+		Tags:              req.Tags,
+	})
+	if err != nil {
+		writeJSON(w, http.StatusBadRequest, map[string]any{"error": err.Error()})
+		return
+	}
+
+	writeJSON(w, http.StatusOK, FeedbackResponse{
+		Status:       "feedback_captured",
+		Feedback:     result.Feedback,
+		ArtifactRefs: result.ArtifactRefs,
+		Warnings:     result.Warnings,
+	})
 }
 
 func correlationIDFromRequest(r *http.Request) string {

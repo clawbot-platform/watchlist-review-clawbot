@@ -10,6 +10,8 @@ import (
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/api"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/artifacts"
 	artifactevents "github.com/clawbot-platform/watchlist-review-clawbot/internal/events/artifacts"
+	feedbackevents "github.com/clawbot-platform/watchlist-review-clawbot/internal/events/feedback"
+	"github.com/clawbot-platform/watchlist-review-clawbot/internal/feedback"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/identity"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/notes"
 	"github.com/clawbot-platform/watchlist-review-clawbot/internal/retrieval"
@@ -24,8 +26,9 @@ func main() {
 	noteService := buildNoteService()
 	artifactService := buildArtifactService()
 	retrievalService := buildRetrievalService()
+	feedbackService := buildFeedbackService()
 
-	server, err := api.NewServer(identityClient, noteService, artifactService, retrievalService)
+	server, err := api.NewServer(identityClient, noteService, artifactService, retrievalService, feedbackService)
 	if err != nil {
 		log.Fatalf("build server: %v", err)
 	}
@@ -61,15 +64,12 @@ func buildNoteService() *notes.Service {
 	return notes.NewService(generator)
 }
 
-func buildArtifactService() *artifacts.Service {
+func buildArtifactBackend() (artifacts.Store, artifacts.ManifestWriter) {
 	if !parseBool(envOr("ENABLE_REVIEW_ARTIFACTS", "false")) {
-		return nil
+		return nil, nil
 	}
 
 	backend := strings.TrimSpace(strings.ToLower(envOr("REVIEW_ARTIFACTS_BACKEND", "filesystem")))
-	var store artifacts.Store
-	var manifest artifacts.ManifestWriter
-
 	switch backend {
 	case "s3", "minio":
 		s3Store, err := artifacts.NewS3Store(
@@ -82,13 +82,19 @@ func buildArtifactService() *artifacts.Service {
 		)
 		if err != nil {
 			log.Printf("artifacts: failed to build s3 store: %v", err)
-			return nil
+			return nil, nil
 		}
-		store = s3Store
-		manifest = s3Store
+		return s3Store, s3Store
 	default:
 		fsStore := artifacts.NewFileSystemStore(envOr("REVIEW_ARTIFACTS_DIR", "./var/artifacts"))
-		store = fsStore
+		return fsStore, nil
+	}
+}
+
+func buildArtifactService() *artifacts.Service {
+	store, manifest := buildArtifactBackend()
+	if store == nil {
+		return nil
 	}
 
 	var extras []any
@@ -108,6 +114,34 @@ func buildArtifactService() *artifacts.Service {
 	}
 
 	return artifacts.NewService(store, extras...)
+}
+
+func buildFeedbackService() *feedback.Service {
+	if !parseBool(envOr("ENABLE_REVIEW_FEEDBACK_CAPTURE", "false")) {
+		return nil
+	}
+	store, manifest := buildArtifactBackend()
+	if store == nil {
+		return nil
+	}
+
+	var extras []any
+	if manifest != nil {
+		extras = append(extras, manifest)
+	}
+	if parseBool(envOr("ENABLE_REVIEW_FEEDBACK_EVENTS", "false")) {
+		publisher, err := feedbackevents.NewNATSPublisher(
+			envOr("REVIEW_FEEDBACK_EVENTS_NATS_URL", envOr("CLAWBOT_NATS_URL", "")),
+			envOr("REVIEW_FEEDBACK_EVENTS_SUBJECT", feedbackevents.DefaultSubject),
+		)
+		if err != nil {
+			log.Printf("feedback: failed to build nats publisher: %v", err)
+		} else {
+			extras = append(extras, publisher)
+		}
+	}
+
+	return feedback.NewService(store, extras...)
 }
 
 func buildRetrievalService() *retrieval.Service {
