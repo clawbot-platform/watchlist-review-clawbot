@@ -1,0 +1,26 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776714286185022000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420194424.216967000",
+  "created_at": "2026-04-20T19:44:46.185022Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v2-rag",
+    "note": "The individual onboarding case has been determined to escalate for analyst review based on a robust set of matching evidence. This includes address, country, entity type corroboration, precise date matches (exact date and identifier), and normalization of the name which all confirm alignment with an SDN list entry. The absence of contradictions or missing information further supports this determination.",
+    "evidence_summary": [
+      "*Strong corroborated match with no contradictions.",
+      "*Addresses, countries, and entity types match the screened individual.",
+      "*Exact date of birth, name, and passport identifier match.",
+      "*Normalized name exact match supporting identity."
+    ],
+    "missing_information_summary": [
+      "*No explicit missing information noted in payload."
+    ],
+    "next_step_rationale": "The deterministic decision is to 'escalate for analyst review' due to a strong corroborated match with sufficient data, supported by multiple pieces of evidence including address, country, entity type support, exact date"
+  },
+  "tenant_id": "test-tenant"
+}

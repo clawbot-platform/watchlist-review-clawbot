@@ -3,6 +3,7 @@ module github.com/clawbot-platform/watchlist-review-clawbot
 go 1.25.0
 
 require (
+	github.com/lib/pq v1.12.3
 	github.com/minio/minio-go/v7 v7.0.100
 	github.com/nats-io/nats.go v1.51.0
 )

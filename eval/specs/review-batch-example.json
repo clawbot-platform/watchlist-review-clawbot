@@ -1,0 +1,11 @@
+{
+  "cases": [
+    {
+      "name": "individual_onboarding_generated_note",
+      "request_path": "eval/requests/individual_onboarding.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false
+    }
+  ]
+}
