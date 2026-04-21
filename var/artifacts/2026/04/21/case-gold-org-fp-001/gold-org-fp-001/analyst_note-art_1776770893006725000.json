@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776770893006725000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421112745.695752000",
+  "created_at": "2026-04-21T11:28:13.006725Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "This organization onboarding alert indicates a potential match between Global Marine Services LLC (screened_name) and Global Marine Service Co (matched_name). However, discrepancies exist in country of origin, date of establishment, and identifiers. The data supports an organization entity but lacks crucial corroboration to resolve contradictions, prompting the need for analyst investigation.",
+    "evidence_summary": [
+      "Two organizations share a common name element but differ in country, date, and identifiers.",
+      "Date of birth discrepancy between records.",
+      "Identifier conflict suggesting different entities despite shared screened/matched names.",
+      "Organization type support in data matches the alert's screened_name.",
+      "Shared organization token detected in data."
+    ],
+    "missing_information_summary": [
+      "Corroboration on geography not identified.",
+      "Date corroboration absent.",
+      "Strong identifier corroboration lacking.",
+      "Additional corroboration needed for investigation."
+    ],
+    "next_step_rationale": "The case presents hard contradictions in country, date, and identifiers necessitating analyst review to resolve before decision closure."
+  },
+  "tenant_id": "test-tenant"
+}

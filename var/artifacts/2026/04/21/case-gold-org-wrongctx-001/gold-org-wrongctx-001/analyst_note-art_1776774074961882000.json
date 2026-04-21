@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776774074961882000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421122044.411662000",
+  "created_at": "2026-04-21T12:21:14.961882Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "This case involves 'Eastern Star Holdings Ltd' matching 'Eastern Star Holding Company', supported by organization token overlap under SDN program. However, contradictions in date of birth, geography, and identifiers necessitate investigation before closure due to sparse or conflicting data requiring analyst verification.",
+    "evidence_summary": [
+      "Screened name 'Eastern Star Holdings Ltd' matches allowed entity 'Eastern Star Holding Company' under SDN program.",
+      "Identified organization token overlap provides evidence for match strength.",
+      "Conflicts detected: date of birth, geography, and identifier.",
+      "Contradictory data includes country mismatch, date conflict, and hard contradiction in identifiers.",
+      "Insufficient corroboration is noted for date, geography, and strong identifier."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date of birth and location details.",
+      "Date corroboration essential to address date conflict.",
+      "Geography corroboration required for resolving country mismatch.",
+      "Strong identifier corroboration necessary to resolve identifier conflicts."
+    ],
+    "next_step_rationale": "Investigate contradictions, specifically the country mismatch, date conflict, and identifier issues; gather additional corroboration for all missing information points."
+  },
+  "tenant_id": "test-tenant"
+}

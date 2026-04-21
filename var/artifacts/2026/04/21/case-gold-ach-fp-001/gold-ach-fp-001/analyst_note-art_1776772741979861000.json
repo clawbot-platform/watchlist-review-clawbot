@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776772741979861000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421115837.408016000",
+  "created_at": "2026-04-21T11:59:01.979861Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "Analyst investigation is advised given the identified contradictions in the case, specifically a geography conflict between screened_name Carlos Vega and matched_name Carlos Velez. While entity type support exists, crucial contextual details such as address, date, and identifiers are absent or contradicted.",
+    "evidence_summary": [
+      "Alert identifies Carlos Vega and Carlos Velez as same entity per SDN program.",
+      "Entity type support present for both screened_name and matched_name.",
+      "Data sufficiency score is 42, indicating sparse evidence.",
+      "Contradiction flagged: geography conflict identified."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for address context.",
+      "Date corroboration missing.",
+      "Geography corroboration required to resolve conflict.",
+      "Matched party's identifiers are not provided."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration due to sparse data and conflicting geographical information."
+  },
+  "tenant_id": "test-tenant"
+}

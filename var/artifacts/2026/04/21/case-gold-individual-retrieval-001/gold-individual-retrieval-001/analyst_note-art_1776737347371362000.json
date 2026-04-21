@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776737347371362000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421020848.304403000",
+  "created_at": "2026-04-21T02:09:07.371362Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Given the high data sufficiency score (92) and match strength score (93), along with no contradictions detected, it's deemed appropriate to escalate this individual for manual review due to a strong corroborated match supported by various data elements.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "The strong corroborated match, supported by multiple data points including exact date of birth, country, and identifier on a passport, necessitates escalation for analyst review."
+  },
+  "tenant_id": "test-tenant"
+}

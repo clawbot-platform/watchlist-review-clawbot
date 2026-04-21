@@ -1,0 +1,28 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776811242552691000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421224028.048157000",
+  "created_at": "2026-04-21T22:40:42.552691Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "Jane Citizen, an individual screened for onboarding through the SDN watchlist program, has been matched with a high-confidence record in the right-record source. The match is corroborated by exact name, date of birth, country, and passport identifier matches from multiple sources. Strong corroborated evidence supports the escalated decision to review this alert manually.",
+    "evidence_summary": [
+      "Address support",
+      "Country support",
+      "Entity type support",
+      "Exact date match",
+      "exact identifier match on passport.",
+      "Exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review.",
+    "warnings": [
+      "granite_analyst_note_evidence_summary_rebuilt_from_deterministic_score"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

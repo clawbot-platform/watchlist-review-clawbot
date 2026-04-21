@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776737397801255000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421020931.917331000",
+  "created_at": "2026-04-21T02:09:57.801255Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual Omar Haddad presents a high-risk alert with exact name match but critical conflicts in date of birth, geography, and identifiers. The discrepancies necessitate an investigation to confirm the authenticity of the matched SDN record against additional corroboration.",
+    "evidence_summary": [
+      "Exact normalized name match with screened individual",
+      "Entity type support from SDN list",
+      "Country mismatch between matched (SY) and screened (US)",
+      "Date of birth conflict ('1971-08-09' vs '1992-03-21')",
+      "Hard contradiction noted in identifier details"
+    ],
+    "missing_information_summary": [
+      "Missing corroboration for date of birth",
+      "Missing geographical alignment",
+      "Weak or conflicting information on identifiers",
+      "No strong additional supporting evidence provided"
+    ],
+    "next_step_rationale": "Investigate the contradictions and seek further validation to resolve discrepancies in data before reaching a definitive decision."
+  },
+  "tenant_id": "test-tenant"
+}

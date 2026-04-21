@@ -1,0 +1,55 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-rel-conflict-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "rel-conflict-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-21T12:00:00Z",
+    "case_id": "case-rel-conflict-001",
+    "alert_type": "organization_onboarding",
+    "jurisdiction": "US",
+    "priority": "high",
+    "screened_party": {
+      "entity_type": "organization",
+      "full_name": "Global Marine Services LLC",
+      "countries": [
+        "US"
+      ],
+      "source_system": "kyc_applications",
+      "source_record_id": "rel-conflict-001-screened"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "rel-conflict-001-matched-uid",
+      "entity_type": "organization",
+      "full_name": "Global Marine Service Co"
+    },
+    "screening_features": {
+      "vendor_score": 82,
+      "name_score": 87,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  },
+  "relationship_context": {
+    "direct_relationships": [
+      {
+        "relationship_type": "associated_with",
+        "target_list_uid": "maritime-network-001",
+        "target_name": "APAMA Marine Network"
+      }
+    ],
+    "neighborhood_conflicts": [
+      "registry_context_conflict",
+      "country_network_conflict"
+    ],
+    "linked_documents": []
+  }
+}

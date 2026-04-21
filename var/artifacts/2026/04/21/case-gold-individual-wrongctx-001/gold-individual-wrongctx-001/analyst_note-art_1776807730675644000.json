@@ -1,0 +1,23 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776807730675644000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421214158.721210000",
+  "created_at": "2026-04-21T21:42:10.675644Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert for Omar Haddad indicates a potential false positive due to inconsistencies between the screened and matched party records. The name matches exactly, but there are conflicts in date of birth (1992 vs 1971) and passport information (US passport number SY123123 does not match Syrian national identifier SY123123). Additionally, the geography conflict shows different countries for screening (US) and matched party (Syria). These contradictions necessitate further investigation to confirm or refute the match before closing the alert.",
+    "evidence_summary": [
+      "3-5 grounded evidence items only"
+    ],
+    "missing_information_summary": [
+      "0-4 grounded missing-information items only"
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

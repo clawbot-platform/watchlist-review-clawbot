@@ -1,0 +1,31 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776720284340761000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420212417.051249000",
+  "created_at": "2026-04-20T21:24:44.340761Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The onboarding watchlist match is deemed unlikely given low corroborative data (no address context, date of birth, or strong identifier support). The geographic discrepancy further weakens the case. Close the alert as a likely false positive.",
+    "evidence_summary": [
+      "Entity type support for individual",
+      "Name matches with 'Tareck El Aissami' in SDN list",
+      "Country of Venezuela ('VE') identified",
+      "Screening decision 'clear'",
+      "SDN list kind is 'sdn', list UID is 'uid-seed-001'"
+    ],
+    "missing_information_summary": [
+      "Address context not provided for screened party",
+      "Date of birth of screened party missing",
+      "Geography corroboration lacking",
+      "Matched party identifiers insufficiently supported",
+      "Screened party date and identifiers not corroborated"
+    ],
+    "next_step_rationale": "The deterministic decision is to close the case due to low match strength, insufficient evidence for escalation, and a contradiction in geography between the screened party's country ('US') and the matched party's countr"
+  },
+  "tenant_id": "test-tenant"
+}

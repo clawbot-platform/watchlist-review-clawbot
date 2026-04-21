@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776722547052240000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420220202.875391000",
+  "created_at": "2026-04-20T22:02:27.05224Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert is escalated due to a robust set of evidence supporting the identity of Mohamed Karim, also known as Muhammad Karim. This includes address, country, entity type, exact alias-to-name match, date of birth, and exact passport identifier match, yielding high data sufficiency (92) and match strength (88) scores with no contradictions identified.",
+    "evidence_summary": [
+      "Address support",
+      "Country support (GB)",
+      "Entity type support (Individual)",
+      "Exact alias-to-name match ('Mohamed' to 'Muhammad')",
+      "Exact date of birth match (1981-02-03)",
+      "Exact identifier match on passport"
+    ],
+    "next_step_rationale": "Escalate for analyst review based on strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

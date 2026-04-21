@@ -1,0 +1,51 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-gold-ach-fp-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "gold-ach-fp-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-14T12:00:00Z",
+    "case_id": "case-gold-ach-fp-001",
+    "alert_type": "ach_payment",
+    "jurisdiction": "US",
+    "priority": "medium",
+    "screened_party": {
+      "entity_type": "individual",
+      "full_name": "Carlos Vega",
+      "aliases": [],
+      "date_of_birth": "",
+      "countries": [
+        "US"
+      ],
+      "identifiers": [],
+      "addresses": [],
+      "source_system": "ach_gateway",
+      "source_record_id": "ach-left-sparse"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "ach-right-fp",
+      "entity_type": "individual",
+      "full_name": "Carlos Velez",
+      "aliases": [],
+      "date_of_birth": "1962-10-02",
+      "countries": [
+        "CU"
+      ],
+      "identifiers": []
+    },
+    "screening_features": {
+      "vendor_score": 59,
+      "name_score": 68,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

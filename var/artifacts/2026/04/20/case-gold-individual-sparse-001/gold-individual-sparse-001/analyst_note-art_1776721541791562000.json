@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776721541791562000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420214515.103766000",
+  "created_at": "2026-04-20T21:45:41.791562Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Alert 'gold-individual-sparse-001' pertaining to individual onboarding has been determined close due to insufficient evidence supporting a genuine high-risk match. The screened entity, Tareck Joseph, does not sufficiently align with the matched SDN entity, Tareck El Aissami, given the absence of critical identifiers, date corroboration, and geographical context.",
+    "evidence_summary": [
+      "Low match strength score of 9, indicating a weak association between screened and matched entities.",
+      "Presence of 'country mismatch' as evidence against the alert."
+    ],
+    "missing_information_summary": [
+      "Address context is missing",
+      "Date corroboration for Tareck Joseph is unavailable",
+      "Geography corroboration for Tareck Joseph is insufficient",
+      "Matched party identifiers are absent or unverified",
+      "Screened party date and identifiers are incomplete"
+    ],
+    "next_step_rationale": "Based on the low match strength, country mismatch, and critical missing information, closing this case as a likely false positive."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776726591348947000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420230929.398419000",
+  "created_at": "2026-04-20T23:09:51.348947Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case involves an individual onboarding with name overlap but lacks matching date of birth, geographical context, and identifiers. The evidence includes entity type support from screening and a country mismatch suggesting the need for investigation before closure.",
+    "evidence_summary": [
+      "Entity type support from screening",
+      "Country mismatch (US vs VE)",
+      "Hard contradiction requiring analyst confirmation with address, date context, and identifier corroboration",
+      "Name overlap without matching DOB, geography, or identifiers"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for address, date, and identifiers",
+      "Missing date of birth for the screened party",
+      "No strong corroboration for geographical context"
+    ],
+    "next_step_rationale": "Investigate contradiction to resolve geography conflict and gather missing corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

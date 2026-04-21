@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776731929042924000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421003820.356494000",
+  "created_at": "2026-04-21T00:38:49.042924Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'Global Marine Services LLC' was flagged during onboarding due to overlap with 'Global Marine Service Co', classified as an SDN entity in Iran. The discrepancies include country mismatch (US vs IR), potential date of birth conflict, and identifier contradictions. Though there's organization type alignment and token overlap evidence, insufficient corroboration necessitates further analyst investigation prior to closure.",
+    "evidence_summary": [
+      "Organization name overlap ('Global Marine') with matched entity (Global Marine Service Co)",
+      "Entity type supports organization",
+      "Country mismatch in screened party (US) versus matched party (IR)",
+      "Date of birth mismatch or absence between screened and matched parties",
+      "Identifier conflict present as no exact match in registration numbers or tax IDs"
+    ],
+    "missing_information_summary": [
+      "Lack of corroboration for date of birth",
+      "Absence of strong identifier matches",
+      "Country discrepancy not resolved",
+      "Need for additional investigation due to contradictory evidence"
+    ],
+    "next_step_rationale": "Investigate the contradictions and gather more supporting information."
+  },
+  "tenant_id": "test-tenant"
+}

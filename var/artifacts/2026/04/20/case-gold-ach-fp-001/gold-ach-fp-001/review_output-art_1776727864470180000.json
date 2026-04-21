@@ -1,0 +1,283 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776727864470180000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233042.162245000",
+  "created_at": "2026-04-20T23:31:04.47018Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "investigate_next_step",
+    "review_context": {
+      "alert": {
+        "kind": "ach_party",
+        "metadata": {
+          "alert_id": "gold-ach-fp-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "ach_party",
+          "jurisdiction": "US",
+          "case_id": "case-gold-ach-fp-001",
+          "priority": "medium"
+        },
+        "screened_party": {
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Carlos Vega"
+          },
+          "countries": [
+            "US"
+          ],
+          "source_record_id": "ach-left-sparse",
+          "source_system": "ach_gateway"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "ach-right-fp",
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Carlos Velez"
+          },
+          "date_of_birth": "1962-10-02",
+          "countries": [
+            "CU"
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 59,
+          "name_score": 68,
+          "match_flags": [
+            "name"
+          ]
+        },
+        "transaction": {
+          "transaction_id": "txn-ach-fp-001",
+          "rail_type": "ach",
+          "amount": 1200.25,
+          "currency": "USD"
+        }
+      },
+      "features": {
+        "alert_id": "gold-ach-fp-001",
+        "kind": "ach_party",
+        "screened_name": {
+          "original": "Carlos Vega",
+          "canonical": "CARLOS VEGA",
+          "tokens": [
+            "CARLOS",
+            "VEGA"
+          ],
+          "token_sorted": "CARLOS VEGA",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Carlos Velez",
+          "canonical": "CARLOS VELEZ",
+          "tokens": [
+            "CARLOS",
+            "VELEZ"
+          ],
+          "token_sorted": "CARLOS VELEZ",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "matched_exact": "1962-10-02",
+          "matched_year": "1962",
+          "exact_match": false,
+          "year_match": false,
+          "has_conflict": false
+        },
+        "identifiers": {},
+        "geography": {
+          "screened_countries": [
+            "US"
+          ],
+          "matched_countries": [
+            "CU"
+          ],
+          "has_country_support": false
+        },
+        "context": {
+          "screened_entity_type": "individual",
+          "matched_entity_type": "individual",
+          "kind": "ach_party",
+          "is_ach": true,
+          "rail_type": "ach",
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 0,
+          "date_present": false,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 0,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 0,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 0,
+          "supporting_note_count": 0
+        },
+        "missing_fields": [
+          "screened_party.date",
+          "screened_party.identifiers",
+          "matched_party.identifiers"
+        ],
+        "contradictions": [
+          "geography_conflict"
+        ],
+        "vendor_score": 59,
+        "name_score": 68,
+        "match_flags": [
+          "name"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "ach_party | screened=Carlos Vega | matched=Carlos Velez | program=SDN | decision=investigate_next_step | entity type support",
+        "snippets": [
+          {
+            "snippet_id": "snip-ach-true-1",
+            "source": "policy",
+            "title": "ACH exact-party escalation",
+            "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+            "score": 3.5,
+            "tags": [
+              "ach_party",
+              "ach",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-ach-sparse-1",
+            "source": "policy",
+            "title": "ACH sparse-data review guidance",
+            "text": "ACH party alerts with weak name-only overlap and sparse supporting party data should be investigated rather than auto-closed.",
+            "score": 2.5,
+            "tags": [
+              "ach_party",
+              "ach",
+              "sparse_data",
+              "investigate_next_step",
+              "false_positive"
+            ]
+          },
+          {
+            "snippet_id": "snip-individual-passport-true-1",
+            "source": "clawmem",
+            "title": "Individual exact-passport corroboration",
+            "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+            "score": 2,
+            "tags": [
+              "individual_onboarding",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-alias-1",
+            "source": "clawmem",
+            "title": "Alias plus identifier corroboration",
+            "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+            "score": 1,
+            "tags": [
+              "individual_onboarding",
+              "alias",
+              "passport",
+              "escalate",
+              "true_match"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_2a138d30070f3f5e",
+          "decision": "clear",
+          "decision_trace_id": "dt_357fe45567d3e685",
+          "candidates": [
+            {
+              "dataset_run_id": "ofac-seed-run-001",
+              "list_kind": "sdn",
+              "list_uid": "uid-seed-001",
+              "name": "Jane Citizen",
+              "matched_on": "country",
+              "score": 10,
+              "needs_review": false
+            }
+          ]
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 9,
+        "data_sufficiency_score": 42,
+        "name_match_score": 4,
+        "date_match_score": 0,
+        "identifier_match_score": 0,
+        "geography_match_score": 0,
+        "address_match_score": 0,
+        "context_support_score": 5,
+        "screened_completeness_score": 13,
+        "matched_completeness_score": 16,
+        "identifier_quality_score": 0,
+        "geography_quality_score": 4,
+        "supporting_context_score": 9,
+        "contradictions": [
+          "geography_conflict"
+        ],
+        "decision_label": "investigate_next_step",
+        "decision_reason": "Sparse or contradictory case requires analyst investigation before closure.",
+        "evidence_for": [
+          "entity type support"
+        ],
+        "evidence_against": [
+          "country mismatch",
+          "hard contradiction requires analyst confirmation"
+        ],
+        "missing_information": [
+          "additional corroboration",
+          "address context",
+          "date corroboration",
+          "geography corroboration",
+          "matched_party.identifiers",
+          "screened_party.date",
+          "screened_party.identifiers",
+          "strong identifier corroboration"
+        ],
+        "next_step": "Investigate contradiction and gather additional corroboration."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v3-rag-quality",
+        "note": "The alert pertains to an ACH party investigation involving 'Carlos Vega'. Despite entity type support and exact name match, a critical geography conflict exists between the matched party from Cuba ('CU') and the screened party from the United States ('US'). The alert calls for analyst investigation due to sparse supporting data requiring resolution before closure.",
+        "evidence_summary": [
+          "Entity type support for individual.",
+          "Exact name match between screened and matched parties."
+        ],
+        "missing_information_summary": [
+          "Geography conflict: Matched party country is 'CU' but screened party country is 'US'.",
+          "Additional corroboration needed for date of birth, identifiers, and geographical context.",
+          "Hard contradiction detected requiring analyst confirmation."
+        ],
+        "next_step_rationale": "Investigate the geographic conflict and gather additional supporting evidence."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

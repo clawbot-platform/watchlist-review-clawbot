@@ -1,0 +1,24 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776807816932866000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421214321.460799000",
+  "created_at": "2026-04-21T21:43:36.932866Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "APAMA MARITIME LTD is listed on the SDN watchlist with matching organization name but contradicts expectations due to a country mismatch. APAMA SHIPPING LLC, while present in screening candidates, lacks supporting registry or IMC data that would typically validate its legitimacy given similar naming conventions. Sparse case details and conflicting geography necessitate analyst investigation before closure. Additional corroboration such as registry data for APAMA MARITIME LTD or incorporation date/details for APAMA SHIPPING LLC is required to resolve the discrepancy.",
+    "evidence_summary": [
+      "APAMA MARITIME LTD is listed on the SDN watchlist (apama-right). The entity type, name, and country match. The IMO number provided is IMO9381234.",
+      "APAMA SHIPPING LLC appears in the screening candidates as an organization with no matching registry or IMC data. The US address and other identifier are present."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration such as registry data for APAMA MARITIME LTD, incorporation date for APAMA SHIPPING LLC, or strong identifier matches to resolve geography conflict."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776728283387080000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233731.490964000",
+  "created_at": "2026-04-20T23:38:03.38708Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case presents an organization named 'Eastern Star Holding Company' with conflicting information regarding date of incorporation, geographic location (US vs GB), and lack of Date of Birth data. The deterministic outcome is to investigate further due to hard contradictions without sufficient corroboration.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Incorporation date conflict ('2009-03-09' vs '2018-07-07')",
+      "Geography conflict (country mismatch: US vs GB)",
+      "Hard contradiction identified in DOB, identifier, and geography",
+      "Organization token overlap between screened ('Eastern Star Holdings Ltd') and matched entities ('Eastern Star Holding Company')"
+    ],
+    "missing_information_summary": [
+      "Date of Birth (DOB) not available for verification",
+      "Strong identifier corroboration lacking",
+      "Geography corroboration absent (country discrepancy)",
+      "Additional corroboration needed to resolve contradictions"
+    ],
+    "next_step_rationale": "Investigate the identified contradictions in date of birth, geographical location, and identifiers and gather additional supporting evidence before reaching a definitive decision."
+  },
+  "tenant_id": "test-tenant"
+}

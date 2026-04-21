@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776730452928397000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421001349.875197000",
+  "created_at": "2026-04-21T00:14:12.928397Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Given the individual's screening name 'Mohamed Karim' matching exactly with alias 'Muhammad Karim', alongside confirmed country ('GB') and date of birth, coupled with exact passport identifier match, there is a robust basis for escalation. All data points converge to support this conclusion without contradictions, making further analyst review imperative.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact alias-to-name match ('Mohamed Karim' to 'Muhammad Karim')",
+      "exact date match (date of birth)",
+      "exact identifier match on passport"
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review due to a strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

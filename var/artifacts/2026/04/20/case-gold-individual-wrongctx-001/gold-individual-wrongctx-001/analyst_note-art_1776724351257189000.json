@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776724351257189000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420223204.565362000",
+  "created_at": "2026-04-20T22:32:31.257189Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case presents contradictory evidence regarding Omar Haddad's date of birth, country of residence, and identifiers. While there is an exact normalized name match with the top candidate in the SDN list and support for an individual entity type, discrepancies exist that need resolution through investigation.",
+    "evidence_summary": [
+      "Exact normalized name match with top candidate.",
+      "Entity type support for individual.",
+      "Country mismatch in case data vs. top candidate.",
+      "Date of birth conflict between matched party and screened party.",
+      "Identifier conflict as aliases differ."
+    ],
+    "missing_information_summary": [
+      "Lack of strong date corroboration for Omar Haddad's date of birth.",
+      "Geography corroboration missing to reconcile US vs. Syria residence discrepancy.",
+      "Strong identifier corroboration absent to resolve conflicting identifiers."
+    ],
+    "next_step_rationale": "The contradictions in date of birth, geographical data, and identifier information necessitate investigation to clarify facts before reaching a definitive decision."
+  },
+  "tenant_id": "test-tenant"
+}

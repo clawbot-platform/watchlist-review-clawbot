@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776736491978695000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421015424.350003000",
+  "created_at": "2026-04-21T01:54:51.978695Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The onboarding case for APAMA MARITIME LTD indicates a potential organization match with APAMA SHIPPING LLC, supported by entity type and token overlap. However, there's a hard contradiction in country of origin (US vs. PA), requiring investigation to resolve before closure.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Organization token overlap between screened and matched parties (APAMA)",
+      "Contradiction in geography (country mismatch: US vs. PA)",
+      "Hard contradiction requiring analyst confirmation regarding location",
+      "Sparse evidence preventing a clear decision without investigation"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed to resolve geographic discrepancy",
+      "Date corroboration for matched and screened parties missing",
+      "Strong identifier corroboration lacking to resolve contradiction",
+      "Missing IMO or registry data to confirm maritime context"
+    ],
+    "next_step_rationale": "Investigate the contradictory geographic information and gather additional evidence."
+  },
+  "tenant_id": "test-tenant"
+}

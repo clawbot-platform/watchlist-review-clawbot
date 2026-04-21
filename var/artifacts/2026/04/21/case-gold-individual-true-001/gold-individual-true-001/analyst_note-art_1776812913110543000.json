@@ -1,0 +1,23 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776812913110543000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421230820.093940000",
+  "created_at": "2026-04-21T23:08:33.110543Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "Jane Citizen matches the watched-list candidate Jane Q Citizen based on exact name, date of birth, country, and passport identifier. The screening features indicate high confidence in this match (vendor score 88, name score 95). No data conflicts exist; therefore, per deterministic scoring, this alert should be escalated for analyst review.",
+    "evidence_summary": [
+      "Exact normalized name match: 'Jane Citizen' in screened and matched records.",
+      "Exact date of birth match: '1988-07-14' in both records.",
+      "Country match: 'US' for both screened and matched parties.",
+      "Exact identifier match on passport (P1234567) between screened and matched records."
+    ],
+    "next_step_rationale": "Strong corroborated match with sufficient data and no contradictions. Escalate for analyst review."
+  },
+  "tenant_id": "test-tenant"
+}

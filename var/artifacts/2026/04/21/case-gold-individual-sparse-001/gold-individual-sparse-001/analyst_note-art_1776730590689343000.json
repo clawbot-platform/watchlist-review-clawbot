@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776730590689343000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421001605.534575000",
+  "created_at": "2026-04-21T00:16:30.689343Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case presents a contradiction between the screened party's geographic location (US) and the matched party's (Tareck El Aissami from Venezuela). Although entity type support is confirmed for an individual, sparse data necessitates investigation to resolve discrepancies before closure.",
+    "evidence_summary": [
+      "Entity type supports individual screening",
+      "Name overlap with known SDN entity, Tareck El Aissami",
+      "Geography conflict: US vs Venezuela",
+      "Hard contradiction requires analyst confirmation"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for address and date context",
+      "Matched party identifiers missing or insufficiently corroborated",
+      "Screened party date of birth unspecified"
+    ],
+    "next_step_rationale": "Investigate geography conflict to confirm if Tareck Joseph aligns with Venezuelan individual Tareck El Aissami, requiring additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

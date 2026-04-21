@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776773174385627000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421120546.665835000",
+  "created_at": "2026-04-21T12:06:14.385627Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "Eastern Star Holding Company (matched_name) and Eastern Star Holdings Ltd (screened_name) share organization tokens but face contradictions regarding country, date, and identifiers, necessitating thorough investigation to resolve discrepancies before closure.",
+    "evidence_summary": [
+      "Eastern Star Holding Company and Eastern Star Holdings Ltd share organization tokens but have conflicting country, date, and identifiers.",
+      "Hard contradiction in date of birth requires analyst confirmation.",
+      "Geography conflict indicates different countries.",
+      "Identifier conflict points to discrepancies in registration or tax data."
+    ],
+    "missing_information_summary": [
+      "Lacking additional corroboration for the organization's geographical context.",
+      "Date corroboration needed for resolving date of birth conflict.",
+      "Geography corroboration is required to reconcile country discrepancies.",
+      "Strong identifier corroboration is necessary to clear up registration and tax identifier conflicts."
+    ],
+    "next_step_rationale": "Investigate hard contradictions, specifically in date of birth, geographical context, and identifiers. Gather additional corroboration as indicated."
+  },
+  "tenant_id": "test-tenant"
+}

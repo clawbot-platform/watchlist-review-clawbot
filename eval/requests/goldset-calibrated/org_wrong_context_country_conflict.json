@@ -1,0 +1,73 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-gold-org-wrongctx-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "gold-org-wrongctx-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-14T12:00:00Z",
+    "case_id": "case-gold-org-wrongctx-001",
+    "alert_type": "organization_onboarding",
+    "jurisdiction": "US",
+    "priority": "medium",
+    "screened_party": {
+      "entity_type": "organization",
+      "full_name": "Eastern Star Holdings Ltd",
+      "aliases": [
+        "Eastern Star"
+      ],
+      "incorporation_date": "2018-07-07",
+      "countries": [
+        "GB"
+      ],
+      "addresses": [
+        {
+          "address_text": "10 Lime St",
+          "city": "London",
+          "country": "GB"
+        }
+      ],
+      "identifiers": [
+        {
+          "type": "registration_number",
+          "value": "GB-EST-4433",
+          "issuing_country": "GB"
+        }
+      ],
+      "source_system": "vendor_master",
+      "source_record_id": "est-left"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "est-right",
+      "entity_type": "organization",
+      "full_name": "Eastern Star Holding Company",
+      "aliases": [
+        "Eastern Star"
+      ],
+      "incorporation_date": "2009-03-09",
+      "countries": [
+        "SY"
+      ],
+      "identifiers": [
+        {
+          "type": "registration_number",
+          "value": "SY-EST-9001",
+          "issuing_country": "SY"
+        }
+      ]
+    },
+    "screening_features": {
+      "vendor_score": 66,
+      "name_score": 81,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

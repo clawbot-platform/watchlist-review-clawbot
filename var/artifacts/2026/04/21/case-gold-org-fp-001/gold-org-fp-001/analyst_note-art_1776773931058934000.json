@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776773931058934000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421121828.909527000",
+  "created_at": "2026-04-21T12:18:51.058934Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The screened name Global Marine Services LLC matches the matched name Global Marine Service Co., with support for organization type. However, there are conflicting data points on country, date of birth, and identifiers necessitating an investigation into these discrepancies to ensure accurate assessment.",
+    "evidence_summary": [
+      "Screened name, Global Marine Services LLC, matches matched name, Global Marine Service Co.",
+      "Organization type support confirmed.",
+      "There is overlap in organization tokens.",
+      "Conflicting data on country, date of birth, and identifier present."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for geography, date, strong identifiers.",
+      "Date conflict requires resolution."
+    ],
+    "next_step_rationale": "Given the hard contradictions in country, date of birth, and identifier, investigation is required to resolve these conflicts before a closure decision can be made."
+  },
+  "tenant_id": "test-tenant"
+}

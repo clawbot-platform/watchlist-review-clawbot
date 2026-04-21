@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776725362684937000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420224851.702931000",
+  "created_at": "2026-04-20T22:49:22.684937Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert, 'gold-ofac-tareck-001,' involves an individual onboarding process where conflicting data necessitates investigation. The screened party, Tareck Joseph, has discrepancies in date of birth and geographic origin compared to the matched SDN entity, Tareck El Aissami, who is listed with a different DOB and country. Analyst intervention is required to resolve these hard contradictions before deciding on closure.",
+    "evidence_summary": [
+      "Country mismatch: screened party is from US, matched party from VE.",
+      "Date of birth conflict: screened party's DOB is 1990-05-11; matched party's DOB is 1974-11-12.",
+      "Hard contradiction in date and geographical information requires analyst confirmation."
+    ],
+    "missing_information_summary": [
+      "Lack of additional corroboration for the conflicting data points",
+      "Absence of strong identifier corroboration",
+      "No clear resolution between screened and matched party details"
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

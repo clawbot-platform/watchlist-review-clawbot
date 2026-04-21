@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776774328496734000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421122509.255497000",
+  "created_at": "2026-04-21T12:25:28.496734Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to Omar Haddad, with investigative needs due to dob_conflict, geography_conflict, and identifier_conflict. Despite an exact normalized name match, conflicting data points exist demanding analyst scrutiny before closure.",
+    "evidence_summary": [
+      "Escalation recommended due to exact normalized name match.",
+      "Date of birth and geography conflicts require investigation.",
+      "Identifier conflict necessitates further corroboration."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date, geography, and identifier.",
+      "Strong identifier corroboration missing."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration to confirm or refute suspicions."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776728145361161000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233518.565418000",
+  "created_at": "2026-04-20T23:35:45.361161Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This organization onboarding case involves a party named 'Global Marine Services LLC', which is screened against the SDN list under entity type support and organization token overlap. However, there are significant contradictions: country mismatch (US vs IR), date of birth discrepancies, and identifier conflicts. The evidence suggests an investigation to resolve these discrepancies before proceeding with a deterministic decision.",
+    "evidence_summary": [
+      "Organization name alias: 'Global Marine'",
+      "Inconsistent country data (screened: US, matched: IR)",
+      "Date of birth and incorporation date discrepancies",
+      "Identifier conflict between screened and matched parties"
+    ],
+    "missing_information_summary": [
+      "Lack of corroboration for date of birth",
+      "No matching IMO or registry data for maritime entity confirmation",
+      "Absence of strong identifier corroboration"
+    ],
+    "next_step_rationale": "Investigate and resolve contradictions regarding country, dates, and identifiers before determining next steps."
+  },
+  "tenant_id": "test-tenant"
+}

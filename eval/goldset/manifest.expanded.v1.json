@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "name": "individual_true_match_strong",
+      "request_path": "eval/requests/goldset/individual_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Current green baseline individual true match"
+    },
+    {
+      "name": "individual_true_match_requires_retrieval",
+      "request_path": "eval/requests/goldset/individual_true_match_requires_retrieval.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Current green baseline retrieval-required individual true match"
+    },
+    {
+      "name": "individual_false_positive_sparse",
+      "request_path": "eval/requests/goldset/individual_false_positive_sparse.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Name overlap only, sparse party data"
+    },
+    {
+      "name": "individual_wrong_context_name_overlap",
+      "request_path": "eval/requests/goldset/individual_wrong_context_name_overlap.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Name overlap with conflicting geography and identifiers"
+    },
+    {
+      "name": "org_true_match_strong",
+      "request_path": "eval/requests/goldset/org_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Exact organization match with registration/tax id support"
+    },
+    {
+      "name": "org_false_positive_name_overlap",
+      "request_path": "eval/requests/goldset/org_false_positive_name_overlap.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Similar organization names but conflicting country and identifiers"
+    },
+    {
+      "name": "ach_sparse_false_positive",
+      "request_path": "eval/requests/goldset/ach_sparse_false_positive.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "ACH sparse party data with weak name-only overlap"
+    },
+    {
+      "name": "ach_true_match_strong",
+      "request_path": "eval/requests/goldset/ach_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "ACH payment with exact individual corroboration"
+    },
+    {
+      "name": "ofac_real_individual_false_positive_tareck",
+      "request_path": "eval/requests/goldset/ofac_real_individual_false_positive_tareck.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Real-OFAC-inspired name-only false positive candidate"
+    },
+    {
+      "name": "ofac_real_wrong_context_vessel_apama",
+      "request_path": "eval/requests/goldset/ofac_real_wrong_context_vessel_apama.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Wrong-context vessel candidate"
+    },
+    {
+      "name": "individual_true_match_alias_identifier",
+      "request_path": "eval/requests/goldset/individual_true_match_alias_identifier.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Alias match plus identifier corroboration"
+    },
+    {
+      "name": "org_wrong_context_country_conflict",
+      "request_path": "eval/requests/goldset/org_wrong_context_country_conflict.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Organization name overlap with conflicting domicile and registration numbers"
+    }
+  ]
+}

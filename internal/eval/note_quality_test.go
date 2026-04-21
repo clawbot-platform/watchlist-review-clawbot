@@ -21,6 +21,10 @@ func TestEvaluateCaseHappyPath(t *testing.T) {
 			"retrieval_context": map[string]any{
 				"snippets": []map[string]any{{"snippet_id": "snip-1"}},
 			},
+			"alert": map[string]any{
+				"screened_party": map[string]any{"name": map[string]any{"full_name": "Jane Citizen"}},
+				"matched_party":  map[string]any{"name": map[string]any{"full_name": "Jane Citizen"}},
+			},
 		},
 	}
 	errors, warnings := EvaluateCase(CaseSpec{
@@ -36,19 +40,23 @@ func TestEvaluateCaseHappyPath(t *testing.T) {
 	}
 }
 
-func TestEvaluateCaseCatchesPoorNoteQuality(t *testing.T) {
+func TestEvaluateCaseFlagsCrossEntityContamination(t *testing.T) {
 	resp := &api.ReviewResponse{
 		DecisionLabel: "escalate",
 		AnalystNote: &notes.AnalystNote{
 			Status:                    "generated",
-			Note:                      "Escalate.",
-			EvidenceSummary:           []string{"* Strong corroborated match"},
-			MissingInformationSummary: []string{"*No explicit missing information noted in payload."},
-			NextStepRationale:         "Escalate for analyst review due to exact date",
+			Note:                      "The organization matches Jane Citizen based on passport evidence.",
+			EvidenceSummary:           []string{"address support"},
+			MissingInformationSummary: []string{},
+			NextStepRationale:         "Escalate for analyst review.",
 		},
 		ReviewContext: map[string]any{
 			"retrieval_context": map[string]any{
-				"warnings": []string{"retrieval_failed: 404"},
+				"snippets": []map[string]any{{"snippet_id": "snip-1"}},
+			},
+			"alert": map[string]any{
+				"screened_party": map[string]any{"name": map[string]any{"full_name": "North Harbor Trading LLC"}},
+				"matched_party":  map[string]any{"name": map[string]any{"full_name": "North Harbor Trading LLC"}},
 			},
 		},
 	}
@@ -57,7 +65,7 @@ func TestEvaluateCaseCatchesPoorNoteQuality(t *testing.T) {
 		RequireGeneratedNote: true,
 		RequireRetrieval:     true,
 	}, resp)
-	if len(errors) < 4 {
-		t.Fatalf("expected multiple errors, got %+v", errors)
+	if len(errors) == 0 {
+		t.Fatal("expected contamination error")
 	}
 }

@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776737991185869000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421021919.085278000",
+  "created_at": "2026-04-21T02:19:51.185869Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert pertains to an ACH party investigation where the name matches exactly between 'Carlos Vega' (screened party) and 'Carlos Velez' (matched party). However, there is a country mismatch (US vs. Cuba), indicating a potential error or requiring further verification. The matched party's date of birth is available but lacks supporting identifiers from the screened party. This sparse data necessitates analyst investigation to confirm or refute the alert before closure.",
+    "evidence_summary": [
+      "The screened party name matches the matched party's exact name.",
+      "Date of birth for the matched party is provided (1962-10-02).",
+      "Entity type for both screened and matched parties is identified as 'individual'."
+    ],
+    "missing_information_summary": [
+      "Country mismatch between screened ('US') and matched party ('CU')",
+      "Additional corroboration lacking to resolve geography conflict",
+      "Address context for Carlos Vega/Carlos Velez is missing",
+      "Screened_party.date is absent",
+      "Matched_party.identifiers are not provided"
+    ],
+    "next_step_rationale": "Investigate the geographic discrepancy and gather additional corroboration to resolve contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,22 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776734647090721000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421012346.038410000",
+  "created_at": "2026-04-21T01:24:07.090721Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Based on the comprehensive analysis, there's a robust match with the SDN list entity 'Jane Citizen'. This assessment is substantiated by exact normalized name match, date of birth verification, country alignment, and corroboration through passport identifier details. Given the high data sufficiency score and lack of contradictions, the next step is to escalate this case for detailed analyst review.",
+    "evidence_summary": [
+      "Address, country, and entity type support match.",
+      "Date of birth and exact identifier match on passport corroborate.",
+      "Exact normalized name match identified."
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review based on strong supporting data and no contradictions. The evidence indicates a high likelihood of the same entity matching across multiple criteria."
+  },
+  "tenant_id": "test-tenant"
+}

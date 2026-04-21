@@ -1,0 +1,71 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-gold-vessel-apama-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "gold-vessel-apama-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-14T12:00:00Z",
+    "case_id": "case-gold-vessel-apama-001",
+    "alert_type": "vessel_screening",
+    "jurisdiction": "US",
+    "priority": "high",
+    "screened_party": {
+      "entity_type": "vessel",
+      "full_name": "APAMA SHIPPING LLC",
+      "aliases": [
+        "APAMA"
+      ],
+      "countries": [
+        "US"
+      ],
+      "identifiers": [
+        {
+          "type": "registration_number",
+          "value": "US-VES-7744",
+          "issuing_country": "US"
+        }
+      ],
+      "addresses": [
+        {
+          "address_text": "1 Main St",
+          "city": "Jersey City",
+          "country": "US"
+        }
+      ],
+      "source_system": "shipping_registry",
+      "source_record_id": "apama-left"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "apama-right",
+      "entity_type": "vessel",
+      "full_name": "APAMA",
+      "aliases": [
+        "M/T APAMA"
+      ],
+      "countries": [
+        "PA"
+      ],
+      "identifiers": [
+        {
+          "type": "imo",
+          "value": "IMO9381234",
+          "issuing_country": "PA"
+        }
+      ]
+    },
+    "screening_features": {
+      "vendor_score": 66,
+      "name_score": 79,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

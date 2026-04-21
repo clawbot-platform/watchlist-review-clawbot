@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776775597688315000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124610.125298000",
+  "created_at": "2026-04-21T12:46:37.688315Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "Jane Citizen has been matched with high confidence due to exact matches in normalized name, date of birth, country, and identifier across records. All evidence points conclusively to a strong positive identification, necessitating further analyst scrutiny as per the escalation decision.",
+    "evidence_summary": [
+      "Exact normalized name match supports the screened individual.",
+      "Exact date of birth corroborates with stored records.",
+      "Country information aligns with records.",
+      "Identifier matches on passport further reinforce the identity linkage.",
+      "All evidence collectively suggests a strong, corroborated match."
+    ],
+    "missing_information_summary": [
+      "No additional demographic or contextual data provided beyond what confirms the match."
+    ],
+    "next_step_rationale": "Given the high confidence in identity based on exact normalized name, date of birth, country, and passport information, the next step is to escalate for analyst review."
+  },
+  "tenant_id": "test-tenant"
+}

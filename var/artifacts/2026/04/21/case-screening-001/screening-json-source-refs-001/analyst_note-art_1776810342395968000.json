@@ -1,0 +1,23 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776810342395968000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421222528.145965000",
+  "created_at": "2026-04-21T22:25:42.395968Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert indicates a strong, corroborated match between the screened party 'Jane Citizen' and the matched party in the SDN watchlist candidates system. The evidence includes exact name matching (normalized vs canonical), exact date of birth, country residence in the US, and an identical passport identifier. There are no contradictions or missing information that could undermine this determination.",
+    "evidence_summary": [
+      "Normalized name exact match: 'Jane Citizen' (screened) vs. 'JANE CITIZEN' (matched).",
+      "Date of birth exact match: Both parties born on July 14, 1988.",
+      "Country match: Both reside in the United States.",
+      "Exact passport identifier match: Passport number P1234567 issued by the US for both parties."
+    ],
+    "next_step_rationale": "Strong corroborated match with sufficient data and no contradictions; escalate for analyst review based on high confidence."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776729189755690000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235238.342315000",
+  "created_at": "2026-04-20T23:53:09.75569Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case requires investigation due to conflicting information: geography (US vs Iran), incorporation dates (2019 vs 2011), and lack of strong identifier corroboration. The current contradictions necessitate analyst review before closure.",
+    "evidence_summary": [
+      "Organization name discrepancy ('Global Marine' vs 'Global Marine Service Co')",
+      "Geographical conflict (US screened party, SDN match with Iran)",
+      "Incorporation date mismatch ('2019-04-18' screened vs '2011-01-03' matched entity)",
+      "Evidence against decision: country mismatch, date conflict",
+      "Entity type support and organization token overlap"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration required for date of birth, geography, strong identifier alignment",
+      "Lack of matching IMO or registry data to confirm maritime identity",
+      "No exact identifier and date-of-birth corroboration for screened party"
+    ],
+    "next_step_rationale": "Investigate the contradictions in country, date, and identifiers as hard but corroborate-able, gathering further evidence."
+  },
+  "tenant_id": "test-tenant"
+}

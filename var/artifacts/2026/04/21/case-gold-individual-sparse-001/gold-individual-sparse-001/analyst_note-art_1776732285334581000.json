@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776732285334581000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421004422.818386000",
+  "created_at": "2026-04-21T00:44:45.334581Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "An individual onboarding case presents a contradiction due to mismatched geographical data for 'Tareck Joseph' against an SDN list entry, 'Tareck El Aissami', with strong entity type support but insufficient corroboration. The determination is to investigate next as there are sparse and conflicting details needing analyst review before closure.",
+    "evidence_summary": [
+      "Entity type support for individual",
+      "Hard contradiction in geography and identifiers requires analyst confirmation"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed to resolve country mismatch",
+      "Address context not provided",
+      "Date corroboration missing",
+      "Geography corroboration lacking",
+      "Matched party identifiers insufficiently corroborated"
+    ],
+    "next_step_rationale": "Investigate geography conflict and gather more evidence to resolve contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

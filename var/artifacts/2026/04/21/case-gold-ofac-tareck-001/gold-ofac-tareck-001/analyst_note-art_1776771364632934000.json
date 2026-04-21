@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776771364632934000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421113534.262333000",
+  "created_at": "2026-04-21T11:36:04.632934Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to 'Tareck Joseph' screened under the SDN program with a high match strength to 'Tareck El Aissami'. However, contradictions in date of birth and geography necessitate analyst review to resolve before closure. The determination is to investigate further due to sparse evidence requiring corroboration for date and geographical details.",
+    "evidence_summary": [
+      "Screened name 'Tareck Joseph' matches matched name 'Tareck El Aissami' for individual onboarding.",
+      "SDN program applies due to match strength score of 9.",
+      "Contradiction detected in date of birth and geography requiring further investigation.",
+      "Data sufficiency score of 64 indicates a sparse case.",
+      "Entity type support found."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date and geography validation.",
+      "Date of birth conflict requires resolution.",
+      "Geographical information discrepancy demands verification.",
+      "More robust identifier corroboration is required to confirm the match."
+    ],
+    "next_step_rationale": "Given contradictions in date of birth and geography, along with insufficient data sufficiency, the next step involves investigating these conflicts and gathering more evidence for validation."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,324 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776776157346520000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421125525.043493000",
+  "created_at": "2026-04-21T12:55:57.34652Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "investigate_next_step",
+    "review_context": {
+      "alert": {
+        "kind": "organization_onboarding",
+        "metadata": {
+          "alert_id": "gold-org-wrongctx-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "organization_onboarding",
+          "jurisdiction": "US",
+          "case_id": "case-gold-org-wrongctx-001",
+          "priority": "medium"
+        },
+        "screened_party": {
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Eastern Star Holdings Ltd",
+            "aliases": [
+              "Eastern Star"
+            ]
+          },
+          "incorporation_date": "2018-07-07",
+          "countries": [
+            "GB"
+          ],
+          "addresses": [
+            {
+              "address_text": "10 Lime St",
+              "city": "London",
+              "country": "GB"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "GB-EST-4433",
+              "issuing_country": "GB"
+            }
+          ],
+          "source_record_id": "est-left",
+          "source_system": "vendor_master"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "est-right",
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Eastern Star Holding Company",
+            "aliases": [
+              "Eastern Star"
+            ]
+          },
+          "incorporation_date": "2009-03-09",
+          "countries": [
+            "SY"
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "SY-EST-9001",
+              "issuing_country": "SY"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 66,
+          "name_score": 81,
+          "match_flags": [
+            "name"
+          ]
+        }
+      },
+      "features": {
+        "alert_id": "gold-org-wrongctx-001",
+        "kind": "organization_onboarding",
+        "screened_name": {
+          "original": "Eastern Star Holdings Ltd",
+          "canonical": "EASTERN STAR HOLDINGS LTD",
+          "canonical_aliases": [
+            "EASTERN STAR"
+          ],
+          "tokens": [
+            "EASTERN",
+            "STAR",
+            "HOLDINGS",
+            "LTD"
+          ],
+          "token_sorted": "EASTERN HOLDINGS LTD STAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Eastern Star Holding Company",
+          "canonical": "EASTERN STAR HOLDING COMPANY",
+          "canonical_aliases": [
+            "EASTERN STAR"
+          ],
+          "tokens": [
+            "EASTERN",
+            "STAR",
+            "HOLDING",
+            "COMPANY"
+          ],
+          "token_sorted": "COMPANY EASTERN HOLDING STAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "screened_exact": "2018-07-07",
+          "screened_year": "2018",
+          "matched_exact": "2009-03-09",
+          "matched_year": "2009",
+          "exact_match": false,
+          "year_match": false,
+          "has_conflict": true
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "other": [
+              "GBEST4433"
+            ]
+          },
+          "matched_by_type": {
+            "other": [
+              "SYEST9001"
+            ]
+          },
+          "potential_conflicts": [
+            "other"
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "GB"
+          ],
+          "matched_countries": [
+            "SY"
+          ],
+          "address_countries": [
+            "GB"
+          ],
+          "has_country_support": false
+        },
+        "context": {
+          "screened_entity_type": "organization",
+          "matched_entity_type": "organization",
+          "kind": "organization_onboarding",
+          "is_ach": false,
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "contradictions": [
+          "dob_conflict",
+          "identifier_conflict",
+          "geography_conflict"
+        ],
+        "vendor_score": 66,
+        "name_score": 81,
+        "match_flags": [
+          "name"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "organization_onboarding | screened=Eastern Star Holdings Ltd | matched=Eastern Star Holding Company | program=SDN | decision=investigate_next_step | entity type support | organization token overlap",
+        "snippets": [
+          {
+            "snippet_id": "snip-org-fp-1",
+            "source": "clawmem",
+            "title": "Organization overlap with contradictions",
+            "text": "For similar organization names with conflicting country, incorporation date, or identifiers, investigate before closure if contradictions are hard but corroboration remains sparse.",
+            "score": 5,
+            "tags": [
+              "organization_onboarding",
+              "organization",
+              "investigate_next_step",
+              "false_positive",
+              "wrong_context"
+            ]
+          },
+          {
+            "snippet_id": "snip-org-true-1",
+            "source": "policy",
+            "title": "Organization true-match escalation",
+            "text": "Escalate organization onboarding cases when registration and tax identifiers align with strong normalized-name corroboration.",
+            "score": 4,
+            "tags": [
+              "organization_onboarding",
+              "organization",
+              "registration_number",
+              "tax_id",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-apama-1",
+            "source": "clawmem",
+            "title": "APAMA wrong-context maritime case",
+            "text": "APAMA maritime name overlap without matching IMO or registry data should be investigated as a wrong-context entity match.",
+            "score": 3.5,
+            "tags": [
+              "organization_onboarding",
+              "maritime",
+              "apama",
+              "wrong_context",
+              "investigate_next_step"
+            ]
+          },
+          {
+            "snippet_id": "snip-ach-sparse-1",
+            "source": "policy",
+            "title": "ACH sparse-data review guidance",
+            "text": "ACH party alerts with weak name-only overlap and sparse supporting party data should be investigated rather than auto-closed.",
+            "score": 2,
+            "tags": [
+              "ach_party",
+              "ach",
+              "sparse_data",
+              "investigate_next_step",
+              "false_positive"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_0c30256a8ce9c770",
+          "decision": "clear",
+          "decision_trace_id": "dt_a349c39d69f7ac3b"
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 17,
+        "data_sufficiency_score": 78,
+        "name_match_score": 6,
+        "date_match_score": 0,
+        "identifier_match_score": 6,
+        "geography_match_score": 0,
+        "address_match_score": 0,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 12,
+        "geography_quality_score": 4,
+        "supporting_context_score": 7,
+        "contradictions": [
+          "dob_conflict",
+          "geography_conflict",
+          "identifier_conflict"
+        ],
+        "decision_label": "investigate_next_step",
+        "decision_reason": "Sparse or contradictory case requires analyst investigation before closure.",
+        "evidence_for": [
+          "entity type support",
+          "organization token overlap"
+        ],
+        "evidence_against": [
+          "country mismatch",
+          "date conflict",
+          "hard contradiction requires analyst confirmation",
+          "identifier conflict"
+        ],
+        "missing_information": [
+          "additional corroboration",
+          "date corroboration",
+          "geography corroboration",
+          "strong identifier corroboration"
+        ],
+        "next_step": "Investigate contradiction and gather additional corroboration."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v4-grounded-names",
+        "note": "This watchlist review involves Eastern Star Holdings Ltd (screened_name) matched to Eastern Star Holding Company (matched_name) under the SDN program. The evidence supports organization type but is marred by dob conflict, geography conflict, and identifier conflict. Despite having organization token overlap, insufficient data exists for a definitive decision. Investigate contradictions and seek further corroboration.",
+        "evidence_summary": [
+          "Two names match program SDN, screened as Eastern Star Holdings Ltd, matched as Eastern Star Holding Company.",
+          "Entity type support identified for organizations but identifier conflict present.",
+          "Hard contradiction in date of birth necessitates analyst verification.",
+          "Geography conflict evident between screened and matched names.",
+          "Organization token overlap confirmed between screened_name and matched_name."
+        ],
+        "missing_information_summary": [
+          "Additional corroboration required for date, geography, and strong identifier.",
+          "Date corroboration needed to resolve dob conflict.",
+          "Geography corroboration essential due to geography conflict.",
+          "Strong identifier corroboration necessary to clarify identifier conflict."
+        ],
+        "next_step_rationale": "Investigate hard contradictions in date of birth, geography, and identifiers, gather additional corroboration before deciding on case closure."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

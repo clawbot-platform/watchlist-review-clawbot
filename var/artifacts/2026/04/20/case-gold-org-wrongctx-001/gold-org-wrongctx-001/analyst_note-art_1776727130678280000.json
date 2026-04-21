@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776727130678280000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420231822.966288000",
+  "created_at": "2026-04-20T23:18:50.67828Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This organization onboarding case, involving 'Eastern Star Holding Company', presents conflicts in geography (US vs SY), date of birth (unspecified vs 2009-03-09), and identifiers ('Eastern Star' vs 'Eastern Star Holdings Ltd'). Despite entity type support and token overlap, the contradictory evidence warrants an analyst investigation before closure.",
+    "evidence_summary": [
+      "Country mismatch (US vs SY)",
+      "Date conflict (incorporation dates differ)",
+      "Identifier conflict with name variations ('Eastern Star' and 'Eastern Star Holding Company')",
+      "Entity type support for organization",
+      "Organization token overlap in names"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration on geography (country of operations)",
+      "Corroboration on date of birth",
+      "Strong identifier corroboration",
+      "Country and date alignment confirmation"
+    ],
+    "next_step_rationale": "Investigate contradictions and gather additional corroboration to resolve hard-to-confirm discrepancies."
+  },
+  "tenant_id": "test-tenant"
+}

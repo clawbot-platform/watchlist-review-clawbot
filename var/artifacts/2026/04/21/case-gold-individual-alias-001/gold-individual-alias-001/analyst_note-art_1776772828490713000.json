@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776772828490713000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421120009.148641000",
+  "created_at": "2026-04-21T12:00:28.490713Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The individual Mohamed Karim matches Muhammad Karim through exact alias support, date alignment, and verified passport identifiers under the SDN program.",
+    "evidence_summary": [
+      "Strong corroborated match with Mohamed Karim as screened name and Muhammad Karim as matched name.",
+      "Exact alias-to-name match confirmed for screened individual Mohamed Karim.",
+      "Exact date of birth support aligns both entities.",
+      "Exact identifier match found on passport data.",
+      "Address and country information corroborates the entity profile."
+    ],
+    "missing_information_summary": [
+      "No missing information identified from the provided data payload."
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration and sufficient data."
+  },
+  "tenant_id": "test-tenant"
+}

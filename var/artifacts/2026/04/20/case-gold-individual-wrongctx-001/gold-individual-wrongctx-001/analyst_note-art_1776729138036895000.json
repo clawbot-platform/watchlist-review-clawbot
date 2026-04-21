@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776729138036895000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235144.356011000",
+  "created_at": "2026-04-20T23:52:18.036895Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Omar Haddad, screened under 'O Haddad' with a US DOB of 1992-03-21, conflicts with the SDN list entity 'Jane Citizen', listed as Syrian with a DOB of 1971-08-09. Further investigation is required to reconcile these discrepancies.",
+    "evidence_summary": [
+      "Screened individual 'Omar Haddad' matched exactly with SDN list entity under 'Jane Citizen'",
+      "Date of Birth conflict: System DOB ('1971-08-09') contradicts screening data ('1992-03-21')",
+      "Geography mismatch: Listed country ('SY') different from screened country ('US')",
+      "Identifier discrepancy: Aliases 'Omar H.' and 'O Haddad' present in system vs. list entity",
+      "Strong name match and entity type support noted by identity evidence"
+    ],
+    "missing_information_summary": [
+      "Missing corroboration for Date of Birth, geography, and identifiers",
+      "Absence of additional documentation to resolve contradictions"
+    ],
+    "next_step_rationale": "The contradictory information necessitates an investigation to clarify discrepancies before deciding on closure."
+  },
+  "tenant_id": "test-tenant"
+}

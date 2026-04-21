@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776770828874580000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421112637.594038000",
+  "created_at": "2026-04-21T11:27:08.87458Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert flags Tareck Joseph due to potential match with Tareck El Aissami under the SDN program. The deterministic score indicates a sparse case with contradictions, primarily a geography conflict and a hard contradiction needing analyst confirmation around country mismatch. Evidence against includes these contradictions while evidence for confirms the entity type support. Missing information comprises lack of address context, date corroboration, geographical verification, and matched party identifiers. Retrieval snippets advise investigating false positives post-corroboration and escalate upon obtaining exact name, DOB, and passport details.",
+    "evidence_summary": [
+      "Tareck Joseph and Tareck El Aissami name overlap identified.",
+      "Geography conflict noted between screened and matched parties.",
+      "Strong entity type support for individual screening present.",
+      "Contradiction due to country mismatch requires analyst confirmation.",
+      "Additional corroboration needed for geography, date, and identifiers."
+    ],
+    "missing_information_summary": [
+      "Address context missing for Tareck Joseph.",
+      "Date corroboration required to resolve geography conflict.",
+      "Geography corroboration absent.",
+      "Matched party's identifiers unidentified."
+    ],
+    "next_step_rationale": "Investigate contradiction regarding country mismatch and gather additional corroboration for address, date, and identifiers."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776721835914563000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420215013.363284000",
+  "created_at": "2026-04-20T21:50:35.914563Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case involves an individual named Jane Citizen who is being screened against SDN list (SDN) due to an onboarding process. The deterministic result indicates a high-confidence match based on exact normalized name, date of birth, country, and identifier corroboration from a passport. Given the strong data sufficiency score (92) and match strength score (93), along with absence of contradictions or missing information, the decision is to escalate for further analyst review.",
+    "evidence_summary": [
+      "Address support",
+      "Country support",
+      "Entity type support",
+      "Exact date match",
+      "Exact identifier match on passport",
+      "Exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review based on strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

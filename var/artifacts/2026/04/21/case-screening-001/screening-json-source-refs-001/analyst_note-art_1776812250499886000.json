@@ -1,0 +1,28 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776812250499886000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421225720.634501000",
+  "created_at": "2026-04-21T22:57:30.499886Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert indicates a strong match between the screened individual and matched party, with corroborated matches in name, date of birth, country, passport identifier, and aliases. The vendor score and match strength are high, supporting escalation for analyst review.",
+    "evidence_summary": [
+      "Address support",
+      "Country support",
+      "Entity type support",
+      "Exact date match",
+      "exact identifier match on passport.",
+      "Exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review.",
+    "warnings": [
+      "granite_analyst_note_evidence_summary_rebuilt_from_deterministic_score"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

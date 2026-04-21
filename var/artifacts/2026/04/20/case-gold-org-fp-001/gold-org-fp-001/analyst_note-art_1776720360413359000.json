@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776720360413359000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420212534.996281000",
+  "created_at": "2026-04-20T21:26:00.413359Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This organization watchlist case exhibits multiple contradictions: a country mismatch (US vs IR), a date-of-birth discrepancy, and identifier conflict. The data sufficiency score is 78, and the match strength score is only 17, both indicating weak support for a positive match. Despite the organization name partially overlapping ('Global Marine'), insufficient corroboration exists regarding date of birth or geographic location to resolve these discrepancies, leading to the deterministic decision to close the case.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Organization token overlap in name ('Global Marine')"
+    ],
+    "missing_information_summary": [
+      "Lack of date corroboration for dob conflict",
+      "Geography mismatch between US screened party and IR matched party",
+      "Weak identifier correlation due to conflict"
+    ],
+    "next_step_rationale": "Given the presence of hard contradictions including country, date, and identifier conflicts along with weak overall match strength, the deterministic decision is to close this case as likely false positive."
+  },
+  "tenant_id": "test-tenant"
+}

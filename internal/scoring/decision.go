@@ -1,7 +1,7 @@
 package scoring
 
 import (
-	"fmt"
+	
 	"sort"
 	"strings"
 
@@ -26,16 +26,84 @@ func Evaluate(alert *alerts.CanonicalAlert, fx *features.ExtractedFeatures) *Res
 	}
 
 	result.Contradictions = uniqueStrings(append([]string(nil), fx.Contradictions...))
+
 	computeMatchStrength(fx, result)
 	computeDataSufficiency(fx, result)
 	result.MissingInformation = deriveMissingInformation(fx)
+
+	applyDeterministicAdjustments(result)
 	decide(alert, fx, result)
 
 	return result
 }
 
+func applyDeterministicAdjustments(result *Result) {
+	if result == nil {
+		return
+	}
+
+	// 1) Previous reviewed disposition signal.
+	if result.PreviousDispositionScore != 0 {
+		result.MatchStrengthScore = clampScore(result.MatchStrengthScore + result.PreviousDispositionScore)
+
+		if result.PreviousDispositionScore > 0 {
+			for _, reason := range result.PreviousDispositionReasons {
+				if strings.TrimSpace(reason) != "" {
+					result.EvidenceFor = append(result.EvidenceFor, reason)
+				}
+			}
+		} else {
+			for _, reason := range result.PreviousDispositionReasons {
+				if strings.TrimSpace(reason) != "" {
+					result.EvidenceAgainst = append(result.EvidenceAgainst, reason)
+				}
+			}
+		}
+	}
+
+	// 2) Relationship support and linked-doc support reinforce corroboration.
+	positiveRelationshipBoost := result.RelationshipSupportScore + result.OfficialDocLinkScore + result.ProgramContextScore
+	if positiveRelationshipBoost > 0 {
+		result.MatchStrengthScore = clampScore(result.MatchStrengthScore + positiveRelationshipBoost)
+
+		// Relationship/doc support also increases confidence that the case is reviewable.
+		result.DataSufficiencyScore = clampScore(result.DataSufficiencyScore + minInt(positiveRelationshipBoost, 12))
+
+		if len(result.RelationshipReasons) > 0 {
+			for _, reason := range result.RelationshipReasons {
+				if strings.TrimSpace(reason) != "" {
+					result.EvidenceFor = append(result.EvidenceFor, reason)
+				}
+			}
+		} else {
+			if result.RelationshipSupportScore > 0 {
+				result.EvidenceFor = append(result.EvidenceFor, "ofac relationship support")
+			}
+			if result.OfficialDocLinkScore > 0 {
+				result.EvidenceFor = append(result.EvidenceFor, "linked official document support")
+			}
+			if result.ProgramContextScore > 0 {
+				result.EvidenceFor = append(result.EvidenceFor, "program context support")
+			}
+		}
+	}
+
+	// 3) Relationship conflict should pull the case away from auto-escalate.
+	if result.RelationshipConflictPenalty > 0 {
+		result.MatchStrengthScore = clampScore(result.MatchStrengthScore - result.RelationshipConflictPenalty)
+
+		// Penalize sufficiency modestly so relationship conflict keeps gray-zone cases conservative.
+		result.DataSufficiencyScore = clampScore(result.DataSufficiencyScore - minInt(result.RelationshipConflictPenalty, 10))
+
+		result.EvidenceAgainst = append(result.EvidenceAgainst, "relationship conflict")
+		if !hasAny(result.Contradictions, "relationship_conflict") {
+			result.Contradictions = append(result.Contradictions, "relationship_conflict")
+		}
+	}
+}
+
 func decide(alert *alerts.CanonicalAlert, fx *features.ExtractedFeatures, result *Result) {
-	hasHardConflict := hasAny(result.Contradictions, "entity_type_conflict", "identifier_conflict")
+	hasHardConflict := hasAny(result.Contradictions, "entity_type_conflict", "identifier_conflict", "relationship_conflict")
 	hasAnyConflict := len(result.Contradictions) > 0
 
 	switch {
@@ -79,14 +147,21 @@ func decide(alert *alerts.CanonicalAlert, fx *features.ExtractedFeatures, result
 		result.NextStep = "Investigate next step and gather corroborating evidence."
 	}
 
+	// Calibrate weak but contradiction-heavy sparse cases away from auto-close.
+	ApplySparseContradictionPolicy(result)
+
 	result.EvidenceFor = uniqueStrings(result.EvidenceFor)
 	result.EvidenceAgainst = uniqueStrings(result.EvidenceAgainst)
 	result.MissingInformation = uniqueStrings(result.MissingInformation)
+	result.PreviousDispositionReasons = uniqueStrings(result.PreviousDispositionReasons)
+	result.RelationshipReasons = uniqueStrings(result.RelationshipReasons)
 
 	sort.Strings(result.Contradictions)
 	sort.Strings(result.EvidenceFor)
 	sort.Strings(result.EvidenceAgainst)
 	sort.Strings(result.MissingInformation)
+	sort.Strings(result.PreviousDispositionReasons)
+	sort.Strings(result.RelationshipReasons)
 }
 
 func organizationGrayZone(alert *alerts.CanonicalAlert, fx *features.ExtractedFeatures, result *Result) bool {
@@ -96,89 +171,32 @@ func organizationGrayZone(alert *alerts.CanonicalAlert, fx *features.ExtractedFe
 	if alert.Kind != alerts.AlertKindOrganizationOnboarding {
 		return false
 	}
-	if hasAny(result.Contradictions, "entity_type_conflict", "identifier_conflict") {
+	if hasAny(result.Contradictions, "entity_type_conflict", "identifier_conflict", "relationship_conflict") {
 		return false
 	}
 	if hasNonNameCorroboration(result) {
 		return false
 	}
 
-	// Organization overlap cases should stay conservative.
-	// If there is any meaningful business-name overlap and the case has
-	// enough structure to review, prefer investigate_next_step over close.
 	return result.NameMatchScore >= 4 &&
 		result.MatchStrengthScore <= 30 &&
 		result.DataSufficiencyScore >= 30
 }
-func deriveMissingInformation(fx *features.ExtractedFeatures) []string {
-	if fx == nil {
-		return nil
+
+func clampScore(v int) int {
+	switch {
+	case v < 0:
+		return 0
+	case v > 100:
+		return 100
+	default:
+		return v
 	}
-	var missing []string
-	seen := map[string]struct{}{}
-	for _, field := range fx.MissingFields {
-		addMissing(seen, &missing, field)
-	}
-	if !fx.Date.ExactMatch && !fx.Date.YearMatch {
-		addMissing(seen, &missing, "date corroboration")
-	}
-	if len(fx.Identifiers.ExactMatches) == 0 {
-		addMissing(seen, &missing, "strong identifier corroboration")
-	}
-	if !fx.Geography.HasCountrySupport {
-		addMissing(seen, &missing, "geography corroboration")
-	}
-	if fx.ScreenedCompleteness.AddressCount == 0 && fx.MatchedCompleteness.AddressCount == 0 {
-		addMissing(seen, &missing, "address context")
-	}
-	return missing
 }
 
-func addMissing(seen map[string]struct{}, out *[]string, value string) {
-	value = strings.TrimSpace(value)
-	if value == "" {
-		return
+func minInt(a, b int) int {
+	if a < b {
+		return a
 	}
-	if _, ok := seen[value]; ok {
-		return
-	}
-	seen[value] = struct{}{}
-	*out = append(*out, value)
-}
-
-func hasAny(values []string, wanted ...string) bool {
-	set := map[string]struct{}{}
-	for _, v := range values {
-		set[strings.TrimSpace(v)] = struct{}{}
-	}
-	for _, want := range wanted {
-		if _, ok := set[want]; ok {
-			return true
-		}
-	}
-	return false
-}
-
-func uniqueStrings(in []string) []string {
-	seen := map[string]struct{}{}
-	var out []string
-	for _, v := range in {
-		v = strings.TrimSpace(v)
-		if v == "" {
-			continue
-		}
-		if _, ok := seen[v]; ok {
-			continue
-		}
-		seen[v] = struct{}{}
-		out = append(out, v)
-	}
-	return out
-}
-
-func (r *Result) String() string {
-	if r == nil {
-		return "<nil>"
-	}
-	return fmt.Sprintf("MSS=%d DSS=%d label=%s", r.MatchStrengthScore, r.DataSufficiencyScore, r.DecisionLabel)
+	return b
 }

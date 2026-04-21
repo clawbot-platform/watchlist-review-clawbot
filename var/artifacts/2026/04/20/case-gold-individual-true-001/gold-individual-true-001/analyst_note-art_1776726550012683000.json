@@ -1,0 +1,23 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776726550012683000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420230847.171417000",
+  "created_at": "2026-04-20T23:09:10.012683Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case exhibits a robust match against an SDN list entity, Jane Citizen, under the US jurisdiction. The match is corroborated by exact normalized name, date of birth, country, and identifier alignment from a passport, meeting escalation criteria with high confidence.",
+    "evidence_summary": [
+      "Address, country, and entity type support the match.",
+      "Date of birth exactly matches.",
+      "Exact identifier matched on passport.",
+      "Normalized name exact match."
+    ],
+    "next_step_rationale": "The case requires escalation for analyst review due to strong data corroboration with no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

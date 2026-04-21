@@ -1,0 +1,53 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-history-fp-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "history-fp-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-21T12:00:00Z",
+    "case_id": "case-history-fp-001",
+    "alert_type": "individual_onboarding",
+    "jurisdiction": "US",
+    "priority": "high",
+    "screened_party": {
+      "entity_type": "individual",
+      "full_name": "Tareck Joseph",
+      "countries": [
+        "US"
+      ],
+      "source_system": "kyc_applications",
+      "source_record_id": "history-fp-001-screened"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "history-fp-001-matched-uid",
+      "entity_type": "individual",
+      "full_name": "Tareck El Aissami"
+    },
+    "screening_features": {
+      "vendor_score": 82,
+      "name_score": 87,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  },
+  "history_context": {
+    "same_pair_history": [
+      {
+        "previous_case_id": "case-prev-fp-001",
+        "decision_label": "close",
+        "reviewed_outcome": "false_positive",
+        "created_at": "2026-04-10T09:00:00Z",
+        "contradiction_pattern": "name_overlap+country_mismatch+sparse_data"
+      }
+    ],
+    "contradiction_pattern": "name_overlap+country_mismatch+sparse_data"
+  }
+}

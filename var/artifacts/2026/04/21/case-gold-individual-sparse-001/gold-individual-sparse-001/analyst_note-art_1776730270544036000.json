@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776730270544036000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421001047.106345000",
+  "created_at": "2026-04-21T00:11:10.544036Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The onboarding alert for Tareck Joseph has raised an investigation need due to conflicting geographic information against a known individual, Tareck El Aissami. While there is support for 'individual' entity type, critical details such as date of birth and address context are missing or in discrepancy. The deterministic decision label remains 'investigate_next_step' to resolve these contradictions before closure.",
+    "evidence_summary": [
+      "Name overlap with Tareck El Aissami without matching date of birth, geography, or identifiers.",
+      "Geographical mismatch (country: US vs Venezuela)"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration for the conflicting geography",
+      "Address context to resolve location discrepancy",
+      "Date of birth corroboration needed"
+    ],
+    "next_step_rationale": "Investigate the contradiction and gather more corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

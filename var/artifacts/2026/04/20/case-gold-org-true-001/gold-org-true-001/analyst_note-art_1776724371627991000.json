@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-org-true-001",
+  "artifact_id": "art_1776724371627991000",
+  "case_id": "case-gold-org-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420223231.261455000",
+  "created_at": "2026-04-20T22:32:51.627991Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'North Harbor Trading LLC' has been identified through multiple data points including address support, country (US), entity type, exact date of incorporation (2017-06-01), and an exact normalized name match. There are no contradictions and the data sufficiency score is high at 92, leading to a deterministic decision to escalate for further analyst review.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on other",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

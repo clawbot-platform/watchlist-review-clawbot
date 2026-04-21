@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-ach-true-001",
+  "artifact_id": "art_1776734721587935000",
+  "case_id": "case-gold-ach-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421012501.135876000",
+  "created_at": "2026-04-21T01:25:21.587935Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The determinstic result indicates a strong and uncontradicted match between Maria Salazar and an SDN list entry. Evidence includes exact matches on date of birth, normalized name, passport identifier, along with supporting data such as address and country alignment. The data sufficiency score is 94, and the match strength score is 93, both indicating high confidence in this identification.",
+    "evidence_summary": [
+      "exact date match",
+      "exact normalized name match",
+      "exact identifier match on passport",
+      "address support",
+      "country support",
+      "entity type support"
+    ],
+    "next_step_rationale": "Given the strong corroboration of data supporting a positive match, escalate for analyst review as directed by the deterministic decision label."
+  },
+  "tenant_id": "test-tenant"
+}

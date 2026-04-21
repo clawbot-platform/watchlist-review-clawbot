@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776737621832775000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421021306.507650000",
+  "created_at": "2026-04-21T02:13:41.832775Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The onboarding case for 'Eastern Star Holding Company' requires investigation due to conflicting information. The screened entity ('Eastern Star Holdings Ltd') is located in GB, while the matched entity is associated with SY and has an earlier incorporation date of 2009-03-09, distinct from the screened 2018-07-07. There's also an identifier conflict. While entity type support and token overlap suggest potential links, missing corroboration for dates and geography necessitates analyst intervention to clarify these discrepancies before deciding closure.",
+    "evidence_summary": [
+      "Country mismatch: GB (screened) vs SY (matched)",
+      "Date conflict: 2018-07-07 (screened) vs 2009-03-09 (matched)",
+      "Identifier conflict: Eastern Star Holdings Ltd vs Eastern Star Holding Company",
+      "Entity type support for organization",
+      "Organization token overlap between screened and matched names"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration missing for date of birth, geography",
+      "Strong identifier corroboration lacking to resolve conflict",
+      "Date of birth absent in both screened and matched records"
+    ],
+    "next_step_rationale": "Resolve contradictions by investigating the sparse evidence regarding country, dates, and identifiers."
+  },
+  "tenant_id": "test-tenant"
+}

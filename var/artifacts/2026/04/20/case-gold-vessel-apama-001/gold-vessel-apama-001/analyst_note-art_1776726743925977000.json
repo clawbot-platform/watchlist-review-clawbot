@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776726743925977000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420231201.952890000",
+  "created_at": "2026-04-20T23:12:23.925977Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization onboarding case for APAMA MARITIME LTD has been flagged for investigation due to conflicting geographic information (country mismatch) and lack of supporting dates. Despite a clear screening result for APAMA SHIPPING LLC in the US, the matched party's association with 'PA' necessitates analyst confirmation before closing the case.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Organization token overlap between screened and matched parties ('APAMA')"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed to resolve geography conflict (PA vs. US)",
+      "Date corroboration is missing (DOB, incorporation date)"
+    ],
+    "next_step_rationale": "Investigate the geographical and temporal contradictions before further decision-making."
+  },
+  "tenant_id": "test-tenant"
+}

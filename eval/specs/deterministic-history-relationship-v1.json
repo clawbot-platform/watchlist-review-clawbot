@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "name": "repeated_confirmed_true_match",
+      "request_path": "eval/requests/history-relationship/repeated_confirmed_true_match.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Same screened entity and matched list UID previously confirmed; current corroboration remains strong."
+    },
+    {
+      "name": "repeated_false_positive_same_pattern",
+      "request_path": "eval/requests/history-relationship/repeated_false_positive_same_pattern.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Same contradiction pattern and prior false-positive handling should suppress escalation."
+    },
+    {
+      "name": "related_party_reinforcement",
+      "request_path": "eval/requests/history-relationship/related_party_reinforcement.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Direct OFAC relationship and linked-doc support increase deterministic confidence."
+    },
+    {
+      "name": "wrong_context_relationship_neighborhood",
+      "request_path": "eval/requests/history-relationship/wrong_context_relationship_neighborhood.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Relationship neighborhood conflicts with screened context and should prevent auto-escalation."
+    }
+  ]
+}

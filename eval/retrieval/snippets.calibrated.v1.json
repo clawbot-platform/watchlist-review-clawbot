@@ -1,0 +1,121 @@
+[
+  {
+    "snippet_id": "snip-individual-passport-true-1",
+    "source": "clawmem",
+    "title": "Individual exact-passport corroboration",
+    "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+    "tags": [
+      "individual_onboarding",
+      "passport",
+      "dob",
+      "escalate",
+      "true_match"
+    ]
+  },
+  {
+    "snippet_id": "snip-individual-sparse-1",
+    "source": "policy",
+    "title": "Sparse individual contradiction handling",
+    "text": "When name overlap exists but geography or date conflicts remain unresolved and identifiers are missing, investigate before closure.",
+    "tags": [
+      "individual_onboarding",
+      "sparse_data",
+      "investigate_next_step",
+      "wrong_context",
+      "false_positive"
+    ]
+  },
+  {
+    "snippet_id": "snip-tareck-1",
+    "source": "clawmem",
+    "title": "Real-OFAC-inspired Tareck false positive",
+    "text": "Name overlap with Tareck El Aissami without matching date of birth, geography, or identifiers should be investigated and documented as likely false positive after corroboration review.",
+    "tags": [
+      "individual_onboarding",
+      "tareck",
+      "investigate_next_step",
+      "false_positive",
+      "ofac_real"
+    ]
+  },
+  {
+    "snippet_id": "snip-org-true-1",
+    "source": "policy",
+    "title": "Organization true-match escalation",
+    "text": "Escalate organization onboarding cases when registration and tax identifiers align with strong normalized-name corroboration.",
+    "tags": [
+      "organization_onboarding",
+      "organization",
+      "registration_number",
+      "tax_id",
+      "escalate",
+      "true_match"
+    ]
+  },
+  {
+    "snippet_id": "snip-org-fp-1",
+    "source": "clawmem",
+    "title": "Organization overlap with contradictions",
+    "text": "For similar organization names with conflicting country, incorporation date, or identifiers, investigate before closure if contradictions are hard but corroboration remains sparse.",
+    "tags": [
+      "organization_onboarding",
+      "organization",
+      "investigate_next_step",
+      "false_positive",
+      "wrong_context"
+    ]
+  },
+  {
+    "snippet_id": "snip-ach-sparse-1",
+    "source": "policy",
+    "title": "ACH sparse-data review guidance",
+    "text": "ACH party alerts with weak name-only overlap and sparse supporting party data should be investigated rather than auto-closed.",
+    "tags": [
+      "ach_party",
+      "ach",
+      "sparse_data",
+      "investigate_next_step",
+      "false_positive"
+    ]
+  },
+  {
+    "snippet_id": "snip-ach-true-1",
+    "source": "policy",
+    "title": "ACH exact-party escalation",
+    "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+    "tags": [
+      "ach_party",
+      "ach",
+      "passport",
+      "dob",
+      "escalate",
+      "true_match"
+    ]
+  },
+  {
+    "snippet_id": "snip-apama-1",
+    "source": "clawmem",
+    "title": "APAMA wrong-context maritime case",
+    "text": "APAMA maritime name overlap without matching IMO or registry data should be investigated as a wrong-context entity match.",
+    "tags": [
+      "organization_onboarding",
+      "maritime",
+      "apama",
+      "wrong_context",
+      "investigate_next_step"
+    ]
+  },
+  {
+    "snippet_id": "snip-alias-1",
+    "source": "clawmem",
+    "title": "Alias plus identifier corroboration",
+    "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+    "tags": [
+      "individual_onboarding",
+      "alias",
+      "passport",
+      "escalate",
+      "true_match"
+    ]
+  }
+]

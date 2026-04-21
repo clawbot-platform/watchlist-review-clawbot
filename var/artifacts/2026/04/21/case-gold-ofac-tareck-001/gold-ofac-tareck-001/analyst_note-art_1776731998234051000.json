@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776731998234051000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421003932.171430000",
+  "created_at": "2026-04-21T00:39:58.234051Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual onboarding alert for Tareck Joseph triggered an 'investigate_next_step' due to conflicting information. The screened party's details, including date of birth and country, do not align with those of the matched SDN list entry, Tareck El Aissami, necessitating further investigation to resolve these discrepancies.",
+    "evidence_summary": [
+      "Country mismatch between screened and matched party (US vs VE).",
+      "Date of birth conflict between screened party (1990-05-11) and matched party (1974-11-12)."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration required for date of birth and geography.",
+      "Lack of strong identifier corroboration beyond entity type support."
+    ],
+    "next_step_rationale": "The contradiction in country and date of birth requires investigation to confirm or refute the discrepancies before reaching a final decision."
+  },
+  "tenant_id": "test-tenant"
+}

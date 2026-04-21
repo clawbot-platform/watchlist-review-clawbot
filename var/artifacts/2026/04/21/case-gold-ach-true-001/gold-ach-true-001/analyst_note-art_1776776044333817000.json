@@ -1,0 +1,22 @@
+{
+  "alert_id": "gold-ach-true-001",
+  "artifact_id": "art_1776776044333817000",
+  "case_id": "case-gold-ach-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421125348.306218000",
+  "created_at": "2026-04-21T12:54:04.333817Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to Maria Salazar, the matched and screened name. The deterministic evidence supports a strong match, citing exact identifier (passport), date, normalized name match, along with address and country support. No missing information is noted.",
+    "evidence_summary": [
+      "Escalation due to exact identifier match on passport.",
+      "Support from exact date match and normalized name match.",
+      "Confirmed through address support and country support."
+    ],
+    "next_step_rationale": "Escalate for analyst review owing to strong corroboration across multiple data points without contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

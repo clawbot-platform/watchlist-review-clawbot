@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776725331696884000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420224823.126685000",
+  "created_at": "2026-04-20T22:48:51.696884Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'Global Marine Services LLC' has been flagged for onboarding with discrepancies noted between its details (US) and an SDN-listed entity ('Global Marine Service Co') associated with Iran. The contradictions include country of operation, potential identifier conflicts, and a lack of date of birth information for both parties.",
+    "evidence_summary": [
+      "Screened party is an organization named 'Global Marine Services LLC' incorporated in 2019 and located in the US.",
+      "The matched entity, 'Global Marine Service Co', is categorized under the SDN list with an entity type of organization, associated with Iran (IR)."
+    ],
+    "missing_information_summary": [
+      "There's a mismatch in country of origin between the screened party (US) and the matched entity (Iran).",
+      "Date of birth for both parties is missing.",
+      "There are contradictions regarding identifiers, requiring analyst confirmation."
+    ],
+    "next_step_rationale": "Investigate the hard contradictions in geography, identifiers, and date to corroborate evidence before closure."
+  },
+  "tenant_id": "test-tenant"
+}

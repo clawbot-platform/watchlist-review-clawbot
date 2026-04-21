@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776775639653291000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124657.310026000",
+  "created_at": "2026-04-21T12:47:19.653291Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to Tareck Joseph (screened_name) matched with Tareck El Aissami (matched_name). While entity type support is strong, there are contradictions primarily around geographical information, necessitating analyst investigation for resolution before closure.",
+    "evidence_summary": [
+      "Alert involves individual onboarding for Tareck Joseph matched with Tareck El Aissami under SDN program.",
+      "High match strength score of 9 indicates strong entity type support.",
+      "Decision label is 'investigate_next_step' due to sparse or contradictory case."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed",
+      "Address context is missing",
+      "Date corroboration is lacking",
+      "Geography corroboration is absent"
+    ],
+    "next_step_rationale": "Investigate contradictions, especially the geography conflict and seek additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

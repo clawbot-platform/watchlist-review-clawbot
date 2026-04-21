@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776722465107011000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420220032.912401000",
+  "created_at": "2026-04-20T22:01:05.107011Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization, Global Marine Services LLC, was screened against an entity listed in the SDN (SDN: uid-seed-001, 'Global Marine Service Co'). Despite an overlap in the name 'Global Marine', there are significant contradictions. The entity type and some token overlap support the match, but crucial pieces of information such as date of birth, geographical context (IR vs US), and identifiers are conflicting or missing. The overall data sufficiency score is 78 with a weak match strength score of only 17, leading to the decision to close this as a likely false positive due to hard contradictions.",
+    "evidence_summary": [
+      "Entity type supports organization classification.",
+      "Organization tokens overlap between screened and matched parties."
+    ],
+    "missing_information_summary": [
+      "Date of birth missing for both entities.",
+      "Geographical context mismatch (IR vs. US).",
+      "Identifier conflict present (Global Marine name usage across different organizations).",
+      "Strong identifier corroboration absent.",
+      "Date conflict with incorporation dates (2011-01-03 vs. 2019-04-18)."
+    ],
+    "next_step_rationale": "Close the case based on hard contradictions and weak match strength as indicated by the deterministic decision label."
+  },
+  "tenant_id": "test-tenant"
+}

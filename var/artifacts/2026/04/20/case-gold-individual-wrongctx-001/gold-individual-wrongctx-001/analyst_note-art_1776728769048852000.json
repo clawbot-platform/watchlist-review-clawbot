@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776728769048852000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420234543.489738000",
+  "created_at": "2026-04-20T23:46:09.048852Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case presents contradictions in date of birth, geographic location, and identifiers between the matched and screened parties, despite strong support for individual entity type and exact normalized name matching. Investigation is required due to sparse or conflicting evidence.",
+    "evidence_summary": [
+      "Exact normalized name match with top candidate Jane Citizen.",
+      "Strong entity type support indicating individual status."
+    ],
+    "missing_information_summary": [
+      "Date of birth mismatch between screened party (1992-03-21) and matched party (1971-08-09).",
+      "Geography conflict: Matched party country is Syria (SY), while the screened party is associated with the United States.",
+      "Identifier conflict due to differing aliases (Omar Haddad vs. O Haddad)."
+    ],
+    "next_step_rationale": "The contradictions in date of birth, geography, and identifiers necessitate an investigation to resolve these discrepancies before reaching a closure decision."
+  },
+  "tenant_id": "test-tenant"
+}

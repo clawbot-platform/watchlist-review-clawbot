@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776723866582737000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420222409.120122000",
+  "created_at": "2026-04-20T22:24:26.582737Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This individual onboarding alert requires investigation due to strong evidence of an individual match, yet significant geography-related contradiction necessitates analyst review for resolution prior to closure.",
+    "evidence_summary": [
+      "Entity type supports individual status.",
+      "Match strength score is high at 9."
+    ],
+    "missing_information_summary": [
+      "Geography mismatch with country 'VE' against screened party's US location.",
+      "Hard contradiction exists between provided name and geographical details requiring analyst review."
+    ],
+    "next_step_rationale": "Investigate the geographic discrepancy to resolve contradictions before making a closure decision."
+  },
+  "tenant_id": "test-tenant"
+}

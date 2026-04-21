@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776812975268783000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421230922.539815000",
+  "created_at": "2026-04-21T23:09:35.268783Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "Global Marine Service Co (IR) incorporated on 2011-01-03 with identifier IR9988, while Global Marine Services LLC (US) was incorporated on 2019-04-18 with identifier GM1200. The cases exhibit a country mismatch and date conflict, requiring analyst investigation before closure due to sparse corroborative evidence.",
+    "evidence_summary": [
+      "Global Marine Service Co (IR) incorporated on 2011-01-03 and has identifier IR9988.",
+      "Global Marine Services LLC (US) incorporated on 2019-04-18 with identifier GM1200.",
+      "Country mismatch between cases."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration for country, date, and identifiers"
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

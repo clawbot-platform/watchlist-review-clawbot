@@ -1,0 +1,24 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776736376284756000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421015231.008431000",
+  "created_at": "2026-04-21T01:52:56.284756Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'Global Marine Services LLC' has been flagged for onboarding investigation due to conflicting information. Although there is support for its entity type as an organization with token overlaps in lists, the data sufficiency score is insufficient for a clear decision. Key contradictions exist concerning date of birth, geography, and identifiers, necessitating analyst intervention before closure. Further evidence is required to corroborate or resolve these discrepancies.",
+    "evidence_summary": [
+      "Data sufficiency score is 78, below the threshold for clear decision.",
+      "Decision label is 'investigate_next_step' due to contradictions in dob, geography, and identifier conflicts."
+    ],
+    "missing_information_summary": [
+      "Missing additional corroboration for date of birth, geographical alignment, and strong identifier confirmation."
+    ],
+    "next_step_rationale": "Investigate the reported contradictions and gather further supporting evidence to resolve discrepancies."
+  },
+  "tenant_id": "test-tenant"
+}

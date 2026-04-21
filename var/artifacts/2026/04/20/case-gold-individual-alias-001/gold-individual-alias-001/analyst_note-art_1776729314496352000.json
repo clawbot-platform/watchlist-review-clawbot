@@ -1,0 +1,23 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776729314496352000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235455.600552000",
+  "created_at": "2026-04-20T23:55:14.496352Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Strong corroboration exists with exact alias, date of birth, and passport identification aligning perfectly. This supports escalating the case for further analyst scrutiny.",
+    "evidence_summary": [
+      "Exact alias-to-name match: Muhammad Karim matches Mohamed Karim aliases.",
+      "Country support: Matches UK (GB) as the country of residence.",
+      "Exact date match: Date of birth corroborates precisely.",
+      "Exact identifier match on passport: Passport details perfectly align with provided information."
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong data supporting an exact positive individual match."
+  },
+  "tenant_id": "test-tenant"
+}

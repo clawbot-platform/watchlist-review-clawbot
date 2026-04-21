@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-org-true-001",
+  "artifact_id": "art_1776775679256515000",
+  "case_id": "case-gold-org-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124739.357262000",
+  "created_at": "2026-04-21T12:47:59.256515Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "North Harbor Trading LLC matches fully within the SDN program based on exact name, entity type support, address, country alignment, and corroborating data. The deterministic score indicates sufficient data strength with no contradictions present.",
+    "evidence_summary": [
+      "Strong corroboration from exact date match, normalized name match, and entity type support.",
+      "Address and country support for North Harbor Trading LLC.",
+      "Registration and tax identifiers align with the screened entity.",
+      "Exact identifier match on other data supports escalation."
+    ],
+    "missing_information_summary": [
+      "All required evidence for decision is present."
+    ],
+    "next_step_rationale": "The case meets all criteria for escalation with strong matching evidence and no contradictions. Further analyst review is advised."
+  },
+  "tenant_id": "test-tenant"
+}

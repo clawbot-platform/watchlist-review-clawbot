@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776727891593254000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233104.480408000",
+  "created_at": "2026-04-20T23:31:31.593254Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This case presents a high-match-strength candidate (Jane Citizen) identified in the SDN list, but crucial discrepancies exist in date of birth and country. The deterministic decision label mandates investigation to resolve these contradictions before closure, ensuring compliance with regulatory standards.",
+    "evidence_summary": [
+      "Date of birth conflict (1974-11-12 vs 1990-05-11)",
+      "Geography conflict (VE vs US)",
+      "Country mismatch (VE listed, screened party from US)",
+      "Hard contradiction requiring analyst confirmation"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date of birth and geography",
+      "Date of birth corroboration lacking",
+      "Geography corroboration missing",
+      "Matched party identifiers not available"
+    ],
+    "next_step_rationale": "The alert requires investigation to resolve contradictions concerning date of birth and geography, necessitating additional evidence for verification."
+  },
+  "tenant_id": "test-tenant"
+}

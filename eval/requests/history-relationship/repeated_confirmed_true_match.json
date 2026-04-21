@@ -1,0 +1,52 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-history-true-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "history-true-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-21T12:00:00Z",
+    "case_id": "case-history-true-001",
+    "alert_type": "individual_onboarding",
+    "jurisdiction": "US",
+    "priority": "high",
+    "screened_party": {
+      "entity_type": "individual",
+      "full_name": "Jane Citizen",
+      "countries": [
+        "US"
+      ],
+      "source_system": "kyc_applications",
+      "source_record_id": "history-true-001-screened"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "history-true-001-matched-uid",
+      "entity_type": "individual",
+      "full_name": "Jane Citizen"
+    },
+    "screening_features": {
+      "vendor_score": 82,
+      "name_score": 87,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  },
+  "history_context": {
+    "same_pair_history": [
+      {
+        "previous_case_id": "case-gold-individual-true-001",
+        "decision_label": "escalate",
+        "reviewed_outcome": "confirmed_true_match",
+        "created_at": "2026-04-12T11:00:00Z"
+      }
+    ],
+    "contradiction_pattern": "exact_name+exact_dob+exact_identifier"
+  }
+}

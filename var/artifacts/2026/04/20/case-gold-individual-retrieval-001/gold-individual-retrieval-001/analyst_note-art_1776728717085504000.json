@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776728717085504000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420234459.545920000",
+  "created_at": "2026-04-20T23:45:17.085504Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual, Jane Citizen, has been identified through multiple corroborating factors: exact normalized name, date of birth, country, and passport identifier match. These elements support a high confidence in the identity match, leading to an escalation for further manual review.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

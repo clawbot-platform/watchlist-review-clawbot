@@ -1,0 +1,36 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-relationship-org-002",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "relationship-org-002",
+    "source_system": "screening_json",
+    "created_at": "2026-04-21T12:00:00Z",
+    "case_id": "case-relationship-org-002",
+    "alert_type": "organization_onboarding",
+    "jurisdiction": "US",
+    "priority": "medium",
+    "screened_party": {
+      "entity_type": "organization",
+      "full_name": "Global Marine Services LLC",
+      "countries": ["US"]
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "ofac-neighborhood-ctx-002",
+      "entity_type": "organization",
+      "full_name": "Global Marine Service Co",
+      "countries": ["IR"]
+    },
+    "screening_features": {
+      "vendor_score": 67,
+      "name_score": 82,
+      "match_flags": ["name"]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

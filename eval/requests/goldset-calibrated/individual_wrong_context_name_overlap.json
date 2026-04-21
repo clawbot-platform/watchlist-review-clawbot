@@ -1,0 +1,73 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "gold-individual-wrongctx-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-14T12:00:00Z",
+    "case_id": "case-gold-individual-wrongctx-001",
+    "alert_type": "individual_onboarding",
+    "jurisdiction": "US",
+    "priority": "medium",
+    "screened_party": {
+      "entity_type": "individual",
+      "full_name": "Omar Haddad",
+      "aliases": [
+        "O Haddad"
+      ],
+      "date_of_birth": "1992-03-21",
+      "countries": [
+        "US"
+      ],
+      "addresses": [
+        {
+          "address_text": "100 Broadway",
+          "city": "New York",
+          "country": "US"
+        }
+      ],
+      "identifiers": [
+        {
+          "type": "passport",
+          "value": "US998877",
+          "issuing_country": "US"
+        }
+      ],
+      "source_system": "kyc_applications",
+      "source_record_id": "left-record-omar"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "omar-right-record",
+      "entity_type": "individual",
+      "full_name": "Omar Haddad",
+      "aliases": [
+        "Omar H."
+      ],
+      "date_of_birth": "1971-08-09",
+      "countries": [
+        "SY"
+      ],
+      "identifiers": [
+        {
+          "type": "passport",
+          "value": "SY123123",
+          "issuing_country": "SY"
+        }
+      ]
+    },
+    "screening_features": {
+      "vendor_score": 69,
+      "name_score": 84,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

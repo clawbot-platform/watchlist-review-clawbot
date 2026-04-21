@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776736404433444000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421015256.290241000",
+  "created_at": "2026-04-21T01:53:24.433444Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert pertains to a potential match between Carlos Vega (screened_party) and Carlos Velez (matched_party), an individual listed on the SDN program due to suspected involvement in Cuba (CU). Although there's strong entity type support and a high match strength score, a geography conflict exists—Carlos Vega is linked to the US, contradicting the matched party's country of CU. The alert recommends investigation to resolve this discrepancy before deciding on closure.",
+    "evidence_summary": [
+      "Exact identifier and date-of-birth corroboration support the match.",
+      "There's a contradiction due to country mismatch between screened and matched parties."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration is needed to resolve the geography conflict.",
+      "Address context and date corroboration are missing.",
+      "Matched party identifiers need further investigation.",
+      "Screened party date, identifiers require confirmation."
+    ],
+    "next_step_rationale": "Investigate the contradiction and gather additional corroboration to resolve the geography conflict."
+  },
+  "tenant_id": "test-tenant"
+}

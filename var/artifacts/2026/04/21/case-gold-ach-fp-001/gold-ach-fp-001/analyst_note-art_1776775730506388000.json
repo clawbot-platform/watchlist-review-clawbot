@@ -1,0 +1,32 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776775730506388000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124821.413593000",
+  "created_at": "2026-04-21T12:48:50.506388Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The system identified 'Carlos Vega' and 'Carlos Velez' as potential matches under the SDN program. Strong entity type support backs this match, but contradictions arise from geographic mismatches. Insufficient supporting data like address context, date corroboration, and identifier details mandate an analyst's thorough investigation to resolve discrepancies before reaching a closure decision.",
+    "evidence_summary": [
+      "Alert identifies a potential match between screened name 'Carlos Vega' and matched name 'Carlos Velez'.",
+      "Entity type support is present for the identified names.",
+      "Match strength score is 9, indicating strong potential match.",
+      "Contradictions are present due to geography conflict."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for the case.",
+      "Address context and date corroboration missing.",
+      "Geography corroboration required to resolve contradiction.",
+      "Matched party identifiers not provided."
+    ],
+    "next_step_rationale": "Investigate contradictions and gather additional corroboration before making a closure decision.",
+    "warnings": [
+      "granite_analyst_note_next_step_rationale_rewritten"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

@@ -53,5 +53,6 @@ func (s *Service) Generate(
 		}
 	}
 
-	return NormalizeAndValidate(note, score)
+	sanitizeGroundedNames(note, alert, screening, score)
+	return NormalizeAndValidateWithContext(note, alert, fx, score)
 }

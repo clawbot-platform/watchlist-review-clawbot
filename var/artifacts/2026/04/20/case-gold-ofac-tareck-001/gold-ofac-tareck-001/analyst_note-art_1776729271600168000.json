@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776729271600168000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235402.369719000",
+  "created_at": "2026-04-20T23:54:31.600168Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case involves a dob conflict (1974-11-12 vs. 1990-05-11) and geographical discrepancy (US vs. Venezuela). Due to sparse information, an investigation is needed before closure.",
+    "evidence_summary": [
+      "Date of birth conflict between screened party (1990-05-11) and matched party (1974-11-12).",
+      "Geography mismatch: Screened party associated with US, while the matched SDN entity has Venezuela (VE) as a country.",
+      "Country mismatches between screened ('US') and matched ('VE') parties."
+    ],
+    "missing_information_summary": [
+      "Lack of corroboration for date of birth and geography of the matched party Tareck El Aissami",
+      "No strong identifier corroboration provided for date of birth or geography conflicts"
+    ],
+    "next_step_rationale": "Investigate contradictions and gather additional corroboration to resolve dob conflict and geography mismatch."
+  },
+  "tenant_id": "test-tenant"
+}

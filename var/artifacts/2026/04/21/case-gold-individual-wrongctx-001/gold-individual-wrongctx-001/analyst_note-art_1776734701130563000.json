@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776734701130563000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421012435.609669000",
+  "created_at": "2026-04-21T01:25:01.130563Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The investigation should focus on resolving discrepancies in date of birth, geographic location, and identifiers given the current 'investigate_next_step' decision label. The evidence supports an exact normalized name match, but conflicting information necessitates further verification to confirm or refute the potential OFAC match.",
+    "evidence_summary": [
+      "Exact normalized name match with screened individual",
+      "Escalation supported by exact date of birth and passport corroboration",
+      "Country mismatch between matched (SY) and screened party (US)"
+    ],
+    "missing_information_summary": [
+      "Missing additional corroboration for date, geography, and identifier",
+      "Conflicting date of birth between matched (1971-08-09) and screened parties (1992-03-21)"
+    ],
+    "next_step_rationale": "Investigate the contradictions in date of birth, geography, and identifiers to determine if they result in a true positive before proceeding with closure."
+  },
+  "tenant_id": "test-tenant"
+}

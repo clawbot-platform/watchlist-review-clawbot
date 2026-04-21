@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776774044407336000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421122017.389064000",
+  "created_at": "2026-04-21T12:20:44.407336Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to an individual identified as 'Mohamed Karim' (screened_name) matching 'Muhammad Karim' (matched_name). The deterministic score is high, supported by address, country, and entity type alignment alongside exact alias-to-name match, date match, and passport identifier corroboration. This scenario fits the criteria for escalation as outlined in retrieval snippets focusing on exact matches supporting true positive identification under SDN program rules without contradiction or missing critical data.",
+    "evidence_summary": [
+      "Exact normalized name, date of birth, and passport corroborate the screened individual.",
+      "Normalized alias matches the matched name with strong identifier support.",
+      "Exact passport information supports an escalation for further review.",
+      "Data sufficiency score is high at 92 indicating ample evidence."
+    ],
+    "missing_information_summary": [
+      "No critical pieces of information are absent from the provided data.",
+      "Date of birth, entity type, and country support are present and corroborative."
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong match with no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

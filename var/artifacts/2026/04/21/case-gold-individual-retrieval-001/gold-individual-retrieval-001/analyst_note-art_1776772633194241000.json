@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776772633194241000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421115653.066367000",
+  "created_at": "2026-04-21T11:57:13.194241Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The screened name Jane Citizen matches the matched name exactly, with robust support through normalized name match, exact date of birth, country alignment, and identifier verification on passport. Address and entity type further confirm this identity without discrepancies or gaps in evidence.",
+    "evidence_summary": [
+      "Strong corroborated match with exact normalized name, date of birth, country, and identifier on passport.",
+      "Address support aligns with the matched individual's data.",
+      "Country supports identification as per the SDN list.",
+      "Entity type matches the screened name.",
+      "Exact date match further strengthens the identity confirmation."
+    ],
+    "missing_information_summary": [
+      "No missing information identified."
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration and sufficient data with no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

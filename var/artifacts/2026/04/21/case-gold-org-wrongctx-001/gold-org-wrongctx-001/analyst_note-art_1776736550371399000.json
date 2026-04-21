@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776736550371399000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421015519.404929000",
+  "created_at": "2026-04-21T01:55:50.371399Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "An organization onboarding alert for Eastern Star Holding Company presents multiple contradictions compared to screened entity Eastern Star Holdings Ltd. These include differing countries (Syria vs United Kingdom), discrepant incorporation dates, and conflicting identifiers requiring analyst confirmation. Despite these conflicts, there is support for the entity type as an organization with partial name overlap.",
+    "evidence_summary": [
+      "Inconsistent country: SY vs GB in screened party data.",
+      "Date conflict: Incorporation dates '2009-03-09' and '2018-07-07'.",
+      "Hard contradiction requires analyst confirmation regarding identifiers.",
+      "Entity type support for organization matches.",
+      "Organization token overlap in names 'Eastern Star Holding Company' and 'Eastern Star Holdings Ltd'."
+    ],
+    "missing_information_summary": [
+      "Missing additional corroboration to resolve contradictions.",
+      "Lack of date and geography confirmation.",
+      "Identifier corroboration is weak or non-existent."
+    ],
+    "next_step_rationale": "Investigate the hard contradictions and gather further supporting information to confirm or refute the alert before proceeding."
+  },
+  "tenant_id": "test-tenant"
+}

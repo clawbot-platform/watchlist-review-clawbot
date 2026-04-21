@@ -1,0 +1,24 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776722343368066000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420215844.619115000",
+  "created_at": "2026-04-20T21:59:03.368066Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual, Jane Citizen, shows a robust match based on exact normalized name, date of birth, country, and identifier evidence on her passport. The evidence strength score is high at 93, with no contradictions reported, leading to the escalation decision for further analyst review.",
+    "evidence_summary": [
+      "exact normalized name match",
+      "exact date of birth match",
+      "country match",
+      "identifier match on passport",
+      "strong corroborated match with no contradictions"
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review due to a strong match supported by multiple corroborating data points."
+  },
+  "tenant_id": "test-tenant"
+}

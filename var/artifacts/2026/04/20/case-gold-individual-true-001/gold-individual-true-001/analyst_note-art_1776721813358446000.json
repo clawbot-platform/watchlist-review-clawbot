@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776721813358446000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420214953.364195000",
+  "created_at": "2026-04-20T21:50:13.358446Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Based on the deterministic decision, the evidence indicates a high confidence in identifying the screened party as Jane Citizen with strong corroborating data supporting an exact match across name, date of birth, country, and identifier. This results in an escalation for analyst review due to the significant match strength.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "The strong corroborating data, including exact normalized name match, date of birth match, country match, and identifier match on the passport, warrants escalation for further analyst review."
+  },
+  "tenant_id": "test-tenant"
+}

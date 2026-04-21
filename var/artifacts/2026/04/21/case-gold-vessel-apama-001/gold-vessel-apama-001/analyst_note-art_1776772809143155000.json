@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776772809143155000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421115947.290493000",
+  "created_at": "2026-04-21T12:00:09.143155Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The screened entity APAMA SHIPPING LLC shows token overlap with APAMA MARITIME LTD but faces a hard geography conflict, prompting further investigation due to sparse data. Escalation is advised for resolution.",
+    "evidence_summary": [
+      "APAMA SHIPPING LLC shares tokens with APAMA MARITIME LTD.",
+      "Geographical mismatch detected between screened and matched entities.",
+      "Hard contradiction identified, requiring analyst confirmation.",
+      "Data sufficiency score is 69, indicating sparse case."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for geography alignment.",
+      "Date information is insufficiently supported.",
+      "Geographic context requires further verification."
+    ],
+    "next_step_rationale": "Investigate the geographical contradiction and gather additional supporting evidence."
+  },
+  "tenant_id": "test-tenant"
+}

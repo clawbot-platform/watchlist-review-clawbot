@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776729295594817000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235431.604778000",
+  "created_at": "2026-04-20T23:54:55.594817Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case requires investigation due to conflicting geographical data with 'APAMA MARITIME LTD' associated with 'PA' instead of the 'US' as per the screened party. There's a name overlap but contradictory country information necessitating analyst intervention for resolution before proceeding.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Name token overlap between screened and matched parties ('APAMA')",
+      "Contradiction in geography (US vs PA)",
+      "Hard contradiction requiring analyst confirmation"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration for geographical context",
+      "Corroboration of dates (incorporation, formation)",
+      "Strong identifier corroboration to resolve contradictions"
+    ],
+    "next_step_rationale": "Investigate the geography conflict and gather necessary additional corroboration before further action."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-org-true-001",
+  "artifact_id": "art_1776770865691409000",
+  "case_id": "case-gold-org-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421112726.817279000",
+  "created_at": "2026-04-21T11:27:45.691409Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The case for North Harbor Trading LLC exhibits a strong match across multiple identity grounded factors. The deterministic evidence underscores high data sufficiency and lack of contradictions, aligning with escalation to analyst review as guided by the retrieval context policy on organization true-match escalation.",
+    "evidence_summary": [
+      "Strong corroboration from address, country, entity type and exact normalized name match.",
+      "Exact date alignment supports the screened organization identity.",
+      "Matching registration and tax identifiers align with strong normalized-name backing."
+    ],
+    "missing_information_summary": [
+      "No significant missing data identified impacting the decision to escalate."
+    ],
+    "next_step_rationale": "Based on the corroborated matching criteria, further analyst review is advised."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776733651917364000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421010705.818017000",
+  "created_at": "2026-04-21T01:07:31.917364Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization onboarding case involves 'Eastern Star Holding Company', listed under the SDN program, with conflicting information regarding country (GB vs. SY), incorporation date (2018-07-07 vs. 2009-03-09), and identifiers, necessitating investigation for resolution before closure.",
+    "evidence_summary": [
+      "Country mismatch between GB (screened party) and SY (matched party)",
+      "Date conflict: incorporation dates differ (2018-07-07 vs. 2009-03-09)",
+      "Identifier conflict: organization name overlap but with disparate details",
+      "Data sufficiency score of 78 indicates sparse or contradictory information"
+    ],
+    "missing_information_summary": [
+      "No additional corroboration found for date, geography, or identifiers",
+      "Hard contradictions require analyst confirmation"
+    ],
+    "next_step_rationale": "The alert requires investigation to resolve contradictions before closure."
+  },
+  "tenant_id": "test-tenant"
+}

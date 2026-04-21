@@ -1,0 +1,31 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776728964526658000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420234856.218022000",
+  "created_at": "2026-04-20T23:49:24.526658Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'Eastern Star Holding Company' was identified in the SDN program with discrepancies in country (US vs SY), date of birth, and identifiers, necessitating an analyst investigation to resolve these conflicts before closure. Despite entity type support and token overlap, missing corroboration demands further inquiry into the contradictions.",
+    "evidence_summary": [
+      "Organization name overlap but in different countries (US vs SY)",
+      "Date of birth mismatch and discrepancy in incorporation dates",
+      "Identifier conflict without supporting corroboration",
+      "Eastern Star Holding Company matched to SDN program",
+      "Entity type confirmed as organization"
+    ],
+    "missing_information_summary": [
+      "Lack of date of birth for Eastern Star Holding Company",
+      "No strong identifier corroboration provided",
+      "Geographic mismatch between screened and matched parties",
+      "Missing additional corroborating data",
+      "No registration or tax ID alignment"
+    ],
+    "next_step_rationale": "Resolve contradictions in country, date, and identifiers through investigation."
+  },
+  "tenant_id": "test-tenant"
+}

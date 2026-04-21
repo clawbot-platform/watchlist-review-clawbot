@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776771196179881000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421113257.405626000",
+  "created_at": "2026-04-21T11:33:16.179881Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert concerning Jane Citizen under the SDN program was escalated. The evidence includes exact normalized name, date of birth, country alignment, and passport identifier matches all pointing to a high-confidence identification of the screened individual.",
+    "evidence_summary": [
+      "Strong match based on exact normalized name",
+      "Exact date of birth corroboration",
+      "Country alignment supports the screened individual",
+      "Exact passport identifier matches",
+      "High confidence in records referring to the same entity"
+    ],
+    "missing_information_summary": [
+      "No missing information identified in determinations",
+      "All essential data elements provided and matching"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration with no contradictions or missing data."
+  },
+  "tenant_id": "test-tenant"
+}

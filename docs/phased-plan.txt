@@ -1,0 +1,670 @@
+Here is a concrete phased architecture delta for:
+
+* `watchlist-review-clawbot`
+* `claw-identity`
+* `clawmem`
+
+It is designed around your current stable baseline, which is still promotable at **12/12** with **0 deterministic regressions**, **0 retrieval-required failures**, and **note_quality_pass_rate = 1**. 
+
+---
+
+# 1. Target architecture split
+
+## `watchlist-review-clawbot`
+
+Owns:
+
+* request intake and review orchestration
+* deterministic scoring policy
+* decision thresholds and label selection
+* explanation assembly for deterministic evidence
+* batch/regression eval and promotion gates
+* analyst-note generation as a downstream consumer of deterministic evidence
+
+This repo should remain the **policy brain** for the watchlist workflow.
+
+## `claw-identity`
+
+Owns:
+
+* canonical entity comparison services
+* OFAC-linked identity evidence
+* matched profile linkage and normalization
+* relationship evidence derivation
+* linked-document / identifier evidence
+* same-pair and same-profile history lookups once stabilized
+
+This service should become the **identity evidence engine**.
+
+## `clawmem`
+
+Owns later:
+
+* retrieval and memory layer
+* prior-case retrieval across large history
+* example/snippet retrieval for note generation
+* optional graph-context retrieval / semantic recall
+* optional long-horizon institutional memory beyond transactional scoring
+
+This should become the **memory/retrieval substrate**, not the first home of deterministic policy.
+
+---
+
+# 2. Guiding principle
+
+Do **not** move everything out immediately.
+
+The safest order is:
+
+* build and validate deterministic features first in `watchlist-review-clawbot`
+* extract reusable identity evidence generation into `claw-identity`
+* integrate `clawmem` only after you know exactly what memory/retrieval patterns are worth operationalizing
+
+That keeps scoring changes easy to test against the already-green suite. 
+
+---
+
+# 3. Phase-by-phase architecture delta
+
+## Phase 0 — Current stable baseline
+
+State:
+
+* deterministic scoring is local to `watchlist-review-clawbot`
+* note generation is downstream of deterministic review context
+* batch/regression promotion is green and should remain the contract. 
+
+No extraction yet.
+
+### Package ownership now
+
+### `watchlist-review-clawbot`
+
+* `internal/scoring`
+
+  * deterministic score computation
+  * label policy
+  * sparse/contradiction handling
+* `internal/runtime`
+
+  * review orchestration
+* `internal/api`
+
+  * request/response contracts
+* `internal/notes`
+
+  * note prompt / normalization / grounding
+* `internal/eval`
+
+  * promotion rules
+* `eval/...`
+
+  * calibrated gold set and regression artifacts
+
+### `claw-identity`
+
+* current compare/screening functions only
+
+### `clawmem`
+
+* optional retrieval backend only, not required for deterministic scoring
+
+---
+
+## Phase 1 — Disposition Memory Scoring v1
+
+This is your **Priority 1** and fastest win.
+
+### Objective
+
+Add deterministic scoring based on **prior reviewed dispositions**, but only when:
+
+* the same screened entity and matched list UID are confidently linked to prior reviewed cases
+
+### New score block
+
+Add to `internal/scoring/types.go`:
+
+* `PreviousDispositionScore int`
+* `PreviousDispositionReasons []string`
+
+And fold into total decision evidence.
+
+### What stays in `watchlist-review-clawbot`
+
+Build it here first.
+
+### New / changed packages in `watchlist-review-clawbot`
+
+#### `internal/history` or `internal/disposition`
+
+New package.
+Responsibilities:
+
+* normalized alert history store access
+* same-pair lookup
+* same-profile lookup
+* recency weighting helpers
+* contradiction-pattern lookup later
+
+Suggested files:
+
+* `store.go`
+* `types.go`
+* `normalize.go`
+* `lookup.go`
+* `recency.go`
+
+#### `internal/scoring`
+
+Add:
+
+* `previous_disposition.go`
+* new score components
+* policy hooks for same-pair history
+
+Responsibilities:
+
+* compute:
+
+  * `previous_disposition_score`
+  * `previous_disposition_reason[]`
+* only apply score when identity confidence for the pair is above threshold
+
+#### `internal/runtime`
+
+Add:
+
+* history fetch before final scoring
+* include history evidence in review context
+
+#### `internal/api`
+
+Add review-context fields:
+
+* `previous_disposition_summary`
+* `history_evidence`
+
+#### `internal/eval`
+
+Add repeated-pair test rules and fixtures
+
+### Data model
+
+Start in Postgres, not Neo4j.
+
+Suggested tables:
+
+* `review_case_history`
+* `review_pair_history`
+* `review_disposition_events`
+
+Minimum normalized columns:
+
+* tenant_id
+* case_id
+* alert_id
+* screened_entity_fingerprint
+* matched_list_uid
+* matched_program
+* decision_label
+* contradiction_pattern
+* created_at
+
+### Decision logic
+
+Examples:
+
+* same pair, prior confirmed/escalated, recent → positive boost
+* same pair, prior false positive with same contradiction pattern → negative boost
+* unresolved prior investigation → bias toward `investigate_next_step`
+
+### Deliverable A — Disposition Memory Scoring v1
+
+Add:
+
+* normalized alert-history store
+* same-pair recurrence features
+* recency-decayed prior disposition score
+* deterministic policy hooks
+
+### Acceptance
+
+* no regression in current 12-case suite 
+* add 4–6 new tests for repeated-pair scenarios
+
+---
+
+## Phase 2 — OFAC Relationship Scoring v1
+
+This is your **Priority 2**.
+
+### Objective
+
+Use OFAC relationship-bearing data to create deterministic relationship evidence.
+
+### Key design choice
+
+Ingest locally first; later graduate the reusable evidence service into `claw-identity`.
+
+### What starts in `watchlist-review-clawbot`
+
+Initial ingestion and scoring integration can begin here if that is fastest.
+
+### What should become `claw-identity`
+
+The reusable relationship-evidence builder should move here once stable.
+
+### New / changed packages in `watchlist-review-clawbot`
+
+#### `internal/ofacdata`
+
+New package.
+Responsibilities:
+
+* parse OFAC XML/SLS payloads
+* normalize parties, identifiers, documents, locations, relationships
+* write normalized relational tables
+
+Suggested files:
+
+* `ingest.go`
+* `xml_types.go`
+* `normalize.go`
+* `store.go`
+
+#### `internal/ofacgraph`
+
+New package.
+Responsibilities:
+
+* build 1-hop/2-hop relationship evidence for scoring
+* direct relationship support
+* relationship conflict detection
+* linked-doc corroboration
+* profile neighborhood summary
+
+Suggested files:
+
+* `evidence.go`
+* `neighbors.go`
+* `documents.go`
+* `explanations.go`
+
+#### `internal/scoring`
+
+Add:
+
+* `relationship_support.go`
+
+New score fields:
+
+* `RelationshipSupportScore`
+* `RelationshipConflictPenalty`
+* `OfficialDocLinkScore`
+* `ProgramContextScore`
+* `RelationshipReasons []string`
+
+#### `internal/runtime`
+
+Include OFAC relationship evidence in review context
+
+#### `internal/api`
+
+Expose:
+
+* `relationship_evidence`
+* `graph_explanation`
+* `linked_document_support`
+
+### Normalized OFAC tables
+
+Start in Postgres:
+
+* `ofac_party`
+* `ofac_sanctions_entry`
+* `ofac_identifier`
+* `ofac_document`
+* `ofac_location`
+* `ofac_relationship`
+
+Materialized helper tables/views:
+
+* `ofac_party_neighbors`
+* `ofac_party_program_context`
+* `ofac_linked_docs`
+
+### Decision logic
+
+Examples:
+
+* direct relationship to strongly corroborated sanctioned profile → boost
+* shared official registration/tax/passport-like doc linkage → boost
+* neighborhood context conflicting with screened context → penalty
+
+### Migration target into `claw-identity`
+
+Once the evidence generation stabilizes, move these responsibilities:
+
+#### `claw-identity`
+
+New packages:
+
+* `internal/ofacdata`
+* `internal/relationships`
+* `internal/linkeddocs`
+* `internal/profilegraph`
+
+`claw-identity` should expose a response like:
+
+* matched_profile_id
+* relationship_support
+* relationship_conflicts
+* linked_identifier_support
+* neighborhood_summary
+* program_context_support
+
+Then `watchlist-review-clawbot` consumes that evidence and applies policy weights locally.
+
+### Deliverable B — OFAC Relationship Scoring v1
+
+Add:
+
+* OFAC XML/SLS ingestion into normalized relationship tables
+* direct-relationship and linked-doc scoring
+* graph-derived explanation fields
+
+### Acceptance
+
+* organization and network-style cases score better deterministically
+* no regression on current suite 
+
+---
+
+## Phase 3 — Contradiction-Pattern Memory
+
+This is your **Priority 3**.
+
+### Objective
+
+Strengthen deterministic handling of:
+
+* sparse false positives
+* recurring wrong-context alerts
+* repeated contradiction signatures
+
+### Best home initially
+
+`watchlist-review-clawbot`
+
+### New / changed packages
+
+#### `internal/history`
+
+Extend with:
+
+* contradiction-pattern normalization
+* pattern-frequency lookup
+* pattern-outcome lookup
+
+Suggested files:
+
+* `patterns.go`
+* `pattern_lookup.go`
+
+#### `internal/scoring`
+
+Add:
+
+* `pattern_memory.go`
+
+New fields:
+
+* `ContradictionPatternScore`
+* `ContradictionPatternReasons []string`
+
+### Pattern examples
+
+Normalized signatures:
+
+* `name_only_overlap+country_mismatch+sparse_data`
+* `dob_conflict+identifier_conflict+geography_conflict`
+* `alias_match+exact_identifier_match`
+
+### Decision behavior
+
+* repeated same false-positive contradiction pattern → lower escalation likelihood
+* repeated unresolved contradiction pattern → bias to `investigate_next_step`
+* repeated true-positive corroboration pattern → positive support
+
+### What later moves to `clawmem`
+
+Only if you want long-horizon retrieval across much larger history:
+
+* semantic similarity of contradiction patterns
+* pattern retrieval across business lines
+* example-based recall
+
+For now, keep it deterministic and relational.
+
+---
+
+## Phase 4 — Extract stable evidence services into `claw-identity`
+
+Do this only after Deliverables A and B are proven.
+
+### Move to `claw-identity`
+
+Reusable, policy-neutral evidence builders:
+
+* normalized entity compare
+* OFAC relationship evidence
+* linked doc support
+* same-pair prior history evidence
+* same-profile prior history evidence
+
+### Keep in `watchlist-review-clawbot`
+
+Policy-owned logic:
+
+* score weights
+* thresholding
+* label policy
+* decision reasons
+* eval and promotion gates
+
+This keeps `claw-identity` reusable for future AML/sanctions clawbots.
+
+---
+
+## Phase 5 — Add `clawmem` deliberately
+
+Not before.
+
+### What `clawmem` should do later
+
+* prior-case retrieval beyond direct pair history
+* retrieval of relevant prior analyst decisions
+* example retrieval for explanation generation
+* optional graph-context retrieval
+* optional Qdrant/Neo4j-backed neighborhood retrieval
+
+### What `clawmem` should not do first
+
+* it should not become the first scoring dependency
+* it should not own deterministic policy
+* it should not replace clean relational history for same-pair scoring
+
+---
+
+# 4. Package-by-package responsibility map
+
+## `watchlist-review-clawbot`
+
+### Keep / add here now
+
+* `internal/scoring`
+
+  * add `previous_disposition.go`
+  * add `relationship_support.go`
+  * add `pattern_memory.go`
+* `internal/runtime`
+
+  * orchestrate history + relationship evidence fetch
+* `internal/api`
+
+  * expose deterministic evidence blocks
+* `internal/history` **new**
+
+  * normalized case/disposition history
+* `internal/ofacdata` **new**
+
+  * initial OFAC ingestion
+* `internal/ofacgraph` **new**
+
+  * local graph-derived evidence
+* `internal/eval`
+
+  * promotion coverage for history/relationship scenarios
+* `eval/...`
+
+  * new deterministic suite cases
+
+## `claw-identity`
+
+### Upgrade target
+
+Add:
+
+* `internal/compare`
+
+  * canonical entity compare
+* `internal/ofacdata`
+
+  * normalized OFAC profile storage
+* `internal/relationships`
+
+  * relationship evidence derivation
+* `internal/linkeddocs`
+
+  * official-doc / identifier support
+* `internal/historyevidence`
+
+  * same-pair / same-profile prior evidence
+* `internal/api`
+
+  * evidence contracts returned to clawbots
+
+### Must not own
+
+* watchlist-specific thresholds
+* final decision labels
+* watchlist promotion criteria
+
+## `clawmem`
+
+### Later responsibilities
+
+Add:
+
+* `internal/caseretrieval`
+
+  * prior-case retrieval
+* `internal/examplememory`
+
+  * accepted-note / accepted-case retrieval
+* `internal/graphretrieval`
+
+  * optional neighborhood retrieval
+* `internal/patternretrieval`
+
+  * optional long-range contradiction-pattern retrieval
+
+### Must not own
+
+* final deterministic score policy
+* disposition thresholds
+* core same-pair recurrence logic in v1
+
+---
+
+# 5. Concrete deliverables
+
+## Deliverable A — Disposition Memory Scoring v1
+
+Add:
+
+* normalized alert-history store
+* same-pair recurrence features
+* recency-decayed prior disposition score
+* deterministic policy hooks
+
+### Acceptance
+
+* no regression in current 12-case suite 
+* add 4–6 new tests for repeated-pair scenarios
+
+## Deliverable B — OFAC Relationship Scoring v1
+
+Add:
+
+* OFAC XML/SLS ingestion into normalized relationship tables
+* direct-relationship and linked-doc scoring
+* graph-derived explanation fields
+
+### Acceptance
+
+* organization and network-style cases score better deterministically
+* no regression on current suite 
+
+## Deliverable C — Deterministic History + Relationship Promotion Suite
+
+Add new eval cases for:
+
+* repeated confirmed true match
+* repeated false positive with same contradiction pattern
+* related-party reinforcement
+* wrong-context relationship neighborhood
+
+### Acceptance
+
+* promotion suite expands beyond the current 12-case baseline
+* deterministic regressions remain zero on prior calibrated cases
+
+---
+
+# 6. Recommended order of execution
+
+1. **Disposition Memory Scoring v1**
+2. **Contradiction-Pattern Memory v1**
+3. **OFAC Relationship Scoring v1**
+4. extract stable evidence generation into **`claw-identity`**
+5. add broader retrieval support in **`clawmem`** only where it clearly helps
+
+This gives you the fastest deterministic gains with the least architectural churn.
+
+---
+
+# 7. Bottom-line architecture decision
+
+## Build first in `watchlist-review-clawbot`
+
+Because:
+
+* fastest iteration
+* easiest to test
+* directly protected by your existing promotion suite 
+
+## Extract next into `claw-identity`
+
+Because:
+
+* identity/relationship evidence is reusable
+* policy weights should stay local to the watchlist product
+
+## Bring in `clawmem` later
+
+Because:
+
+* memory/retrieval is useful, but not required for first deterministic wins
+* you do not need Neo4j/RAG to improve same-pair history or direct OFAC relationship scoring

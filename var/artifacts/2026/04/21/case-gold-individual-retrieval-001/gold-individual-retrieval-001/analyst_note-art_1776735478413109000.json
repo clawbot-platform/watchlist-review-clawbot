@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776735478413109000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421013737.447617000",
+  "created_at": "2026-04-21T01:37:58.413109Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This individual, Jane Citizen, has been flagged for escalation based on a robust match involving exact normalized name, date of birth, country, and passport identifier alignment, supported by multiple pieces of evidence including address and entity type corroboration. The data sufficiency score is high at 92, and the match strength score stands at 93 with no contradictions noted.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "The deterministic decision is to escalate for analyst review due to a strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

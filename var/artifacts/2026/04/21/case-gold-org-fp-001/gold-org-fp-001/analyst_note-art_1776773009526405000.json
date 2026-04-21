@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776773009526405000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421120259.087736000",
+  "created_at": "2026-04-21T12:03:29.526405Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The case for Global Marine Services LLC (screened_name) matched with Global Marine Service Co (matched_name) under the SDN program indicates sparse evidence due to contradictions in country, date of birth, and identifiers. While there is entity type support and organization token overlap, crucial corroboration for date, geography, and strong identifier is absent. The policy idea from retrieval snippets underscores the need for investigation into such hard but unconfirmed contradictions before proceeding with closure.",
+    "evidence_summary": [
+      "Similar organization names with conflicting country, incorporation date, or identifiers require investigation before closure due to hard contradictions and sparse corroboration.",
+      "Register and tax identifier alignment with strong normalized-name corroboration warrants escalation of organization onboarding cases.",
+      "Maritime name overlap without matching IMO or registry data necessitates investigation as wrong-context entity match."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date, geography, and strong identifier.",
+      "Date and geography corroboration are missing."
+    ],
+    "next_step_rationale": "Investigate the hard contradictions in country, date of birth, and identifiers to confirm or refute the alert before making a closure decision."
+  },
+  "tenant_id": "test-tenant"
+}

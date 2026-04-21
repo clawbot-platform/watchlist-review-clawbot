@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-ach-true-001",
+  "artifact_id": "art_1776771334257084000",
+  "case_id": "case-gold-ach-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421113512.574624000",
+  "created_at": "2026-04-21T11:35:34.257084Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The alert pertains to Maria Salazar, matching exactly with the screened name. Evidence includes exact normalized name match, passport identifier confirmation, and supporting data like date of birth and entity type. No contradictions or missing information are present, warranting escalation for analyst review as per established protocols for ACH party alerts.",
+    "evidence_summary": [
+      "Strong corroboration of screened party Maria Salazar through exact normalized name match.",
+      "Exact identifier match on passport supports screened party identity.",
+      "Exact date of birth and entity type support further corroborate the identity match.",
+      "Address and country support additional evidence for the screened party identification."
+    ],
+    "missing_information_summary": [
+      "No missing information identified in this case."
+    ],
+    "next_step_rationale": "Escalation recommended based on strong corroborating evidence without contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

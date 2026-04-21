@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776737454173703000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421021020.707683000",
+  "created_at": "2026-04-21T02:10:54.173703Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization onboarding case requires further investigation due to significant discrepancies. The screened party 'Global Marine Services LLC' has an incorporation year ('2019-04-18') that conflicts with the matched entity's ('Global Marine Service Co', '2011-01-03'). Furthermore, there is a mismatch between their listed countries (US vs. IR) and a lack of corroborating details such as date of birth, geographic context, and strong identifier confirmation.",
+    "evidence_summary": [
+      "Incorporated in different years: '2011-01-03' vs. '2019-04-18'",
+      "Mismatch in the listed country: US vs. IR",
+      "Identifier conflict present (Global Marine)",
+      "Entity type support and organization token overlap noted",
+      "Date of birth information missing for both screened and matched parties"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed to resolve contradictions",
+      "Geography corroboration absent (US vs. IR)",
+      "Strong identifier corroboration required",
+      "Date conflict necessitates investigation for resolution"
+    ],
+    "next_step_rationale": "Investigate and reconcile the noted contradictions in date, geography, and identifiers to determine if there is a true positive match."
+  },
+  "tenant_id": "test-tenant"
+}

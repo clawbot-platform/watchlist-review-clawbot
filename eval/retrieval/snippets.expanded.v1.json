@@ -1,0 +1,112 @@
+[
+  {
+    "snippet_id": "snip-passport-1",
+    "source": "clawmem",
+    "title": "Prior passport corroboration review",
+    "text": "Prior SDN review on Jane Citizen highlighted passport corroboration and exact normalized name match as key escalation evidence.",
+    "tags": [
+      "individual_onboarding",
+      "sdn",
+      "passport",
+      "name_match"
+    ]
+  },
+  {
+    "snippet_id": "snip-policy-1",
+    "source": "policy",
+    "title": "Escalation guidance for strong corroborated matches",
+    "text": "Escalate when exact identifier and date-of-birth corroboration support a strong onboarding watchlist match.",
+    "tags": [
+      "individual_onboarding",
+      "escalate",
+      "passport",
+      "dob"
+    ]
+  },
+  {
+    "snippet_id": "snip-org-1",
+    "source": "policy",
+    "title": "Organization corroboration guidance",
+    "text": "Escalate when organization registration identifiers and name normalization support the same legal entity.",
+    "tags": [
+      "organization_onboarding",
+      "organization",
+      "registration_number",
+      "tax_id",
+      "escalate"
+    ]
+  },
+  {
+    "snippet_id": "snip-org-fp-1",
+    "source": "clawmem",
+    "title": "Organization name-overlap false positive",
+    "text": "Analyst review found that similar organization names without matching registration numbers or country support should not be auto-confirmed.",
+    "tags": [
+      "organization_onboarding",
+      "organization",
+      "false_positive",
+      "name_overlap"
+    ]
+  },
+  {
+    "snippet_id": "snip-ach-1",
+    "source": "policy",
+    "title": "ACH sparse-data caution",
+    "text": "ACH alerts with sparse party data and weak name overlap should be investigated rather than treated as confirmed matches.",
+    "tags": [
+      "ach_payment",
+      "ach",
+      "false_positive",
+      "sparse_data"
+    ]
+  },
+  {
+    "snippet_id": "snip-ach-2",
+    "source": "policy",
+    "title": "ACH corroborated identity escalation",
+    "text": "Escalate ACH alerts when exact identifier and date-of-birth corroboration support a strong party match.",
+    "tags": [
+      "ach_payment",
+      "ach",
+      "escalate",
+      "passport",
+      "dob"
+    ]
+  },
+  {
+    "snippet_id": "snip-tareck-1",
+    "source": "clawmem",
+    "title": "Name-only OFAC false positive",
+    "text": "A prior OFAC-inspired review showed that Tareck name overlap without supporting DOB, geography, or identifiers should remain an investigate case.",
+    "tags": [
+      "individual_onboarding",
+      "tareck",
+      "false_positive",
+      "sdn"
+    ]
+  },
+  {
+    "snippet_id": "snip-vessel-1",
+    "source": "policy",
+    "title": "Wrong-context vessel screening guidance",
+    "text": "Vessel or shipping-name overlap without matching IMO or country context should be treated as wrong-context and investigated further.",
+    "tags": [
+      "vessel_screening",
+      "vessel",
+      "wrong_context",
+      "imo"
+    ]
+  },
+  {
+    "snippet_id": "snip-alias-1",
+    "source": "clawmem",
+    "title": "Alias plus identifier corroboration",
+    "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+    "tags": [
+      "individual_onboarding",
+      "alias",
+      "passport",
+      "escalate"
+    ]
+  }
+]

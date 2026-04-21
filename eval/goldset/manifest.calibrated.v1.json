@@ -1,0 +1,100 @@
+{
+  "cases": [
+    {
+      "name": "individual_true_match_strong",
+      "request_path": "eval/requests/goldset-calibrated/individual_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": false,
+      "notes": "Baseline strong individual true match"
+    },
+    {
+      "name": "individual_true_match_requires_retrieval",
+      "request_path": "eval/requests/goldset-calibrated/individual_true_match_requires_retrieval.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Baseline retrieval-required individual true match"
+    },
+    {
+      "name": "individual_false_positive_sparse",
+      "request_path": "eval/requests/goldset-calibrated/individual_false_positive_sparse.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Sparse contradictory individual case should now investigate instead of close"
+    },
+    {
+      "name": "individual_wrong_context_name_overlap",
+      "request_path": "eval/requests/goldset-calibrated/individual_wrong_context_name_overlap.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Wrong-context individual overlap"
+    },
+    {
+      "name": "org_true_match_strong",
+      "request_path": "eval/requests/goldset-calibrated/org_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Organization true match with exact ids"
+    },
+    {
+      "name": "org_false_positive_name_overlap",
+      "request_path": "eval/requests/goldset-calibrated/org_false_positive_name_overlap.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Organization overlap with contradictions should now investigate"
+    },
+    {
+      "name": "ach_sparse_false_positive",
+      "request_path": "eval/requests/goldset-calibrated/ach_sparse_false_positive.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "ACH sparse contradictory case with required transaction payload"
+    },
+    {
+      "name": "ach_true_match_strong",
+      "request_path": "eval/requests/goldset-calibrated/ach_true_match_strong.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "ACH true match with transaction payload"
+    },
+    {
+      "name": "ofac_real_individual_false_positive_tareck",
+      "request_path": "eval/requests/goldset-calibrated/ofac_real_individual_false_positive_tareck.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Real-OFAC-inspired individual contradiction should now investigate"
+    },
+    {
+      "name": "ofac_real_wrong_context_vessel_apama",
+      "request_path": "eval/requests/goldset-calibrated/ofac_real_wrong_context_vessel_apama.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Supported organization-onboarding surrogate for wrong-context vessel-style case"
+    },
+    {
+      "name": "individual_true_match_alias_identifier",
+      "request_path": "eval/requests/goldset-calibrated/individual_true_match_alias_identifier.json",
+      "expect_decision_label": "escalate",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Alias plus identifier corroboration"
+    },
+    {
+      "name": "org_wrong_context_country_conflict",
+      "request_path": "eval/requests/goldset-calibrated/org_wrong_context_country_conflict.json",
+      "expect_decision_label": "investigate_next_step",
+      "require_generated_note": true,
+      "require_retrieval": true,
+      "notes": "Organization wrong-context conflict should now investigate"
+    }
+  ]
+}

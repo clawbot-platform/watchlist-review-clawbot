@@ -1,0 +1,57 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-rel-boost-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "rel-boost-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-21T12:00:00Z",
+    "case_id": "case-rel-boost-001",
+    "alert_type": "organization_onboarding",
+    "jurisdiction": "US",
+    "priority": "high",
+    "screened_party": {
+      "entity_type": "organization",
+      "full_name": "North Harbor Trading LLC",
+      "countries": [
+        "US"
+      ],
+      "source_system": "kyc_applications",
+      "source_record_id": "rel-boost-001-screened"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "rel-boost-001-matched-uid",
+      "entity_type": "organization",
+      "full_name": "North Harbor Trading LLC"
+    },
+    "screening_features": {
+      "vendor_score": 82,
+      "name_score": 87,
+      "match_flags": [
+        "name"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  },
+  "relationship_context": {
+    "direct_relationships": [
+      {
+        "relationship_type": "owned_by",
+        "target_list_uid": "sdn-parent-001",
+        "target_name": "North Harbor Holdings"
+      }
+    ],
+    "linked_documents": [
+      {
+        "type": "registration_number",
+        "value": "NH-7788"
+      }
+    ],
+    "program_context": "SDN"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776776007853095000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421125259.230759000",
+  "created_at": "2026-04-21T12:53:27.853095Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The case presents a potential match between Global Marine Services LLC (screened name) and Global Marine Service Co (matched name), supported by entity type alignment and organization token overlap. However, contradictions regarding country, date of establishment, and identifiers necessitate investigation for resolution, especially given sparse corroborative data.",
+    "evidence_summary": [
+      "Screened and matched entity names overlap but have contradictions in country, date, and identifiers.",
+      "Contradiction in country and date of establishment suggests further investigation is needed.",
+      "Identifier conflict requires analyst confirmation before decision closure.",
+      "Evidence for entity type alignment exists despite conflicts.",
+      "Organization token overlap supports the potential match."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration required for country and date information.",
+      "Date corroboration is needed to resolve DOB conflict.",
+      "Geography corroboration is essential due to country mismatch.",
+      "Strong identifier corroboration is missing to resolve identifier conflict."
+    ],
+    "next_step_rationale": "Investigate the hard contradictions in country, date, and identifiers before reaching a decision."
+  },
+  "tenant_id": "test-tenant"
+}

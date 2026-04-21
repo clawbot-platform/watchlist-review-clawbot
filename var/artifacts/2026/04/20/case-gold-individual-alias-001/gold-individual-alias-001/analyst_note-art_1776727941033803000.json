@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776727941033803000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233159.972176000",
+  "created_at": "2026-04-20T23:32:21.033803Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case presents a strong match with sufficient corroborating evidence including an exact alias-to-name match, corresponding country (GB), date of birth, and exact identifier on passport. The data sufficiency score is high at 92, supporting the deterministic decision to escalate for analyst review.",
+    "evidence_summary": [
+      "exact alias-to-name match as Muhammad Karim",
+      "address support via GB country",
+      "country support aligning with GB",
+      "entity type clearly an individual",
+      "exact date of birth match",
+      "exact identifier match on passport"
+    ],
+    "next_step_rationale": "Given the strong corroborating evidence and high data sufficiency score, the deterministic decision is to escalate for analyst review."
+  },
+  "tenant_id": "test-tenant"
+}

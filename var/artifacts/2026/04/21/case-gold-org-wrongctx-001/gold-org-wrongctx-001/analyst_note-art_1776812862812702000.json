@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776812862812702000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421230723.777213000",
+  "created_at": "2026-04-21T23:07:42.812702Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert involves Eastern Star Holdings Ltd (screened) and Eastern Star Holding Company (matched), both categorized as organizations. A date conflict exists between the screened party's incorporation date (2018-07-07) and the matched party's date (2009-03-09). Additionally, there is a country mismatch: GB vs SY. The matched identifier also does not align with the screened identifier. Due to these contradictions, which are hard conflicts requiring analyst verification before closure, the decision label indicates 'investigate_next_step'. Sparse supporting information is available, but additional corroboration and geographical confirmation are recommended before finalizing the disposition.",
+    "evidence_summary": [
+      "Screened Name: Eastern Star Holdings Ltd (created 2018-07-07, incorporated in GB with address at 10 Lime St, London) and Matched Name: Eastern Star Holding Company (created 2009-03-09, incorporated in SY). Both entities are organizations.",
+      "Date Conflict: The screened party's incorporation date (2018-07-07) does not match the matched party's date (2009-03-09).",
+      "Country Mismatch: The screened party is based in GB, while the matched party is registered in SY. This discrepancy conflicts with screening expectations.",
+      "Identifier Conflict: Screened identifier GBEST4433 does not align with matched identifier SYEST9001."
+    ],
+    "missing_information_summary": [
+      "No additional corroboration provided beyond the existing evidence items."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

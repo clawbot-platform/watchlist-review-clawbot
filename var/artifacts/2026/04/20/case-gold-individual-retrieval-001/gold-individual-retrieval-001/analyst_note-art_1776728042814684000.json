@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-retrieval-001",
+  "artifact_id": "art_1776728042814684000",
+  "case_id": "case-gold-individual-retrieval-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420233344.133840000",
+  "created_at": "2026-04-20T23:34:02.814684Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The deterministic decision is to escalate this case due to a robust set of evidentiary matches including address support, country alignment, entity type consistency, an exact date match, and precise identifier verification via passport data. The normalized name also aligns perfectly, supporting the decision with a high data sufficiency score and minimal contradictions.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration of screened party identity."
+  },
+  "tenant_id": "test-tenant"
+}

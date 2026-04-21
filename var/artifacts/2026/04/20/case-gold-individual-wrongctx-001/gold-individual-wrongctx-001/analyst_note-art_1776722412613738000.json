@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776722412613738000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420215946.502872000",
+  "created_at": "2026-04-20T22:00:12.613738Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "Despite an exact normalized name match with a high-scoring SDN entity, significant discrepancies exist regarding date of birth, country, and identifier data. These contradictions, especially the critical DOB conflict, require thorough investigation to resolve or confirm before any escalation.",
+    "evidence_summary": [
+      "Entity type support for individual",
+      "Exact normalized name match with top candidate from SDN list",
+      "Country mismatch between screened and matched parties (US vs SY)",
+      "Date of birth conflict (1971-08-09 vs 1992-03-21)",
+      "Identifier conflict, specifically passport data not corroborating"
+    ],
+    "missing_information_summary": [
+      "Lack of date of birth corroboration",
+      "Geographical discrepancy not verified",
+      "Strong identifier corroboration missing"
+    ],
+    "next_step_rationale": "The contradictions in DOB, geography, and identifiers necessitate investigation to gather additional verification before deciding on further action."
+  },
+  "tenant_id": "test-tenant"
+}

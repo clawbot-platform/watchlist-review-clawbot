@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776773948698962000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421121851.064256000",
+  "created_at": "2026-04-21T12:19:08.698962Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The system flags Carlos Vega due to a strong entity type match with Carlos Velez in the SDN list, but geographic discrepancies necessitate further investigation for resolution.",
+    "evidence_summary": [
+      "Alert matches Carlos Vega and Carlos Velez.",
+      "SDN program identifies a strong entity type match.",
+      "Contradiction due to geography conflict detected."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for address, date, and geographic context.",
+      "Matched party identifiers are absent."
+    ],
+    "next_step_rationale": "Investigate the contradiction and gather additional corroboration to resolve geography conflict."
+  },
+  "tenant_id": "test-tenant"
+}

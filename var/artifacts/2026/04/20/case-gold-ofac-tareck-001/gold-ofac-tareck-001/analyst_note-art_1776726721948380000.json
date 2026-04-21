@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776726721948380000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420231129.327457000",
+  "created_at": "2026-04-20T23:12:01.94838Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual onboarding alert (alert_id: gold-ofac-tareck-001) warrants further investigation due to contradictory information. The screened party's details show a date of birth in 1990 and US residence, which starkly differ from the matched SDN entry's 1974 DOB and Venezuelan association. The determination to 'investigate_next_step' is driven by insufficient corroboration on critical identity factors, pointing towards potential false positive or a nuanced case requiring analyst scrutiny before closure.",
+    "evidence_summary": [
+      "Contradiction in date of birth (DOB) between screened party and matched party.",
+      "Geography mismatch: Screened party listed as residing in the US, while matched party associated with Venezuela (VE).",
+      "Country mismatch: US for screened party vs. VE for matched party."
+    ],
+    "missing_information_summary": [
+      "No additional corroboration provided to confirm or refute contradictory information.",
+      "Date of birth discrepancy requires resolution.",
+      "Geographic origin needs confirmation through further investigation."
+    ],
+    "next_step_rationale": "Investigate the DOB and geography conflicts, gather more evidence for corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

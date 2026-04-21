@@ -1,0 +1,328 @@
+{
+  "alert_id": "gold-ach-true-001",
+  "artifact_id": "art_1776775752163807000",
+  "case_id": "case-gold-ach-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124850.512294000",
+  "created_at": "2026-04-21T12:49:12.163807Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "escalate",
+    "review_context": {
+      "alert": {
+        "kind": "ach_party",
+        "metadata": {
+          "alert_id": "gold-ach-true-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "ach_party",
+          "jurisdiction": "US",
+          "case_id": "case-gold-ach-true-001",
+          "priority": "high"
+        },
+        "screened_party": {
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Maria Salazar",
+            "aliases": [
+              "M Salazar"
+            ]
+          },
+          "date_of_birth": "1985-09-19",
+          "countries": [
+            "US"
+          ],
+          "addresses": [
+            {
+              "address_text": "1 Main St",
+              "city": "Jersey City",
+              "country": "US"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "MX4455667",
+              "issuing_country": "MX"
+            }
+          ],
+          "source_record_id": "ach-left-true",
+          "source_system": "ach_gateway"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "ach-right-true",
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Maria Salazar",
+            "aliases": [
+              "Maria P Salazar"
+            ]
+          },
+          "date_of_birth": "1985-09-19",
+          "countries": [
+            "US"
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "MX4455667",
+              "issuing_country": "MX"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 89,
+          "name_score": 95,
+          "match_flags": [
+            "name",
+            "dob",
+            "identifier"
+          ]
+        },
+        "transaction": {
+          "transaction_id": "txn-ach-true-001",
+          "rail_type": "ach",
+          "amount": 8400,
+          "currency": "USD"
+        }
+      },
+      "features": {
+        "alert_id": "gold-ach-true-001",
+        "kind": "ach_party",
+        "screened_name": {
+          "original": "Maria Salazar",
+          "canonical": "MARIA SALAZAR",
+          "canonical_aliases": [
+            "M SALAZAR"
+          ],
+          "tokens": [
+            "MARIA",
+            "SALAZAR"
+          ],
+          "token_sorted": "MARIA SALAZAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Maria Salazar",
+          "canonical": "MARIA SALAZAR",
+          "canonical_aliases": [
+            "MARIA P SALAZAR"
+          ],
+          "tokens": [
+            "MARIA",
+            "SALAZAR"
+          ],
+          "token_sorted": "MARIA SALAZAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "screened_exact": "1985-09-19",
+          "screened_year": "1985",
+          "matched_exact": "1985-09-19",
+          "matched_year": "1985",
+          "exact_match": true,
+          "year_match": true,
+          "has_conflict": false
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "passport": [
+              "MX4455667"
+            ]
+          },
+          "matched_by_type": {
+            "passport": [
+              "MX4455667"
+            ]
+          },
+          "exact_matches": [
+            {
+              "type": "passport",
+              "value": "MX4455667"
+            }
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "US"
+          ],
+          "matched_countries": [
+            "US"
+          ],
+          "country_overlap": [
+            "US"
+          ],
+          "address_countries": [
+            "US"
+          ],
+          "has_country_support": true
+        },
+        "context": {
+          "screened_entity_type": "individual",
+          "matched_entity_type": "individual",
+          "kind": "ach_party",
+          "is_ach": true,
+          "rail_type": "ach",
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "vendor_score": 89,
+        "name_score": 95,
+        "match_flags": [
+          "name",
+          "dob",
+          "identifier"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "ach_party | screened=Maria Salazar | matched=Maria Salazar | program=SDN | decision=escalate | address support | country support | entity type support | exact date match | exact identifier match on passport | exact normalized name match",
+        "snippets": [
+          {
+            "snippet_id": "snip-ach-true-1",
+            "source": "policy",
+            "title": "ACH exact-party escalation",
+            "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+            "score": 9.5,
+            "tags": [
+              "ach_party",
+              "ach",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-individual-passport-true-1",
+            "source": "clawmem",
+            "title": "Individual exact-passport corroboration",
+            "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+            "score": 9,
+            "tags": [
+              "individual_onboarding",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-alias-1",
+            "source": "clawmem",
+            "title": "Alias plus identifier corroboration",
+            "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+            "score": 6,
+            "tags": [
+              "individual_onboarding",
+              "alias",
+              "passport",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-org-true-1",
+            "source": "policy",
+            "title": "Organization true-match escalation",
+            "text": "Escalate organization onboarding cases when registration and tax identifiers align with strong normalized-name corroboration.",
+            "score": 6,
+            "tags": [
+              "organization_onboarding",
+              "organization",
+              "registration_number",
+              "tax_id",
+              "escalate",
+              "true_match"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_de2b22c3d5e6e7af",
+          "decision": "clear",
+          "decision_trace_id": "dt_1fea50c42b6bb5dd",
+          "candidates": [
+            {
+              "dataset_run_id": "ofac-seed-run-001",
+              "list_kind": "sdn",
+              "list_uid": "uid-seed-001",
+              "name": "Jane Citizen",
+              "matched_on": "country",
+              "score": 10,
+              "needs_review": false
+            }
+          ]
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 93,
+        "data_sufficiency_score": 94,
+        "name_match_score": 35,
+        "date_match_score": 20,
+        "identifier_match_score": 20,
+        "geography_match_score": 8,
+        "address_match_score": 5,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 20,
+        "geography_quality_score": 10,
+        "supporting_context_score": 9,
+        "decision_label": "escalate",
+        "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+        "evidence_for": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact date match",
+          "exact identifier match on passport",
+          "exact normalized name match"
+        ],
+        "next_step": "Escalate for analyst review."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v4-grounded-names",
+        "note": "The alert concerning Maria Salazar matches both the screened and matched names. The deterministic evidence supports a clear decision to escalate based on exact identifier, date of birth, address, country, entity type, and normalized name matches, indicating high data sufficiency without contradictions.",
+        "evidence_summary": [
+          "Alert matches screened and matched names: Maria Salazar.",
+          "Decision aligns with strong corroboration evidence.",
+          "Address, country, entity type, exact date, identifier on passport, normalized name all support the match.",
+          "Data sufficiency score is high at 94.",
+          "No contradictions detected in the payload."
+        ],
+        "missing_information_summary": [
+          "All necessary details for decision-making are present."
+        ],
+        "next_step_rationale": "Escalate for analyst review due to strong match with corroborated data."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

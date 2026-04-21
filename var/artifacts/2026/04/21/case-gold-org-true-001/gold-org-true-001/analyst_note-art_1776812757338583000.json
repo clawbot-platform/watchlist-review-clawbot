@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-org-true-001",
+  "artifact_id": "art_1776812757338583000",
+  "case_id": "case-gold-org-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421230540.561404000",
+  "created_at": "2026-04-21T23:05:57.338583Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert indicates a high-confidence organization onboarding case involving North Harbor Trading LLC, which matches the watched list's 'North Harbor Trading LLC' record. The screening process confirms identical name, date of incorporation (2017-06-01), country (US), and identifiers ('NH-7788', tax ID 98-7654321) between the screened and matched parties. No contradictions exist, and there is strong corroborated evidence supporting this match.",
+    "evidence_summary": [
+      "Address support: The matched party address '100 Broadway, New York, US' aligns with the screened party's address.",
+      "Country support: Both parties are located in the United States (US).",
+      "Entity type support: Both entities are classified as organizations.",
+      "Exact date match: The incorporation dates of both parties match exactly on June 1st, 2017.",
+      "Exact identifier match on other: The 'other' identifier 'NH-7788' matches between the screened and matched parties.",
+      "Exact normalized name match: The full names 'North Harbor Trading LLC' perfectly match when canonicalized."
+    ],
+    "next_step_rationale": "Strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

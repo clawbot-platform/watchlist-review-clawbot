@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-ach-fp-001",
+  "artifact_id": "art_1776735614215942000",
+  "case_id": "case-gold-ach-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421013943.749475000",
+  "created_at": "2026-04-21T01:40:14.215942Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert for ACH party 'Carlos Vega' strongly indicates an individual from the US, matching exactly with 'Carlos Velez' on the SDN list, according to high match strength and entity type support. However, there is a geographical contradiction (CU vs. US) that requires analyst confirmation, alongside missing crucial details like date of birth, address context, and further identifier corroboration. The next step involves resolving this inconsistency and collecting additional supporting evidence.",
+    "evidence_summary": [
+      "Strong entity type support for individual.",
+      "Exact country match (US vs. CU conflict, requiring analyst confirmation).",
+      "High match strength score of 9.",
+      "Screened party name exactly matches matched party."
+    ],
+    "missing_information_summary": [
+      "Date of birth is missing from screened party.",
+      "Additional corroboration needed for geography due to contradiction.",
+      "Address context and date corroboration are lacking.",
+      "Matched party identifiers not provided.",
+      "Screened party's date not corroborated."
+    ],
+    "next_step_rationale": "Resolve the country mismatch and gather more corroboration regarding geography to determine if there is a genuine positive hit."
+  },
+  "tenant_id": "test-tenant"
+}

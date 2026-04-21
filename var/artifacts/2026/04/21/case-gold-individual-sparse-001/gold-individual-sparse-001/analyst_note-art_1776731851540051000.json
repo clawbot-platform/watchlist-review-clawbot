@@ -1,0 +1,28 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776731851540051000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421003705.228690000",
+  "created_at": "2026-04-21T00:37:31.540051Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The onboarding case for Tareck Joseph flags an investigation need due to a strong entity type match with 'Tareck El Aissami' on the SDN list, but significant geographical and temporal discrepancies exist. The system suggests a high confidence in the potential match but requires analyst intervention to resolve contradictions around country of origin and date of birth before final determination.",
+    "evidence_summary": [
+      "Entity type supports individual screening as per SDN list.",
+      "Match strength score is 9 indicating a strong potential match."
+    ],
+    "missing_information_summary": [
+      "Geography conflict with country mismatch.",
+      "Hard contradiction requiring analyst confirmation.",
+      "Additional corroboration needed for date of birth and address context.",
+      "Screened party's country does not align with matched party's countries.",
+      "Missing matched_party identifiers and screened_party date."
+    ],
+    "next_step_rationale": "Investigate the geography conflict and gather necessary additional corroboration to resolve contradictions before reaching a conclusive decision."
+  },
+  "tenant_id": "test-tenant"
+}

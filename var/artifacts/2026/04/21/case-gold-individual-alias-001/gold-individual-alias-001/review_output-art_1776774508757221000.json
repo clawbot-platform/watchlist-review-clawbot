@@ -1,0 +1,310 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776774508757221000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421122755.312270000",
+  "created_at": "2026-04-21T12:28:28.757221Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "escalate",
+    "review_context": {
+      "alert": {
+        "kind": "individual_onboarding",
+        "metadata": {
+          "alert_id": "gold-individual-alias-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "individual_onboarding",
+          "jurisdiction": "US",
+          "case_id": "case-gold-individual-alias-001",
+          "priority": "high"
+        },
+        "screened_party": {
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Mohamed Karim",
+            "aliases": [
+              "Mo Karim"
+            ]
+          },
+          "date_of_birth": "1981-02-03",
+          "countries": [
+            "GB"
+          ],
+          "addresses": [
+            {
+              "address_text": "10 Lime St",
+              "city": "London",
+              "country": "GB"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "GB778899",
+              "issuing_country": "GB"
+            }
+          ],
+          "source_record_id": "mkarim-left",
+          "source_system": "kyc_applications"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "mkarim-right",
+          "entity_type": "individual",
+          "name": {
+            "full_name": "Muhammad Karim",
+            "aliases": [
+              "Mohamed Karim"
+            ]
+          },
+          "date_of_birth": "1981-02-03",
+          "countries": [
+            "GB"
+          ],
+          "identifiers": [
+            {
+              "type": "passport",
+              "value": "GB778899",
+              "issuing_country": "GB"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 86,
+          "name_score": 91,
+          "match_flags": [
+            "name",
+            "dob",
+            "identifier"
+          ]
+        }
+      },
+      "features": {
+        "alert_id": "gold-individual-alias-001",
+        "kind": "individual_onboarding",
+        "screened_name": {
+          "original": "Mohamed Karim",
+          "canonical": "MOHAMED KARIM",
+          "canonical_aliases": [
+            "MO KARIM"
+          ],
+          "tokens": [
+            "MOHAMED",
+            "KARIM"
+          ],
+          "token_sorted": "KARIM MOHAMED",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Muhammad Karim",
+          "canonical": "MUHAMMAD KARIM",
+          "canonical_aliases": [
+            "MOHAMED KARIM"
+          ],
+          "tokens": [
+            "MUHAMMAD",
+            "KARIM"
+          ],
+          "token_sorted": "KARIM MUHAMMAD",
+          "script_family": "latin",
+          "has_exact_alias_match": true
+        },
+        "date": {
+          "screened_exact": "1981-02-03",
+          "screened_year": "1981",
+          "matched_exact": "1981-02-03",
+          "matched_year": "1981",
+          "exact_match": true,
+          "year_match": true,
+          "has_conflict": false
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "passport": [
+              "GB778899"
+            ]
+          },
+          "matched_by_type": {
+            "passport": [
+              "GB778899"
+            ]
+          },
+          "exact_matches": [
+            {
+              "type": "passport",
+              "value": "GB778899"
+            }
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "GB"
+          ],
+          "matched_countries": [
+            "GB"
+          ],
+          "country_overlap": [
+            "GB"
+          ],
+          "address_countries": [
+            "GB"
+          ],
+          "has_country_support": true
+        },
+        "context": {
+          "screened_entity_type": "individual",
+          "matched_entity_type": "individual",
+          "kind": "individual_onboarding",
+          "is_ach": false,
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "vendor_score": 86,
+        "name_score": 91,
+        "match_flags": [
+          "name",
+          "dob",
+          "identifier"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "individual_onboarding | screened=Mohamed Karim | matched=Muhammad Karim | program=SDN | decision=escalate | address support | country support | entity type support | exact alias-to-name match | exact date match | exact identifier match on passport",
+        "snippets": [
+          {
+            "snippet_id": "snip-individual-passport-true-1",
+            "source": "clawmem",
+            "title": "Individual exact-passport corroboration",
+            "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+            "score": 9.5,
+            "tags": [
+              "individual_onboarding",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-alias-1",
+            "source": "clawmem",
+            "title": "Alias plus identifier corroboration",
+            "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+            "score": 8.5,
+            "tags": [
+              "individual_onboarding",
+              "alias",
+              "passport",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-ach-true-1",
+            "source": "policy",
+            "title": "ACH exact-party escalation",
+            "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+            "score": 8,
+            "tags": [
+              "ach_party",
+              "ach",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-tareck-1",
+            "source": "clawmem",
+            "title": "Real-OFAC-inspired Tareck false positive",
+            "text": "Name overlap with Tareck El Aissami without matching date of birth, geography, or identifiers should be investigated and documented as likely false positive after corroboration review.",
+            "score": 6.5,
+            "tags": [
+              "individual_onboarding",
+              "tareck",
+              "investigate_next_step",
+              "false_positive",
+              "ofac_real"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_30c003e74999cff8",
+          "decision": "clear",
+          "decision_trace_id": "dt_f20b9d0fbd007b47"
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 88,
+        "data_sufficiency_score": 92,
+        "name_match_score": 30,
+        "date_match_score": 20,
+        "identifier_match_score": 20,
+        "geography_match_score": 8,
+        "address_match_score": 5,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 20,
+        "geography_quality_score": 10,
+        "supporting_context_score": 7,
+        "decision_label": "escalate",
+        "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+        "evidence_for": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact alias-to-name match",
+          "exact date match",
+          "exact identifier match on passport"
+        ],
+        "next_step": "Escalate for analyst review."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v4-grounded-names",
+        "note": "Given the exact alias-to-name match ('Mohamed Karim' and 'Muhammad Karim') supported by address, country, and exact passport identifier details, alongside corroborating date of birth information within the SDN program context, escalation for analyst review is warranted. The high data sufficiency score further validates this decision. There are no contradictions or significant missing information to alter this course of action.",
+        "evidence_summary": [
+          "Strong corroboration exists with an exact alias-to-name match for Mohamed Karim, confirmed by matching address, country, and passport identifier details.",
+          "Exact date of birth and passport match further solidify the identification of the screened individual as Muhammad Karim under the SDN program.",
+          "Data sufficiency score is high, indicating robust and reliable evidence supporting escalation for analyst review.",
+          "No contradictions are present in the provided data to challenge the match.",
+          "Exact normalization ensures no invention or import of foreign names from retrieval snippets."
+        ],
+        "missing_information_summary": [
+          "No crucial information is missing from the current payload affecting decision-making.",
+          "],"
+        ],
+        "next_step_rationale": "Escalation for analyst review is justified due to the strong corroboration with multiple grounded evidence points and lack of contradictory data. The deterministic score supports this action."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

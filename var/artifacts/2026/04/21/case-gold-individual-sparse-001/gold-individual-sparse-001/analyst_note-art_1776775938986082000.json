@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776775938986082000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421125152.885227000",
+  "created_at": "2026-04-21T12:52:18.986082Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "This individual, screened as Tareck Joseph, matches an entity identified as Tareck El Aissami under the SDN program. However, evidence is insufficient due to geographical discrepancies and missing identifier details. Next steps involve investigating these contradictions and seeking further corroboration for a more definitive assessment.",
+    "evidence_summary": [
+      "3-5 concise grounded bullets without markdown bullet prefixes:",
+      "Entity type support confirmed.",
+      "Country mismatch evident.",
+      "Hard contradiction requires analyst confirmation.",
+      "Additional corroboration needed, specifically for address context and date."
+    ],
+    "missing_information_summary": [
+      "0-4 concise grounded items; no placeholder text:",
+      "Additional corroboration required, including address context and date.",
+      "Geography corroboration lacking.",
+      "Matched party identifiers unspecified."
+    ],
+    "next_step_rationale": "The case is sparse due to contradictions and missing information requiring investigation. Analysts should focus on resolving the geography conflict and gather additional corroborating data."
+  },
+  "tenant_id": "test-tenant"
+}

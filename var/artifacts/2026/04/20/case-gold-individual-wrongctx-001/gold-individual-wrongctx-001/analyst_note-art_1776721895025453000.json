@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776721895025453000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420215106.535758000",
+  "created_at": "2026-04-20T21:51:35.025453Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The individual onboarding alert for 'Omar Haddad' presents hard contradictions due to country mismatch (US vs Syria), significant date of birth discrepancy, and uncorroborated identifiers. The decision label remains 'investigate_next_step' as further verification is required to resolve these critical inconsistencies.",
+    "evidence_summary": [
+      "Exact normalized name match with screened individual 'Jane Citizen'",
+      "'Entity type support' for individual classification",
+      "Country mismatch: Screened party in US, matched to Syria ('SY')",
+      "Date of birth conflict: Screened (1992-03-21) vs Matched (1971-08-09)",
+      "Identifier conflict detected"
+    ],
+    "missing_information_summary": [
+      "'Date corroboration' for matched party 'Omar Haddad'",
+      "'Geography corroboration'",
+      "'Strong identifier corroboration'"
+    ],
+    "next_step_rationale": "Investigate contradictions, focusing on dob conflict, geographical discrepancies, and lack of robust identifier support."
+  },
+  "tenant_id": "test-tenant"
+}

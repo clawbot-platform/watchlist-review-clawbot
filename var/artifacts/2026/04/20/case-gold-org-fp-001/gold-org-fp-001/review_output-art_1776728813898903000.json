@@ -1,0 +1,332 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776728813898903000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420234628.984776000",
+  "created_at": "2026-04-20T23:46:53.898903Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "investigate_next_step",
+    "review_context": {
+      "alert": {
+        "kind": "organization_onboarding",
+        "metadata": {
+          "alert_id": "gold-org-fp-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "organization_onboarding",
+          "jurisdiction": "US",
+          "case_id": "case-gold-org-fp-001",
+          "priority": "medium"
+        },
+        "screened_party": {
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Global Marine Services LLC",
+            "aliases": [
+              "Global Marine"
+            ]
+          },
+          "incorporation_date": "2019-04-18",
+          "countries": [
+            "US"
+          ],
+          "addresses": [
+            {
+              "address_text": "100 Broadway",
+              "city": "New York",
+              "country": "US"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "GM-1200",
+              "issuing_country": "US"
+            }
+          ],
+          "source_record_id": "org-left-fp",
+          "source_system": "vendor_master"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "org-fp-right-record",
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Global Marine Service Co",
+            "aliases": [
+              "Global Marine"
+            ]
+          },
+          "incorporation_date": "2011-01-03",
+          "countries": [
+            "IR"
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "IR-9988",
+              "issuing_country": "IR"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 67,
+          "name_score": 82,
+          "match_flags": [
+            "name"
+          ]
+        }
+      },
+      "features": {
+        "alert_id": "gold-org-fp-001",
+        "kind": "organization_onboarding",
+        "screened_name": {
+          "original": "Global Marine Services LLC",
+          "canonical": "GLOBAL MARINE SERVICES LLC",
+          "canonical_aliases": [
+            "GLOBAL MARINE"
+          ],
+          "tokens": [
+            "GLOBAL",
+            "MARINE",
+            "SERVICES",
+            "LLC"
+          ],
+          "token_sorted": "GLOBAL LLC MARINE SERVICES",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Global Marine Service Co",
+          "canonical": "GLOBAL MARINE SERVICE CO",
+          "canonical_aliases": [
+            "GLOBAL MARINE"
+          ],
+          "tokens": [
+            "GLOBAL",
+            "MARINE",
+            "SERVICE",
+            "CO"
+          ],
+          "token_sorted": "CO GLOBAL MARINE SERVICE",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "screened_exact": "2019-04-18",
+          "screened_year": "2019",
+          "matched_exact": "2011-01-03",
+          "matched_year": "2011",
+          "exact_match": false,
+          "year_match": false,
+          "has_conflict": true
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "other": [
+              "GM1200"
+            ]
+          },
+          "matched_by_type": {
+            "other": [
+              "IR9988"
+            ]
+          },
+          "potential_conflicts": [
+            "other"
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "US"
+          ],
+          "matched_countries": [
+            "IR"
+          ],
+          "address_countries": [
+            "US"
+          ],
+          "has_country_support": false
+        },
+        "context": {
+          "screened_entity_type": "organization",
+          "matched_entity_type": "organization",
+          "kind": "organization_onboarding",
+          "is_ach": false,
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "contradictions": [
+          "dob_conflict",
+          "identifier_conflict",
+          "geography_conflict"
+        ],
+        "vendor_score": 67,
+        "name_score": 82,
+        "match_flags": [
+          "name"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "organization_onboarding | screened=Global Marine Services LLC | matched=Global Marine Service Co | program=SDN | decision=investigate_next_step | entity type support | organization token overlap",
+        "snippets": [
+          {
+            "snippet_id": "snip-org-fp-1",
+            "source": "clawmem",
+            "title": "Organization overlap with contradictions",
+            "text": "For similar organization names with conflicting country, incorporation date, or identifiers, investigate before closure if contradictions are hard but corroboration remains sparse.",
+            "score": 6,
+            "tags": [
+              "organization_onboarding",
+              "organization",
+              "investigate_next_step",
+              "false_positive",
+              "wrong_context"
+            ]
+          },
+          {
+            "snippet_id": "snip-org-true-1",
+            "source": "policy",
+            "title": "Organization true-match escalation",
+            "text": "Escalate organization onboarding cases when registration and tax identifiers align with strong normalized-name corroboration.",
+            "score": 5,
+            "tags": [
+              "organization_onboarding",
+              "organization",
+              "registration_number",
+              "tax_id",
+              "escalate",
+              "true_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-apama-1",
+            "source": "clawmem",
+            "title": "APAMA wrong-context maritime case",
+            "text": "APAMA maritime name overlap without matching IMO or registry data should be investigated as a wrong-context entity match.",
+            "score": 4.5,
+            "tags": [
+              "organization_onboarding",
+              "maritime",
+              "apama",
+              "wrong_context",
+              "investigate_next_step"
+            ]
+          },
+          {
+            "snippet_id": "snip-ach-true-1",
+            "source": "policy",
+            "title": "ACH exact-party escalation",
+            "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+            "score": 3,
+            "tags": [
+              "ach_party",
+              "ach",
+              "passport",
+              "dob",
+              "escalate",
+              "true_match"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_39098af42ece0e6f",
+          "decision": "clear",
+          "decision_trace_id": "dt_6dd64c8cc4edca60",
+          "candidates": [
+            {
+              "dataset_run_id": "ofac-seed-run-001",
+              "list_kind": "sdn",
+              "list_uid": "uid-seed-001",
+              "name": "Jane Citizen",
+              "matched_on": "country",
+              "score": 10,
+              "needs_review": false
+            }
+          ]
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 17,
+        "data_sufficiency_score": 78,
+        "name_match_score": 6,
+        "date_match_score": 0,
+        "identifier_match_score": 6,
+        "geography_match_score": 0,
+        "address_match_score": 0,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 12,
+        "geography_quality_score": 4,
+        "supporting_context_score": 7,
+        "contradictions": [
+          "dob_conflict",
+          "geography_conflict",
+          "identifier_conflict"
+        ],
+        "decision_label": "investigate_next_step",
+        "decision_reason": "Sparse or contradictory case requires analyst investigation before closure.",
+        "evidence_for": [
+          "entity type support",
+          "organization token overlap"
+        ],
+        "evidence_against": [
+          "country mismatch",
+          "date conflict",
+          "hard contradiction requires analyst confirmation",
+          "identifier conflict"
+        ],
+        "missing_information": [
+          "additional corroboration",
+          "date corroboration",
+          "geography corroboration",
+          "strong identifier corroboration"
+        ],
+        "next_step": "Investigate contradiction and gather additional corroboration."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v3-rag-quality",
+        "note": "Given the 'investigate_next_step' deterministic decision label, there are detected contradictions in date of birth, geographical data, and identifiers for Global Marine Services LLC. The organization matches with 'Global Marine Service Co', supported by entity type and token overlap, but further investigation is required to resolve discrepancies and gather additional corroboration before any definitive action can be taken.",
+        "evidence_summary": [
+          "Entity type support for organization.",
+          "Organization token overlap with matched party 'Global Marine Service Co'."
+        ],
+        "missing_information_summary": [
+          "Inconsistency in date of birth and geographical data.",
+          "Lack of strong identifier corroboration for the screened party.",
+          "No additional corroboration provided to resolve contradictions."
+        ],
+        "next_step_rationale": "The current contradictions necessitate investigation before closure, focusing on resolving DOB conflict, geography conflict, and obtaining stronger identifier confirmation."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

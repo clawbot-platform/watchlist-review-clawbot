@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776721617550488000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420214630.922879000",
+  "created_at": "2026-04-20T21:46:57.550488Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case involves an entity named Global Marine Service Co matched against Global Marine Services LLC. Contradictions include mismatched country (US vs IR), disparate incorporation dates (2019 vs 2011), and identifier conflicts. Evidence for organizational type and token overlap exists but is overshadowed by significant discrepancies, prompting a closure as likely false positive.",
+    "evidence_summary": [
+      "Entity type support",
+      "Organization token overlap",
+      "Country mismatch (US vs IR)",
+      "Date conflict (2019 vs 2011)",
+      "Identifier conflict between Global Marine and Global Marine Services LLC"
+    ],
+    "missing_information_summary": [
+      "Missing corroboration for date of birth",
+      "Missing geography corroboration",
+      "Weak or conflicting identifier evidence",
+      "Insufficient data to reconcile country discrepancy"
+    ],
+    "next_step_rationale": "The hard contradictions and weak match strength dictate a closure as likely false positive due to the organization name, date, and geographical conflicts."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-org-true-001",
+  "artifact_id": "art_1776772699049009000",
+  "case_id": "case-gold-org-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421115758.988784000",
+  "created_at": "2026-04-21T11:58:19.049009Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "North Harbor Trading LLC matches strongly based on address, country, entity type, exact date, and normalized identifier across various sources, aligning registration and tax identifiers. No notable gaps in the data provided.",
+    "evidence_summary": [
+      "Strong normalized-name match with screened entity North Harbor Trading LLC.",
+      "Registration and tax identifiers align with the matched name.",
+      "Address, country, and entity type supports the match.",
+      "Exact date corroborates the identified organization.",
+      "Exactly matches the normalized identifier on other data sources."
+    ],
+    "missing_information_summary": [
+      "No significant gaps in the provided data for North Harbor Trading LLC."
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration of screened name with multiple supporting data points."
+  },
+  "tenant_id": "test-tenant"
+}

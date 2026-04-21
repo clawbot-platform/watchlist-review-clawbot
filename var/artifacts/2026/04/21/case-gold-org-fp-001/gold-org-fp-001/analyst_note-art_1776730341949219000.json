@@ -1,0 +1,27 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776730341949219000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421001150.545064000",
+  "created_at": "2026-04-21T00:12:21.949219Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The organization 'Global Marine Services LLC' has been flagged due to contradicting information concerning its country of operation, potential date-of-birth details, and identifier consistency. The screened entity is based in the US, whereas the matched party is identified with an Iran sanctions list entry, suggesting a possible wrong context scenario. There's a mismatch in incorporation dates and insufficient corroboration regarding critical identifying factors like DOB. The case necessitates analyst investigation to resolve these discrepancies before closure.",
+    "evidence_summary": [
+      "Country mismatch: Screened party is from the US, matched party IR.",
+      "Date of birth mismatch or lack thereof.",
+      "Identifier conflict between screened 'Global Marine' and matched 'Global Marine Service Co'.",
+      "Incorporation date discrepancy ('2011-01-03' vs '2019-04-18')."
+    ],
+    "missing_information_summary": [
+      "Lack of corroboration for date of birth and strong identifier evidence.",
+      "No matching IMO or registry data for maritime name validation."
+    ],
+    "next_step_rationale": "Investigate contradictions in country, date, identifiers, and gather additional corroborating information before proceeding with closure."
+  },
+  "tenant_id": "test-tenant"
+}

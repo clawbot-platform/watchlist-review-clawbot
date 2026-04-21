@@ -1,0 +1,32 @@
+{
+  "alert_id": "gold-org-fp-001",
+  "artifact_id": "art_1776771290600013000",
+  "case_id": "case-gold-org-fp-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421113423.844152000",
+  "created_at": "2026-04-21T11:34:50.600013Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The screened entity Global Marine Services LLC, matched to Global Marine Service Co, presents contradictions in date of birth, geography, and identifiers with sparse data. The case requires investigation for resolution due to conflicting evidence and insufficient corroboration.",
+    "evidence_summary": [
+      "Organization overlap with contradictions detected.",
+      "Identified contradictions include date of birth, geography, and identifier conflicts.",
+      "Data sufficiency score is 78, indicating sparse case information.",
+      "Strong support for organization entity type identified."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date, geography, and strong identifier.",
+      "Date corroboration essential due to detected date conflict.",
+      "Geography corroboration necessary because of geography mismatch.",
+      "Strong identifier corroboration is required given the identifier conflict."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration.",
+    "warnings": [
+      "granite_analyst_note_evidence_items_dropped_for_unapproved_name"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

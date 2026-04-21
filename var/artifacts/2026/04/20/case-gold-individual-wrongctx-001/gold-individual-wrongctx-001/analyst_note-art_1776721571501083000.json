@@ -1,0 +1,29 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776721571501083000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420214541.795131000",
+  "created_at": "2026-04-20T21:46:11.501083Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The screened party, Omar Haddad, presents exact normalized name corroboration with an SDN list entity, Jane Citizen. However, significant discrepancies exist: the date of birth contradicts by 22 years, there's a geographical mismatch (US vs. Syria), and conflicting identifiers. The deterministic decision is to investigate next, given these hard contradictions that necessitate further verification before escalation.",
+    "evidence_summary": [
+      "Exact normalized name match with top candidate in SDN list",
+      "Entity type support as individual",
+      "Country mismatch and geography conflict identified",
+      "Date of birth conflict between screened party (1992-03-21) and matched party (1971-08-09)",
+      "Strong identifier conflict due to conflicting aliases"
+    ],
+    "missing_information_summary": [
+      "Lack of corroboration for date of birth",
+      "Lack of geography corroboration",
+      "Lack of strong identifier corroboration"
+    ],
+    "next_step_rationale": "Investigate the hard contradictions regarding date of birth, geography, and identifiers to verify the accuracy before further escalation."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,85 @@
+{
+  "tenant_id": "test-tenant",
+  "case_id": "case-gold-ach-true-001",
+  "source_system": "screening_json",
+  "raw_alert": {
+    "alert_id": "gold-ach-true-001",
+    "source_system": "screening_json",
+    "created_at": "2026-04-14T12:00:00Z",
+    "case_id": "case-gold-ach-true-001",
+    "alert_type": "ach_party",
+    "jurisdiction": "US",
+    "priority": "high",
+    "transaction": {
+      "transaction_id": "txn-ach-true-001",
+      "rail_type": "ach",
+      "amount": 8400.0,
+      "currency": "USD",
+      "direction": "debit",
+      "effective_date": "2026-04-14",
+      "originating_bank_country": "US",
+      "beneficiary_bank_country": "US"
+    },
+    "screened_party": {
+      "entity_type": "individual",
+      "full_name": "Maria Salazar",
+      "aliases": [
+        "M Salazar"
+      ],
+      "date_of_birth": "1985-09-19",
+      "countries": [
+        "US"
+      ],
+      "addresses": [
+        {
+          "address_text": "1 Main St",
+          "city": "Jersey City",
+          "country": "US"
+        }
+      ],
+      "identifiers": [
+        {
+          "type": "passport",
+          "value": "MX4455667",
+          "issuing_country": "MX"
+        }
+      ],
+      "source_system": "ach_gateway",
+      "source_record_id": "ach-left-true"
+    },
+    "matched_party": {
+      "list_source": "watchlist_candidates",
+      "program": "SDN",
+      "list_uid": "ach-right-true",
+      "entity_type": "individual",
+      "full_name": "Maria Salazar",
+      "aliases": [
+        "Maria P Salazar"
+      ],
+      "date_of_birth": "1985-09-19",
+      "countries": [
+        "US"
+      ],
+      "identifiers": [
+        {
+          "type": "passport",
+          "value": "MX4455667",
+          "issuing_country": "MX"
+        }
+      ]
+    },
+    "screening_features": {
+      "vendor_score": 89,
+      "name_score": 95,
+      "match_flags": [
+        "name",
+        "dob",
+        "identifier"
+      ]
+    }
+  },
+  "options": {
+    "explain": true,
+    "mode": "deterministic"
+  }
+}

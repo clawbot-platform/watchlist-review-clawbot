@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-individual-wrongctx-001",
+  "artifact_id": "art_1776775659352113000",
+  "case_id": "case-gold-individual-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421124719.658375000",
+  "created_at": "2026-04-21T12:47:39.352113Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "Omar Haddad is flagged for investigation due to conflicting data about date of birth, geographical information, and identifiers within the watchlist review system.",
+    "evidence_summary": [
+      "Alert involves Omar Haddad in the SDN program.",
+      "Match strength score is 46; data sufficiency score is 78.",
+      "Decision label is 'investigate_next_step' due to contradictions and insufficiencies."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date, geography, and strong identifier.",
+      "Date conflict, geography conflict, and identifier conflict identified."
+    ],
+    "next_step_rationale": "Investigate contradictions regarding DOB, geography, and identifiers to confirm or refute the match."
+  },
+  "tenant_id": "test-tenant"
+}

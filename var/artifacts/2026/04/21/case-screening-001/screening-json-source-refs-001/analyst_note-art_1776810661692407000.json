@@ -1,0 +1,20 @@
+{
+  "alert_id": "screening-json-source-refs-001",
+  "artifact_id": "art_1776810661692407000",
+  "case_id": "case-screening-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421223051.217415000",
+  "created_at": "2026-04-21T22:31:01.692407Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "The alert indicates a high-priority individual onboarding scenario involving Jane Citizen. Strong corroborated match exists with sufficient data, including exact name, date of birth, country, and passport identifier matches, supported by multiple snippets demonstrating escalation rationale for these criteria. No contradictions or missing information were identified in the screening features.",
+    "next_step_rationale": "Escalate for analyst review.",
+    "warnings": [
+      "granite_analyst_note_next_step_rationale_rewritten"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

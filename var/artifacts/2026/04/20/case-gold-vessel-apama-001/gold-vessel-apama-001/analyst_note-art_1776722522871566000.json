@@ -1,0 +1,30 @@
+{
+  "alert_id": "gold-vessel-apama-001",
+  "artifact_id": "art_1776722522871566000",
+  "case_id": "case-gold-vessel-apama-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420220133.892672000",
+  "created_at": "2026-04-20T22:02:02.871566Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "This onboarding case for APAMA SHIPPING LLC resulted in a decision to close based on low evidence supporting a genuine SDN list match. While entity type alignment exists ('organization'), significant geographic discrepancy (US vs PA) along with missing corroborative data (dates, etc.) points towards a likely false positive scenario. No escalation is warranted given insufficient evidence.",
+    "evidence_summary": [
+      "Entity type support for organization",
+      "Name token overlap between screened and matched parties ('APAMA')",
+      "Country mismatch: 'US' vs. 'PA'",
+      "Low match strength score of 17",
+      "Insufficient evidence to escalate for further review"
+    ],
+    "missing_information_summary": [
+      "Date corroboration (for screened_party and matched_party)",
+      "Geography corroboration (country mismatch)",
+      "matched_party.date of birth and incorporation date",
+      "Screened_party.date of incorporation"
+    ],
+    "next_step_rationale": "Close as likely false positive due to low match strength, country conflict, and missing crucial dates."
+  },
+  "tenant_id": "test-tenant"
+}

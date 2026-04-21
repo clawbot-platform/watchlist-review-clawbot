@@ -1,0 +1,23 @@
+{
+  "alert_id": "gold-individual-sparse-001",
+  "artifact_id": "art_1776812725733529000",
+  "case_id": "case-gold-individual-sparse-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421230514.596885000",
+  "created_at": "2026-04-21T23:05:25.733529Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "Tareck El Aissami, identified in watchlist_candidates with SDN program on 2026-04-14, matches the screened name Tareck Joseph through exact date of birth (1974-11-12). However, a country mismatch between US and Venezuela is noted as a contradiction requiring analyst confirmation. Sparse information includes missing matching party identifiers and comprehensive screening features. The deterministic score indicates moderate evidence for name match but requires investigation due to geography conflict before closure.",
+    "evidence_summary": [
+      "Entity type support"
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration.",
+    "warnings": [
+      "granite_analyst_note_evidence_summary_rebuilt_from_deterministic_score"
+    ]
+  },
+  "tenant_id": "test-tenant"
+}

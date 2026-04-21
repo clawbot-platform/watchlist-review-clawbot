@@ -1,0 +1,26 @@
+{
+  "alert_id": "gold-ofac-tareck-001",
+  "artifact_id": "art_1776770957520253000",
+  "case_id": "case-gold-ofac-tareck-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421112855.211786000",
+  "created_at": "2026-04-21T11:29:17.520253Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v4-grounded-names",
+    "note": "The screened name 'Tareck Joseph' was matched to the SDN entity 'Tareck El Aissami', supported by entity type. However, discrepancies exist in date of birth and geography, necessitating investigation. Missing are strong identifier corroboration and additional date/location confirmation, as indicated for analyst review.",
+    "evidence_summary": [
+      "Screened name 'Tareck Joseph' matches allowed entity 'Tareck El Aissami'.",
+      "Entity type supports individual screening.",
+      "Date of birth and geography conflicts need investigation."
+    ],
+    "missing_information_summary": [
+      "Additional corroboration needed for date and location.",
+      "Strong identifier corroboration is missing."
+    ],
+    "next_step_rationale": "Investigate contradiction and gather additional corroboration as determined by the sparse case requiring analyst intervention."
+  },
+  "tenant_id": "test-tenant"
+}

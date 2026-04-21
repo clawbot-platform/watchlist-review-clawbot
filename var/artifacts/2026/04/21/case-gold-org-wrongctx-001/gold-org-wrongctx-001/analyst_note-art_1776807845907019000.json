@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776807845907019000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260421214350.692300000",
+  "created_at": "2026-04-21T21:44:05.907019Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite4:tiny-h",
+    "prompt_version": "granite-analyst-note-v5-local-json",
+    "note": "Eastern Star Holdings Ltd was screened as an organization onboarding entity with a vendor_score of 66 and name_score of 81. The matched party Eastern Star Holding Company has a different incorporation date (2009 vs. 2018) and country (SY vs. GB), indicating a potential false positive due to hard contradictions that require analyst confirmation before closure.",
+    "evidence_summary": [
+      "Eastern Star Holdings Ltd (GB) was screened as an organization onboarding entity with a vendor_score of 66 and name_score of 81. The matched party Eastern Star Holding Company (SY) has a different incorporation date (200"
+    ],
+    "missing_information_summary": [
+      "Additional corroboration",
+      "Geography corroboration",
+      "Strong identifier corroboration"
+    ],
+    "next_step_rationale": "Investigate contradictions and gather additional corroboration."
+  },
+  "tenant_id": "test-tenant"
+}

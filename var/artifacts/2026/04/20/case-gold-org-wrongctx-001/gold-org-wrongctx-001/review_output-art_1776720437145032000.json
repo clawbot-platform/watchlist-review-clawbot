@@ -1,0 +1,288 @@
+{
+  "alert_id": "gold-org-wrongctx-001",
+  "artifact_id": "art_1776720437145032000",
+  "case_id": "case-gold-org-wrongctx-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420212648.594397000",
+  "created_at": "2026-04-20T21:27:17.145032Z",
+  "kind": "review_output",
+  "payload": {
+    "decision_label": "close",
+    "review_context": {
+      "alert": {
+        "kind": "organization_onboarding",
+        "metadata": {
+          "alert_id": "gold-org-wrongctx-001",
+          "source_system": "screening_json",
+          "created_at": "2026-04-14T12:00:00Z",
+          "alert_type": "organization_onboarding",
+          "jurisdiction": "US",
+          "case_id": "case-gold-org-wrongctx-001",
+          "priority": "medium"
+        },
+        "screened_party": {
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Eastern Star Holdings Ltd",
+            "aliases": [
+              "Eastern Star"
+            ]
+          },
+          "incorporation_date": "2018-07-07",
+          "countries": [
+            "GB"
+          ],
+          "addresses": [
+            {
+              "address_text": "10 Lime St",
+              "city": "London",
+              "country": "GB"
+            }
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "GB-EST-4433",
+              "issuing_country": "GB"
+            }
+          ],
+          "source_record_id": "est-left",
+          "source_system": "vendor_master"
+        },
+        "matched_party": {
+          "list_source": "watchlist_candidates",
+          "program": "SDN",
+          "list_uid": "est-right",
+          "entity_type": "organization",
+          "name": {
+            "full_name": "Eastern Star Holding Company",
+            "aliases": [
+              "Eastern Star"
+            ]
+          },
+          "incorporation_date": "2009-03-09",
+          "countries": [
+            "SY"
+          ],
+          "identifiers": [
+            {
+              "type": "other",
+              "value": "SY-EST-9001",
+              "issuing_country": "SY"
+            }
+          ]
+        },
+        "screening_features": {
+          "vendor_score": 66,
+          "name_score": 81,
+          "match_flags": [
+            "name"
+          ]
+        }
+      },
+      "features": {
+        "alert_id": "gold-org-wrongctx-001",
+        "kind": "organization_onboarding",
+        "screened_name": {
+          "original": "Eastern Star Holdings Ltd",
+          "canonical": "EASTERN STAR HOLDINGS LTD",
+          "canonical_aliases": [
+            "EASTERN STAR"
+          ],
+          "tokens": [
+            "EASTERN",
+            "STAR",
+            "HOLDINGS",
+            "LTD"
+          ],
+          "token_sorted": "EASTERN HOLDINGS LTD STAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "matched_name": {
+          "original": "Eastern Star Holding Company",
+          "canonical": "EASTERN STAR HOLDING COMPANY",
+          "canonical_aliases": [
+            "EASTERN STAR"
+          ],
+          "tokens": [
+            "EASTERN",
+            "STAR",
+            "HOLDING",
+            "COMPANY"
+          ],
+          "token_sorted": "COMPANY EASTERN HOLDING STAR",
+          "script_family": "latin",
+          "has_exact_alias_match": false
+        },
+        "date": {
+          "screened_exact": "2018-07-07",
+          "screened_year": "2018",
+          "matched_exact": "2009-03-09",
+          "matched_year": "2009",
+          "exact_match": false,
+          "year_match": false,
+          "has_conflict": true
+        },
+        "identifiers": {
+          "screened_by_type": {
+            "other": [
+              "GBEST4433"
+            ]
+          },
+          "matched_by_type": {
+            "other": [
+              "SYEST9001"
+            ]
+          },
+          "potential_conflicts": [
+            "other"
+          ]
+        },
+        "geography": {
+          "screened_countries": [
+            "GB"
+          ],
+          "matched_countries": [
+            "SY"
+          ],
+          "address_countries": [
+            "GB"
+          ],
+          "has_country_support": false
+        },
+        "context": {
+          "screened_entity_type": "organization",
+          "matched_entity_type": "organization",
+          "kind": "organization_onboarding",
+          "is_ach": false,
+          "entity_type_conflict": false
+        },
+        "screened_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 1,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "matched_completeness": {
+          "name_present": true,
+          "alias_count": 1,
+          "date_present": true,
+          "country_count": 1,
+          "address_count": 0,
+          "identifier_count": 1,
+          "supporting_note_count": 0
+        },
+        "contradictions": [
+          "dob_conflict",
+          "identifier_conflict",
+          "geography_conflict"
+        ],
+        "vendor_score": 66,
+        "name_score": 81,
+        "match_flags": [
+          "name"
+        ]
+      },
+      "retrieval_context": {
+        "query_text": "organization_onboarding | screened=Eastern Star Holdings Ltd | matched=Eastern Star Holding Company | program=SDN | decision=close | entity type support | organization token overlap",
+        "snippets": [
+          {
+            "snippet_id": "snip-passport-1",
+            "source": "clawmem",
+            "title": "Prior passport corroboration review",
+            "text": "Prior SDN review on Jane Citizen highlighted passport corroboration and exact normalized name match as key escalation evidence.",
+            "score": 2.5,
+            "tags": [
+              "individual_onboarding",
+              "sdn",
+              "passport",
+              "name_match"
+            ]
+          },
+          {
+            "snippet_id": "snip-policy-1",
+            "source": "policy",
+            "title": "Escalation guidance for strong corroborated matches",
+            "text": "Escalate when exact identifier and date-of-birth corroboration support a strong onboarding watchlist match.",
+            "score": 1,
+            "tags": [
+              "individual_onboarding",
+              "escalate",
+              "passport",
+              "dob"
+            ]
+          }
+        ]
+      },
+      "identity_evidence": {
+        "screening": {
+          "screening_id": "scr_e70ff791092f32c4",
+          "decision": "clear",
+          "decision_trace_id": "dt_9809997da06ad116"
+        },
+        "warnings": [
+          "compare_failed"
+        ]
+      },
+      "deterministic_score": {
+        "match_strength_score": 17,
+        "data_sufficiency_score": 78,
+        "name_match_score": 6,
+        "date_match_score": 0,
+        "identifier_match_score": 6,
+        "geography_match_score": 0,
+        "address_match_score": 0,
+        "context_support_score": 5,
+        "screened_completeness_score": 30,
+        "matched_completeness_score": 25,
+        "identifier_quality_score": 12,
+        "geography_quality_score": 4,
+        "supporting_context_score": 7,
+        "contradictions": [
+          "dob_conflict",
+          "geography_conflict",
+          "identifier_conflict"
+        ],
+        "decision_label": "close",
+        "decision_reason": "Hard contradiction present and overall match strength is weak.",
+        "evidence_for": [
+          "entity type support",
+          "organization token overlap"
+        ],
+        "evidence_against": [
+          "country mismatch",
+          "date conflict",
+          "identifier conflict"
+        ],
+        "missing_information": [
+          "date corroboration",
+          "geography corroboration",
+          "strong identifier corroboration"
+        ],
+        "next_step": "Close as likely false positive and document contradiction."
+      },
+      "analyst_note": {
+        "status": "generated",
+        "model": "ibm/granite3.3:8b",
+        "prompt_version": "granite-analyst-note-v3-rag-quality",
+        "note": "The organization 'Eastern Star Holding Company' from Syria has been flagged for onboarding. However, critical information such as date of birth, precise geographic details, and strong identifier corroboration are absent or contradicted (GB vs SY). The match strength score is low at 17 out of 100, with significant evidence against the match including country mismatch, potential date conflict, and name discrepancy. Given these hard contradictions and weak overall match strength, it's prudent to close this case as a likely false positive.",
+        "evidence_summary": [
+          "Entity type support for organization.",
+          "Organization name token overlap ('Eastern Star Holding Company' and 'Eastern Star Holdings Ltd')."
+        ],
+        "missing_information_summary": [
+          "Date of birth missing in both parties.",
+          "Geography conflict (SY vs GB).",
+          "Identifier conflict between 'Eastern Star Holding Company' and 'Eastern Star Holdings Ltd'.",
+          "Hard contradiction due to country mismatch (SY vs GB)."
+        ],
+        "next_step_rationale": "Close as likely false positive due to hard contradictions in date, geography, and identifier information."
+      }
+    }
+  },
+  "tenant_id": "test-tenant"
+}

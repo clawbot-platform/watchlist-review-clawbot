@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-true-001",
+  "artifact_id": "art_1776729063795160000",
+  "case_id": "case-gold-individual-true-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420235042.689656000",
+  "created_at": "2026-04-20T23:51:03.79516Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The case 'gold-individual-true-001' under individual onboarding in the US jurisdiction has been determined to escalate. The decision is driven by a high match strength score of 93, supported by corroborated evidence including exact normalized name, date of birth, country, identifier match on passport, and entity type. No contradictions were found, and the data sufficiency score is at 92.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact date match",
+      "exact identifier match on passport",
+      "exact normalized name match"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroborated match with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}

@@ -1,0 +1,25 @@
+{
+  "alert_id": "gold-individual-alias-001",
+  "artifact_id": "art_1776722023694455000",
+  "case_id": "case-gold-individual-alias-001",
+  "content_type": "application/json",
+  "correlation_id": "corr_20260420215324.698163000",
+  "created_at": "2026-04-20T21:53:43.694455Z",
+  "kind": "analyst_note",
+  "payload": {
+    "status": "generated",
+    "model": "ibm/granite3.3:8b",
+    "prompt_version": "granite-analyst-note-v3-rag-quality",
+    "note": "The alert is escalated based on a robust set of supporting evidence including address, country alignment, entity type, exact alias-to-name match, precise date correlation, and exact passport identifier match. The deterministic decision aligns with the high corroboration score and lack of contradictions.",
+    "evidence_summary": [
+      "address support",
+      "country support",
+      "entity type support",
+      "exact alias-to-name match",
+      "exact date match",
+      "exact identifier match on passport"
+    ],
+    "next_step_rationale": "Escalate for analyst review due to strong corroboration with sufficient data and no contradictions."
+  },
+  "tenant_id": "test-tenant"
+}
