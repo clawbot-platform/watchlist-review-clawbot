@@ -13,3 +13,20 @@ eval/reports/
 
 # generated runtime artifacts
 var/artifacts/
+
+# generated eval outputs
+eval/reports/
+
+# generated runtime artifacts
+var/artifacts/
+
+# local run outputs
+*.log
+*.out
+*.tmp
+
+# generated eval outputs
+eval/reports/
+
+# generated runtime artifacts
+var/artifacts/
