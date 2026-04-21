@@ -1,3 +1,15 @@
 
 # generated eval outputs
 eval/reports/
+
+# generated eval outputs
+eval/reports/
+
+# generated runtime artifacts
+var/artifacts/
+
+# generated eval outputs
+eval/reports/
+
+# generated runtime artifacts
+var/artifacts/
