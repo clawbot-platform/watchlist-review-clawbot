@@ -1,0 +1,838 @@
+{
+  "generated_at": "2026-04-21T22:40:28.046166Z",
+  "passed": true,
+  "case_results": [
+    {
+      "name": "individual_onboarding_generated_note",
+      "request_path": "eval/requests/individual_onboarding.json",
+      "expected_case_id": "case-screening-001",
+      "expected_alert_id": "screening-json-source-refs-001",
+      "actual_case_id": "case-screening-001",
+      "actual_alert_id": "screening-json-source-refs-001",
+      "passed": true,
+      "response": {
+        "status": "review_context_built",
+        "case_id": "case-screening-001",
+        "alert_id": "screening-json-source-refs-001",
+        "identity_trace_refs": {
+          "decision_trace_id": "dt_0d148d9ed90dd659",
+          "explanation_id": "exp_45c4835d44f91e19",
+          "screening_id": "scr_b0938321304992bd"
+        },
+        "match_strength_score": 93,
+        "data_sufficiency_score": 92,
+        "decision_label": "escalate",
+        "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+        "evidence_for": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact date match",
+          "exact identifier match on passport",
+          "exact normalized name match"
+        ],
+        "next_step": "Escalate for analyst review.",
+        "analyst_note": {
+          "status": "generated",
+          "model": "ibm/granite4:tiny-h",
+          "prompt_version": "granite-analyst-note-v5-local-json",
+          "note": "Jane Citizen, an individual screened for onboarding through the SDN watchlist program, has been matched with a high-confidence record in the right-record source. The match is corroborated by exact name, date of birth, country, and passport identifier matches from multiple sources. Strong corroborated evidence supports the escalated decision to review this alert manually.",
+          "evidence_summary": [
+            "Address support",
+            "Country support",
+            "Entity type support",
+            "Exact date match",
+            "exact identifier match on passport.",
+            "Exact normalized name match"
+          ],
+          "next_step_rationale": "Escalate for analyst review.",
+          "warnings": [
+            "granite_analyst_note_evidence_summary_rebuilt_from_deterministic_score"
+          ]
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "art_1776811242548392000",
+            "kind": "review_output",
+            "content_type": "application/json",
+            "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/review_output-art_1776811242548392000.json",
+            "created_at": "2026-04-21T22:40:42.548392Z"
+          },
+          {
+            "artifact_id": "art_1776811242552691000",
+            "kind": "analyst_note",
+            "content_type": "application/json",
+            "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/analyst_note-art_1776811242552691000.json",
+            "created_at": "2026-04-21T22:40:42.552691Z"
+          }
+        ],
+        "review_context": {
+          "alert": {
+            "kind": "individual_onboarding",
+            "matched_party": {
+              "countries": [
+                "US"
+              ],
+              "date_of_birth": "1988-07-14",
+              "entity_type": "individual",
+              "identifiers": [
+                {
+                  "issuing_country": "US",
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "list_source": "watchlist_candidates",
+              "list_uid": "right-record",
+              "name": {
+                "aliases": [
+                  "Jane Q Citizen"
+                ],
+                "full_name": "Jane Citizen"
+              },
+              "program": "SDN"
+            },
+            "metadata": {
+              "alert_id": "screening-json-source-refs-001",
+              "alert_type": "individual_onboarding",
+              "case_id": "case-screening-001",
+              "created_at": "2026-04-14T12:00:00Z",
+              "jurisdiction": "US",
+              "priority": "high",
+              "source_system": "screening_json"
+            },
+            "screened_party": {
+              "addresses": [
+                {
+                  "address_text": "1 Main St",
+                  "city": "Jersey City",
+                  "country": "US"
+                }
+              ],
+              "countries": [
+                "US"
+              ],
+              "date_of_birth": "1988-07-14",
+              "entity_type": "individual",
+              "identifiers": [
+                {
+                  "issuing_country": "US",
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "name": {
+                "aliases": [
+                  "J Citizen"
+                ],
+                "full_name": "Jane Citizen"
+              },
+              "source_record_id": "left-record",
+              "source_system": "kyc_applications"
+            },
+            "screening_features": {
+              "match_flags": [
+                "name",
+                "dob",
+                "identifier"
+              ],
+              "name_score": 95,
+              "vendor_score": 88
+            }
+          },
+          "analyst_note": {
+            "evidence_summary": [
+              "Address support",
+              "Country support",
+              "Entity type support",
+              "Exact date match",
+              "exact identifier match on passport.",
+              "Exact normalized name match"
+            ],
+            "model": "ibm/granite4:tiny-h",
+            "next_step_rationale": "Escalate for analyst review.",
+            "note": "Jane Citizen, an individual screened for onboarding through the SDN watchlist program, has been matched with a high-confidence record in the right-record source. The match is corroborated by exact name, date of birth, country, and passport identifier matches from multiple sources. Strong corroborated evidence supports the escalated decision to review this alert manually.",
+            "prompt_version": "granite-analyst-note-v5-local-json",
+            "status": "generated",
+            "warnings": [
+              "granite_analyst_note_evidence_summary_rebuilt_from_deterministic_score"
+            ]
+          },
+          "artifact_refs": [
+            {
+              "artifact_id": "art_1776811242548392000",
+              "content_type": "application/json",
+              "created_at": "2026-04-21T22:40:42.548392Z",
+              "kind": "review_output",
+              "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/review_output-art_1776811242548392000.json"
+            },
+            {
+              "artifact_id": "art_1776811242552691000",
+              "content_type": "application/json",
+              "created_at": "2026-04-21T22:40:42.552691Z",
+              "kind": "analyst_note",
+              "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/analyst_note-art_1776811242552691000.json"
+            }
+          ],
+          "deterministic_score": {
+            "address_match_score": 5,
+            "context_support_score": 5,
+            "data_sufficiency_score": 92,
+            "date_match_score": 20,
+            "decision_label": "escalate",
+            "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+            "evidence_for": [
+              "address support",
+              "country support",
+              "entity type support",
+              "exact date match",
+              "exact identifier match on passport",
+              "exact normalized name match"
+            ],
+            "geography_match_score": 8,
+            "geography_quality_score": 10,
+            "identifier_match_score": 20,
+            "identifier_quality_score": 20,
+            "match_strength_score": 93,
+            "matched_completeness_score": 25,
+            "name_match_score": 35,
+            "next_step": "Escalate for analyst review.",
+            "official_doc_link_score": 0,
+            "previous_disposition_score": 0,
+            "program_context_score": 0,
+            "relationship_conflict_penalty": 0,
+            "relationship_support_score": 0,
+            "screened_completeness_score": 30,
+            "supporting_context_score": 7
+          },
+          "features": {
+            "alert_id": "screening-json-source-refs-001",
+            "context": {
+              "entity_type_conflict": false,
+              "is_ach": false,
+              "kind": "individual_onboarding",
+              "matched_entity_type": "individual",
+              "screened_entity_type": "individual"
+            },
+            "date": {
+              "exact_match": true,
+              "has_conflict": false,
+              "matched_exact": "1988-07-14",
+              "matched_year": "1988",
+              "screened_exact": "1988-07-14",
+              "screened_year": "1988",
+              "year_match": true
+            },
+            "geography": {
+              "address_countries": [
+                "US"
+              ],
+              "country_overlap": [
+                "US"
+              ],
+              "has_country_support": true,
+              "matched_countries": [
+                "US"
+              ],
+              "screened_countries": [
+                "US"
+              ]
+            },
+            "identifiers": {
+              "exact_matches": [
+                {
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "matched_by_type": {
+                "passport": [
+                  "P1234567"
+                ]
+              },
+              "screened_by_type": {
+                "passport": [
+                  "P1234567"
+                ]
+              }
+            },
+            "kind": "individual_onboarding",
+            "match_flags": [
+              "name",
+              "dob",
+              "identifier"
+            ],
+            "matched_completeness": {
+              "address_count": 0,
+              "alias_count": 1,
+              "country_count": 1,
+              "date_present": true,
+              "identifier_count": 1,
+              "name_present": true,
+              "supporting_note_count": 0
+            },
+            "matched_name": {
+              "canonical": "JANE CITIZEN",
+              "canonical_aliases": [
+                "JANE Q CITIZEN"
+              ],
+              "has_exact_alias_match": false,
+              "original": "Jane Citizen",
+              "script_family": "latin",
+              "token_sorted": "CITIZEN JANE",
+              "tokens": [
+                "JANE",
+                "CITIZEN"
+              ]
+            },
+            "name_score": 95,
+            "screened_completeness": {
+              "address_count": 1,
+              "alias_count": 1,
+              "country_count": 1,
+              "date_present": true,
+              "identifier_count": 1,
+              "name_present": true,
+              "supporting_note_count": 0
+            },
+            "screened_name": {
+              "canonical": "JANE CITIZEN",
+              "canonical_aliases": [
+                "J CITIZEN"
+              ],
+              "has_exact_alias_match": false,
+              "original": "Jane Citizen",
+              "script_family": "latin",
+              "token_sorted": "CITIZEN JANE",
+              "tokens": [
+                "JANE",
+                "CITIZEN"
+              ]
+            },
+            "vendor_score": 88
+          },
+          "identity_evidence": {
+            "compare": {
+              "confidence_band": "high",
+              "decision_trace_id": "dt_0d148d9ed90dd659",
+              "disposition": "resolved",
+              "explanation": {
+                "explanation_id": "exp_45c4835d44f91e19",
+                "how": [
+                  "Compared normalized name, aliases, identifiers, date of birth, and country attributes from stored source records."
+                ],
+                "source_refs": [
+                  {
+                    "source_record_id": "left-record",
+                    "source_system": "kyc_applications"
+                  },
+                  {
+                    "source_record_id": "right-record",
+                    "source_system": "watchlist_candidates"
+                  }
+                ],
+                "summary": "Records are likely the same entity based on: normalized name exact match; date of birth exact match; country match; identifier match on passport.",
+                "why": [
+                  "normalized name exact match",
+                  "date of birth exact match",
+                  "country match",
+                  "identifier match on passport"
+                ]
+              }
+            },
+            "screening": {
+              "candidates": [
+                {
+                  "dataset_run_id": "ofac-seed-run-001",
+                  "list_kind": "sdn",
+                  "list_uid": "uid-seed-001",
+                  "matched_on": "name+country+identifier",
+                  "name": "Jane Citizen",
+                  "needs_review": true,
+                  "score": 95
+                }
+              ],
+              "decision": "manual_review",
+              "decision_trace_id": "dt_43315563fe3f1ae7",
+              "screening_id": "scr_b0938321304992bd"
+            }
+          },
+          "retrieval_context": {
+            "query_text": "individual_onboarding | screened=Jane Citizen | matched=Jane Citizen | program=SDN | decision=escalate | address support | country support | entity type support | exact date match | exact identifier match on passport | exact normalized name match",
+            "snippets": [
+              {
+                "score": 10.5,
+                "snippet_id": "snip-individual-passport-true-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "passport",
+                  "dob",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+                "title": "Individual exact-passport corroboration"
+              },
+              {
+                "score": 8,
+                "snippet_id": "snip-ach-true-1",
+                "source": "policy",
+                "tags": [
+                  "ach_party",
+                  "ach",
+                  "passport",
+                  "dob",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+                "title": "ACH exact-party escalation"
+              },
+              {
+                "score": 7.5,
+                "snippet_id": "snip-alias-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "alias",
+                  "passport",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+                "title": "Alias plus identifier corroboration"
+              },
+              {
+                "score": 6.5,
+                "snippet_id": "snip-tareck-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "tareck",
+                  "investigate_next_step",
+                  "false_positive",
+                  "ofac_real"
+                ],
+                "text": "Name overlap with Tareck El Aissami without matching date of birth, geography, or identifiers should be investigated and documented as likely false positive after corroboration review.",
+                "title": "Real-OFAC-inspired Tareck false positive"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "individual_onboarding_requires_retrieval",
+      "request_path": "eval/requests/individual_onboarding_with_retrieval.json",
+      "expected_case_id": "case-screening-001",
+      "expected_alert_id": "screening-json-source-refs-001",
+      "actual_case_id": "case-screening-001",
+      "actual_alert_id": "screening-json-source-refs-001",
+      "passed": true,
+      "response": {
+        "status": "review_context_built",
+        "case_id": "case-screening-001",
+        "alert_id": "screening-json-source-refs-001",
+        "identity_trace_refs": {
+          "decision_trace_id": "dt_401d43483a41f5a3",
+          "explanation_id": "exp_1dc9ecf18d805a51",
+          "screening_id": "scr_b06902ffef3d69ac"
+        },
+        "match_strength_score": 93,
+        "data_sufficiency_score": 92,
+        "decision_label": "escalate",
+        "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+        "evidence_for": [
+          "address support",
+          "country support",
+          "entity type support",
+          "exact date match",
+          "exact identifier match on passport",
+          "exact normalized name match"
+        ],
+        "next_step": "Escalate for analyst review.",
+        "analyst_note": {
+          "status": "generated",
+          "model": "ibm/granite4:tiny-h",
+          "prompt_version": "granite-analyst-note-v5-local-json",
+          "note": "Jane Citizen's screening indicates a high match score and corroborated evidence across multiple factors including name, date of birth, passport identifier, country, and address. The deterministic scorer has determined an escalations decision based on strong corroborated matches with sufficient supporting data and no conflicting information. No additional missing details were identified in the provided context.",
+          "evidence_summary": [
+            "Address match: Jane Citizen's address is '1 Main St, Jersey City, US",
+            "Country support: Both screened and matched parties are from the US",
+            "Entity type support: Both entities are identified as individuals",
+            "Exact date match: Birthdate matches at 1988-07-14",
+            "Exact identifier match on passport: Passport number P1234567 matches for both parties"
+          ],
+          "next_step_rationale": "Escalate for analyst review as there is strong corroborated match with sufficient data and no contradictions."
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "art_1776811275353002000",
+            "kind": "review_output",
+            "content_type": "application/json",
+            "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/review_output-art_1776811275353002000.json",
+            "created_at": "2026-04-21T22:41:15.353002Z"
+          },
+          {
+            "artifact_id": "art_1776811275356553000",
+            "kind": "analyst_note",
+            "content_type": "application/json",
+            "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/analyst_note-art_1776811275356553000.json",
+            "created_at": "2026-04-21T22:41:15.356553Z"
+          }
+        ],
+        "review_context": {
+          "alert": {
+            "kind": "individual_onboarding",
+            "matched_party": {
+              "countries": [
+                "US"
+              ],
+              "date_of_birth": "1988-07-14",
+              "entity_type": "individual",
+              "identifiers": [
+                {
+                  "issuing_country": "US",
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "list_source": "watchlist_candidates",
+              "list_uid": "right-record",
+              "name": {
+                "aliases": [
+                  "Jane Q Citizen"
+                ],
+                "full_name": "Jane Citizen"
+              },
+              "program": "SDN"
+            },
+            "metadata": {
+              "alert_id": "screening-json-source-refs-001",
+              "alert_type": "individual_onboarding",
+              "case_id": "case-screening-001",
+              "created_at": "2026-04-14T12:00:00Z",
+              "jurisdiction": "US",
+              "priority": "high",
+              "source_system": "screening_json"
+            },
+            "screened_party": {
+              "addresses": [
+                {
+                  "address_text": "1 Main St",
+                  "city": "Jersey City",
+                  "country": "US"
+                }
+              ],
+              "countries": [
+                "US"
+              ],
+              "date_of_birth": "1988-07-14",
+              "entity_type": "individual",
+              "identifiers": [
+                {
+                  "issuing_country": "US",
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "name": {
+                "aliases": [
+                  "J Citizen"
+                ],
+                "full_name": "Jane Citizen"
+              },
+              "source_record_id": "left-record",
+              "source_system": "kyc_applications"
+            },
+            "screening_features": {
+              "match_flags": [
+                "name",
+                "dob",
+                "identifier"
+              ],
+              "name_score": 95,
+              "vendor_score": 88
+            }
+          },
+          "analyst_note": {
+            "evidence_summary": [
+              "Address match: Jane Citizen's address is '1 Main St, Jersey City, US",
+              "Country support: Both screened and matched parties are from the US",
+              "Entity type support: Both entities are identified as individuals",
+              "Exact date match: Birthdate matches at 1988-07-14",
+              "Exact identifier match on passport: Passport number P1234567 matches for both parties"
+            ],
+            "model": "ibm/granite4:tiny-h",
+            "next_step_rationale": "Escalate for analyst review as there is strong corroborated match with sufficient data and no contradictions.",
+            "note": "Jane Citizen's screening indicates a high match score and corroborated evidence across multiple factors including name, date of birth, passport identifier, country, and address. The deterministic scorer has determined an escalations decision based on strong corroborated matches with sufficient supporting data and no conflicting information. No additional missing details were identified in the provided context.",
+            "prompt_version": "granite-analyst-note-v5-local-json",
+            "status": "generated"
+          },
+          "artifact_refs": [
+            {
+              "artifact_id": "art_1776811275353002000",
+              "content_type": "application/json",
+              "created_at": "2026-04-21T22:41:15.353002Z",
+              "kind": "review_output",
+              "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/review_output-art_1776811275353002000.json"
+            },
+            {
+              "artifact_id": "art_1776811275356553000",
+              "content_type": "application/json",
+              "created_at": "2026-04-21T22:41:15.356553Z",
+              "kind": "analyst_note",
+              "relative_path": "2026/04/21/case-screening-001/screening-json-source-refs-001/analyst_note-art_1776811275356553000.json"
+            }
+          ],
+          "deterministic_score": {
+            "address_match_score": 5,
+            "context_support_score": 5,
+            "data_sufficiency_score": 92,
+            "date_match_score": 20,
+            "decision_label": "escalate",
+            "decision_reason": "Strong corroborated match with sufficient data and no contradictions.",
+            "evidence_for": [
+              "address support",
+              "country support",
+              "entity type support",
+              "exact date match",
+              "exact identifier match on passport",
+              "exact normalized name match"
+            ],
+            "geography_match_score": 8,
+            "geography_quality_score": 10,
+            "identifier_match_score": 20,
+            "identifier_quality_score": 20,
+            "match_strength_score": 93,
+            "matched_completeness_score": 25,
+            "name_match_score": 35,
+            "next_step": "Escalate for analyst review.",
+            "official_doc_link_score": 0,
+            "previous_disposition_score": 0,
+            "program_context_score": 0,
+            "relationship_conflict_penalty": 0,
+            "relationship_support_score": 0,
+            "screened_completeness_score": 30,
+            "supporting_context_score": 7
+          },
+          "features": {
+            "alert_id": "screening-json-source-refs-001",
+            "context": {
+              "entity_type_conflict": false,
+              "is_ach": false,
+              "kind": "individual_onboarding",
+              "matched_entity_type": "individual",
+              "screened_entity_type": "individual"
+            },
+            "date": {
+              "exact_match": true,
+              "has_conflict": false,
+              "matched_exact": "1988-07-14",
+              "matched_year": "1988",
+              "screened_exact": "1988-07-14",
+              "screened_year": "1988",
+              "year_match": true
+            },
+            "geography": {
+              "address_countries": [
+                "US"
+              ],
+              "country_overlap": [
+                "US"
+              ],
+              "has_country_support": true,
+              "matched_countries": [
+                "US"
+              ],
+              "screened_countries": [
+                "US"
+              ]
+            },
+            "identifiers": {
+              "exact_matches": [
+                {
+                  "type": "passport",
+                  "value": "P1234567"
+                }
+              ],
+              "matched_by_type": {
+                "passport": [
+                  "P1234567"
+                ]
+              },
+              "screened_by_type": {
+                "passport": [
+                  "P1234567"
+                ]
+              }
+            },
+            "kind": "individual_onboarding",
+            "match_flags": [
+              "name",
+              "dob",
+              "identifier"
+            ],
+            "matched_completeness": {
+              "address_count": 0,
+              "alias_count": 1,
+              "country_count": 1,
+              "date_present": true,
+              "identifier_count": 1,
+              "name_present": true,
+              "supporting_note_count": 0
+            },
+            "matched_name": {
+              "canonical": "JANE CITIZEN",
+              "canonical_aliases": [
+                "JANE Q CITIZEN"
+              ],
+              "has_exact_alias_match": false,
+              "original": "Jane Citizen",
+              "script_family": "latin",
+              "token_sorted": "CITIZEN JANE",
+              "tokens": [
+                "JANE",
+                "CITIZEN"
+              ]
+            },
+            "name_score": 95,
+            "screened_completeness": {
+              "address_count": 1,
+              "alias_count": 1,
+              "country_count": 1,
+              "date_present": true,
+              "identifier_count": 1,
+              "name_present": true,
+              "supporting_note_count": 0
+            },
+            "screened_name": {
+              "canonical": "JANE CITIZEN",
+              "canonical_aliases": [
+                "J CITIZEN"
+              ],
+              "has_exact_alias_match": false,
+              "original": "Jane Citizen",
+              "script_family": "latin",
+              "token_sorted": "CITIZEN JANE",
+              "tokens": [
+                "JANE",
+                "CITIZEN"
+              ]
+            },
+            "vendor_score": 88
+          },
+          "identity_evidence": {
+            "compare": {
+              "confidence_band": "high",
+              "decision_trace_id": "dt_401d43483a41f5a3",
+              "disposition": "resolved",
+              "explanation": {
+                "explanation_id": "exp_1dc9ecf18d805a51",
+                "how": [
+                  "Compared normalized name, aliases, identifiers, date of birth, and country attributes from stored source records."
+                ],
+                "source_refs": [
+                  {
+                    "source_record_id": "left-record",
+                    "source_system": "kyc_applications"
+                  },
+                  {
+                    "source_record_id": "right-record",
+                    "source_system": "watchlist_candidates"
+                  }
+                ],
+                "summary": "Records are likely the same entity based on: normalized name exact match; date of birth exact match; country match; identifier match on passport.",
+                "why": [
+                  "normalized name exact match",
+                  "date of birth exact match",
+                  "country match",
+                  "identifier match on passport"
+                ]
+              }
+            },
+            "screening": {
+              "candidates": [
+                {
+                  "dataset_run_id": "ofac-seed-run-001",
+                  "list_kind": "sdn",
+                  "list_uid": "uid-seed-001",
+                  "matched_on": "name+country+identifier",
+                  "name": "Jane Citizen",
+                  "needs_review": true,
+                  "score": 95
+                }
+              ],
+              "decision": "manual_review",
+              "decision_trace_id": "dt_775d8e7e496185f2",
+              "screening_id": "scr_b06902ffef3d69ac"
+            }
+          },
+          "retrieval_context": {
+            "query_text": "individual_onboarding | screened=Jane Citizen | matched=Jane Citizen | program=SDN | decision=escalate | address support | country support | entity type support | exact date match | exact identifier match on passport | exact normalized name match",
+            "snippets": [
+              {
+                "score": 10.5,
+                "snippet_id": "snip-individual-passport-true-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "passport",
+                  "dob",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Escalate when exact normalized name, exact date of birth, and exact passport corroboration support the same screened individual.",
+                "title": "Individual exact-passport corroboration"
+              },
+              {
+                "score": 8,
+                "snippet_id": "snip-ach-true-1",
+                "source": "policy",
+                "tags": [
+                  "ach_party",
+                  "ach",
+                  "passport",
+                  "dob",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Escalate ACH party alerts when exact identifier and date-of-birth corroboration strongly support the screened party match.",
+                "title": "ACH exact-party escalation"
+              },
+              {
+                "score": 7.5,
+                "snippet_id": "snip-alias-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "alias",
+                  "passport",
+                  "escalate",
+                  "true_match"
+                ],
+                "text": "Alias normalization plus exact passport identifier match can support a strong true positive individual screening result.",
+                "title": "Alias plus identifier corroboration"
+              },
+              {
+                "score": 6.5,
+                "snippet_id": "snip-tareck-1",
+                "source": "clawmem",
+                "tags": [
+                  "individual_onboarding",
+                  "tareck",
+                  "investigate_next_step",
+                  "false_positive",
+                  "ofac_real"
+                ],
+                "text": "Name overlap with Tareck El Aissami without matching date of birth, geography, or identifiers should be investigated and documented as likely false positive after corroboration review.",
+                "title": "Real-OFAC-inspired Tareck false positive"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
